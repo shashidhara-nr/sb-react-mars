@@ -339,33 +339,79 @@ const CreateTransfers = () => {
       // Step 0: Validate only transfer type
       methodsDetails.handleSubmit(onValid, onInvalid)();
     } else if (currentStep === 1) {
-      // Step 1: Skip validation if batch items exist, otherwise validate all payment details
+      // Step 1: Check if we have instructions to review
+      // If there are unsaved batch items, save them as an instruction first
       if (batchItems.length > 0) {
-        // Skip validation when batch items are present
+        // Save current instruction before proceeding to review
+        if (!transferDetails.sourceAccount) {
+          showError('Please select a source account before proceeding to review.');
+          return;
+        }
+        // if (!paymentDate) {
+        //   showError('Please select a payment date before proceeding to review.');
+        //   return;
+        // }
+
+        // Create instruction from current form data
+        const newInstruction = {
+          instructionId: nextInstructionId,
+          sourceAccount: transferDetails.sourceAccount || '',
+          sourceAccountName: transferDetails.sourceAccountName || '',
+          sourceAccountNumber: transferDetails.sourceAccountNumber || '',
+          sourceAccountBranch: transferDetails.sourceAccountBranch || '',
+          sourceAccountBic: transferDetails.sourceAccountBic || '',
+          sourceAccountCountry: transferDetails.sourceAccountCountry || '',
+          transferCurrency: transferDetails.transferCurrency || '',
+          debitCurrency: transferDetails.debitCurrency || '',
+          debitReference: transferDetails.debitReference || '',
+          destinationAccount: '',
+          transferAmount: '',
+          creditReference: '',
+          paymentDate: paymentDate,
+          batchItems: [...batchItems],
+          transferMode: transferMode,
+        };
+
+        // Add to instructions and proceed
+        setInstructions((prev) => [...prev, newInstruction]);
+        setNextInstructionId((prev) => prev + 1);
+
+        // Reset form for next session
+        setTransferDetails((prev: any) => ({
+          ...prev,
+          sourceAccount: '',
+          sourceAccountName: '',
+          sourceAccountNumber: '',
+          sourceAccountBranch: '',
+          sourceAccountBic: '',
+          sourceAccountCountry: '',
+          destinationAccount: '',
+          transferCurrency: '',
+          debitCurrency: '',
+          debitReference: '',
+          transferAmount: '',
+          creditReference: '',
+        }));
+
+        methodsDetails.reset();
+        setBatchItems([]);
+        setPaymentDate(null);
+        setTransferMode(0);
+
+        // Proceed to review
+        onValid();
+      } else if (instructions.length > 0) {
+        // We have saved instructions, proceed to review step
         onValid();
       } else {
-        // First trigger validation on all required fields
-        methodsDetails.trigger([
-          'sourceAccount',
-          'transferCurrency',
-          'debitCurrency',
-          'destinationAccount',
-          'transferAmount',
-          'paymentDate',
-        ]).then((isValid) => {
-          if (isValid) {
-            onValid();
-          }
-        }).catch((error) => {
-          console.error('Validation error:', error);
-          showError('An error occurred during validation. Please try again.');
-        });
+        // No batch items and no instructions
+        showError('Please add at least one item to the batch and create an instruction before proceeding to review.');
       }
     } else {
       // Other steps - just proceed
       onValid();
     }
-  }, [currentStep, steps.length, methodsDetails, batchItems]);
+  }, [currentStep, steps.length, methodsDetails, batchItems, instructions]);
 
   const handleCancelClick = useCallback(() => {
     setCancellationDialogOpen(true);
@@ -802,6 +848,7 @@ const CreateTransfers = () => {
                   {currentStep === 2 && (
                     <Box className={styles.stepContent}>
                       {/* Transfer Type Section */}
+                      <Box className={styles.section}>
                         <Box className={styles.sectionHeader}>
                           <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
                           <Typography variant="h6">{t('transferType')}</Typography>
@@ -819,6 +866,7 @@ const CreateTransfers = () => {
                             </Box>
                           </Box>
                         </Box>
+                      </Box>
 
                       {/* Instructions as Accordions */}
                       <Box sx={{ marginTop: 3 }}>
@@ -834,6 +882,7 @@ const CreateTransfers = () => {
                               sx={{ backgroundColor: COLORS.BACKGROUND_LIGHT }}
                             >
                               <Icon name="instructions" width="20" height="20" bgColor={"#0051FF"} />
+                              <Typography sx={{ marginLeft: 1, fontWeight: 600 }}>Instruction {index + 1}</Typography>
                               <Box sx={{ marginLeft: 'auto', display: 'flex', gap: 1 }}>
                                 <Button buttonVariant="tertiary" sx={{ textTransform: 'none', padding: '4px 8px' }} onClick={() => setCurrentStep(1)}>
                                   {t('edit') || 'EDIT'}
@@ -878,43 +927,149 @@ const CreateTransfers = () => {
                                 </Box>
                               </Box>
 
-                              {/* Transfer To Items */}
+                              {/* Transfer To Items - Batch List */}
                               <Box sx={{ marginBottom: 3 }}>
                                 <Typography sx={{ fontSize: '14px', fontWeight: 600, marginBottom: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                                   <Icon name="accounts" width="20" height="20" bgColor={"#0051FF"} />
-                                  Transfer To ({instruction.batchItems.length} items)
+                                  Transfer To ({instruction.batchItems?.length || 0} items)
                                 </Typography>
-                                <Box sx={{ border: `1px solid ${COLORS.BORDER}`, borderRadius: '8px', overflow: 'hidden', paddingLeft: 4 }}>
-                                  {instruction.batchItems.map((item: any, itemIndex: number) => (
-                                    <Box
-                                      key={item.id}
-                                      sx={{
-                                        padding: 2,
-                                        // borderBottom: itemIndex < instruction.transferTo.length - 1 ? `1px solid ${COLORS.BORDER_LIGHT}` : 'none',
-                                        display: 'grid',
-                                        gridTemplateColumns: '100px 1fr 150px 150px',
-                                        gap: 2,
-                                        alignItems: 'center',
+                                
+                                {/* Search Bar */}
+                                <Box sx={{ marginBottom: 2, paddingLeft: 4 }}>
+                                  <TextField 
+                                    fullWidth 
+                                    placeholder={t('searchWithinBatch') || 'Search'} 
+                                    variant="outlined" 
+                                    size="small"
+                                    onChange={(e) => {
+                                      // Filter logic will be handled by state if needed
+                                    }}
+                                    InputProps={{ 
+                                      startAdornment: (
+                                        <InputAdornment position="start">
+                                          <Icon name="search" width="18" height="18" bgColor={"#0051FF"} />
+                                        </InputAdornment>
+                                      ) 
+                                    }} 
+                                  />
+                                </Box>
+
+                                {/* Batch Items as Accordions */}
+                                <Box sx={{ paddingLeft: 4 }}>
+                                  {instruction.batchItems?.map((item: any, itemIndex: number) => (
+                                    <Accordion 
+                                      key={item.id} 
+                                      sx={{ 
+                                        marginBottom: 1, 
+                                        border: `1px solid ${COLORS.BORDER}`, 
+                                        borderRadius: '8px',
+                                        backgroundColor: '#F5F5F5'
                                       }}
                                     >
-                                      <Box>
-                                        <Typography sx={{ fontSize: '12px', color: '#666' }}>#{itemIndex + 1}</Typography>
-                                        <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.accountName}</Typography>
-                                      </Box>
-                                      <Box>
-                                        <Typography sx={{ fontSize: '12px', color: '#666' }}>Account Number</Typography>
-                                        <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.accountNumber}</Typography>
-                                      </Box>
-                                      <Box>
-                                        <Typography sx={{ fontSize: '12px', color: '#666' }}>Branch/Sort Code</Typography>
-                                        <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.sortCode || '-'}</Typography>
-                                      </Box>
-                                      <Box>
-                                        <Typography sx={{ fontSize: '12px', color: '#666' }}>Transfer Amount</Typography>
-                                        <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.currency} {item.transferAmount}</Typography>
-                                      </Box>
-                                    </Box>
+                                      <AccordionSummary 
+                                        expandIcon={<Icon name="arrow" width="20" height="20" bgColor={"#0051FF"} />}
+                                        sx={{ backgroundColor: '#FAFAFA' }}
+                                      >
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
+                                          <Icon name="user" width="24" height="24" bgColor={"#0051FF"} />
+                                          <Box>
+                                            <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{itemIndex + 1}. {item.accountName}</Typography>
+                                          </Box>
+                                          <Box sx={{ marginLeft: 'auto', display: 'flex', gap: 2, alignItems: 'center' }}>
+                                            <Box>
+                                              <Typography sx={{ fontSize: '12px', color: '#666' }}>Acc Number</Typography>
+                                              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.accountNumber}</Typography>
+                                            </Box>
+                                            <Box>
+                                              <Typography sx={{ fontSize: '12px', color: '#666' }}>Transfer Amount</Typography>
+                                              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{item.currency} {item.transferAmount}</Typography>
+                                            </Box>
+                                          </Box>
+                                        </Box>
+                                      </AccordionSummary>
+                                      <AccordionDetails sx={{ backgroundColor: '#FFFFFF', padding: 3 }}>
+                                        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }}>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Account Name</Typography>
+                                            <TextField 
+                                              value={item.accountName} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Account Number</Typography>
+                                            <TextField 
+                                              value={item.accountNumber} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Branch/Sort Code</Typography>
+                                            <TextField 
+                                              value={item.sortCode || '-'} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>BIC/SWIFT</Typography>
+                                            <TextField 
+                                              value={item.bic || '-'} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Transfer Amount</Typography>
+                                            <TextField 
+                                              value={item.transferAmount} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Currency</Typography>
+                                            <TextField 
+                                              value={item.currency} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                          <Box>
+                                            <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Credit Reference</Typography>
+                                            <TextField 
+                                              value={item.creditReference || '-'} 
+                                              fullWidth 
+                                              disabled 
+                                              variant="outlined" 
+                                              size="small"
+                                            />
+                                          </Box>
+                                        </Box>
+                                      </AccordionDetails>
+                                    </Accordion>
                                   ))}
+                                </Box>
+
+                                {/* Total Amount Summary */}
+                                <Box sx={{ paddingLeft: 4, marginTop: 2 }}>
+                                  <Typography sx={{ fontSize: '14px', fontWeight: 600 }}>
+                                    {t('total') || 'Total'}: {instruction.batchItems?.reduce((sum: number, item: any) => sum + parseFloat(item.transferAmount || 0), 0).toFixed(2)}
+                                  </Typography>
                                 </Box>
                               </Box>
 
@@ -926,7 +1081,7 @@ const CreateTransfers = () => {
                                 </Typography>
                                 <Box sx={{ paddingLeft: 4 }}>
                                   <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Payment Date</Typography>
-                                  <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.paymentDate ? dayjs(instruction.paymentDate).format('DD/MM/YYYY') : '-'}</Typography>
+                                  <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.paymentDate ? instruction.paymentDate.format('DD/MM/YYYY') : '-'}</Typography>
                                 </Box>
                               </Box>
                             </AccordionDetails>
