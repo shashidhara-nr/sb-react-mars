@@ -1,0 +1,115 @@
+{
+  "breadcrumbDashboard": "Dashboard",
+  "breadcrumbNonTransactional": "Non-transactional authorisation rules",
+
+  "pageHeadingProfile": "Non-transactional authorisation profile",
+  "pageHeadingHub": "Non-transactional authorisation rules",
+
+  "buttonCreateRule": "Create an authorisation rule",
+  "buttonCreateProfile": "CREATE A NON-TRANSACTIONAL AUTHORISATION PROFILE",
+  "buttonFilter": "Filter",
+  "buttonDelete": "Delete",
+  "buttonRemoveFilters": "Remove filters",
+  "buttonResetAll": "RESET ALL ENTITY FUNCTIONS",
+
+  "searchPlaceholder": "Search predefined authorisation rules",
+  "noRulesToSearch": "No authorisation rules to search",
+
+  "tableHeaderRule": "Predefined authorisation rules",
+  "tableHeaderDescription": "Predefined authorisation rule description",
+  "tableHeaderLinks": "Quick links",
+
+  "nonTransactionalRuleTitle": "Non-transactional authorisation rule {number}",
+  "authorisationRuleTitle": "Authorisation rule {number}",
+
+  "deleteConfirmationItemLabel": "authorisation rules",
+  "deleteConfirmationMessage": "Are you sure you want to delete the {count} authorisation rules selected. This action cannot be undone.",
+  "snackbarDeleteSuccess": "Authorisation rule deleted and submitted for approval",
+  "snackbarProfileDeleteSuccess": "Non-transactional authorisation profile successfully deleted.",
+
+  "emptyNoResultsTitle": "No results found",
+  "emptyNoResultsDescription": "Please refine your search and try again.",
+  "emptyNoRulesTitle": "No authorisation rules yet",
+  "emptyNoRulesDescription": "You haven't added any authorisation rules yet.",
+
+  "createTitle": "Create a non-transactional authorisation profile",
+  "manageTitle": "Manage non-transactional authorisation profile",
+  "profileDetailsTitle": "Authorisation profile details",
+
+  "labelAuthRuleName": "Authorisation rule name",
+  "labelAuthRuleDescription": "Authorisation rule description",
+  "labelAuthProfileDescription": "Authorisation profile description",
+  "labelAuthRuleConstruct": "Authorisation rule construct",
+  "noAuthorisationRuleCreated": "No authorisation rule created",
+  "placeholderAuthRuleConstruct": "Type your authorisation rule construct here or use the keyboard below",
+  "labelTransactionLimit": "Transaction limit",
+
+  "labelClasses": "Classes",
+
+  "buttonAddRule": "ADD A RULE",
+  "buttonDeleteRule": "DELETE RULE",
+  "buttonDeleteProfile": "DELETE THIS PROFILE",
+  "additionalAuthRulesAdded": "ADDITIONAL AUTHORISATION RULES ADDED.",
+  "buttonSubmitRuleChanges": "SUBMIT RULE FOR CHANGES",
+  "buttonReviewAndSubmit": "REVIEW AND SUBMIT",
+  "buttonSubmitRuleForApproval": "SUBMIT RULE FOR APPROVAL",
+  "buttonCancel": "CANCEL",
+
+  "buttonUndo": "UNDO",
+  "buttonAddSelectedClass": "ADD SELECTED CLASS",
+  "buttonSave": "SAVE",
+  "buttonSaveEntity": "SAVE ENTITY FUNCTIONS",
+  "dialogCancelTitle": "Cancel profile creation",
+  "dialogCancelHeading": "Are you sure you want to cancel?",
+  "dialogCancelSubheading": "Any data entered will be lost, and you will return to the Non-transactional authorisation rules hub.",
+  "dialogCancelDismiss": "DISMISS",
+  "dialogCancelConfirm": "YES, CANCEL PROFILE CREATION",
+
+  "dialogSecurityWarningTitle": "Security warning",
+  "dialogSecurityWarningHeading": "Are you sure you don't want to create any authorisation rules?",
+  "dialogSecurityWarningSubheading": "Authorisation rules are not mandatory, but add a valuable layer of security to an authorisation profile.",
+  "dialogSecurityWarningDismiss": "DISMISS",
+  "dialogSecurityWarningConfirm": "YES, CONTINUE TO REVIEW",
+
+  "dialogRuleDeletionTitle": "Delete rule",
+  "dialogRuleDeletionHeading": "Are you sure you want to delete this rule?",
+  "dialogRuleDeletionSubheading": "This cannot be undone.",
+  "dialogRuleDeletionDismiss": "DISMISS",
+  "dialogRuleDeletionConfirm": "YES, DELETE THIS RULE",
+
+  "dialogProfileDeletionTitle": "Profile deletion",
+  "dialogProfileDeletionHeading": "Are you sure you want to delete the profile?",
+  "dialogProfileDeletionSubheading": "This cannot be undone.",
+  "dialogProfileDeletionDismiss": "DISMISS",
+  "dialogProfileDeletionConfirm": "YES, DELETE THIS PROFILE",
+
+  "dialogMaxRulesTitle": "Maximum number of rules created",
+  "dialogMaxRulesHeading": "Maximum permissible number of rules created.",
+  "dialogMaxRulesSubheading": "A maximum of {max} rules can be created per profile.",
+  "dialogMaxRulesDismiss": "DISMISS",
+
+  "dialogAddRuleBlockedTitle": "Complete current rule",
+  "dialogAddRuleBlockedHeading": "Save rule {number} before adding another.",
+  "dialogAddRuleBlockedSubheading": "Save the current rule before continuing.",
+  "dialogAddRuleBlockedDismiss": "DISMISS",
+  "manageMinRulesError": "ERROR: ONE AUTHORISATION RULE IS NEEDED PER PROFILE",
+  "validationProfileNameRequired": "Authorisation profile name is required",
+
+  "errorUnknownAuthorisationClass": "Unknown authorisation class: \"{value}\"",
+  "errorClassMustMatchExactly": "Class must match exactly: \"{expected}\"",
+
+  "dialogDeleteTitle": "Delete authorisation rule",
+  "dialogDeletePrimary": "Yes, delete",
+  "dialogDeleteSecondary": "Cancel",
+  "dialogDeleteItemLabel": "authorisation rule profile",
+  "dialogDeleteMessage": "Are you sure you want to delete this authorisation rule?",
+
+  "successTitle": "Success",
+  "successCreateHeading": "Create an authorisation rule",
+  "successCreateMessage": "Authorisation rule successfully created and submitted for approval.",
+  "successManageHeading": "Manage authorisation rule",
+  "successManageMessage": "Authorisation rule successfully edited and submitted for approval.",
+  "successInfoNote": "Please note, Turpis massa sed elementum tempus egestas. Interdum consectetur libero id faucibus nisl tincidunt. Nascetur ridiculus mus mauris vitae ultricies leo.",
+  "successCreateAnother": "CREATE ANOTHER AUTHORISATION RULE",
+  "successGoToHub": "GO TO NON-TRANSACTIONAL AUTHORISATION RULE HUB"
+}

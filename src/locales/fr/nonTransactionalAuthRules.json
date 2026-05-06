@@ -1,0 +1,115 @@
+{
+  "breadcrumbDashboard": "Tableau de bord",
+  "breadcrumbNonTransactional": "Règles d’autorisation non transactionnelles",
+
+  "pageHeadingProfile": "Profil d’autorisation non transactionnel",
+  "pageHeadingHub": "Règles d’autorisation non transactionnelles",
+
+  "buttonCreateRule": "Créer une règle d’autorisation",
+  "buttonCreateProfile": "CRÉER UN PROFIL D'AUTORISATION NON TRANSACTIONNEL",
+  "buttonFilter": "Filtre",
+  "buttonDelete": "Supprimer",
+  "buttonRemoveFilters": "Supprimer les filtres",
+  "buttonResetAll": "RÉINITIALISER TOUTES LES FONCTIONS D’ENTITÉ",
+
+  "searchPlaceholder": "Rechercher des règles d’autorisation prédéfinies",
+  "noRulesToSearch": "Aucune règle d’autorisation à rechercher",
+
+  "tableHeaderRule": "Règles d’autorisation prédéfinies",
+  "tableHeaderDescription": "Description de la règle d’autorisation prédéfinie",
+  "tableHeaderLinks": "Liens rapides",
+
+  "nonTransactionalRuleTitle": "Règle d’autorisation non transactionnelle {number}",
+  "authorisationRuleTitle": "Règle d’autorisation {number}",
+
+  "deleteConfirmationItemLabel": "règles d’autorisation",
+  "deleteConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les {count} règles d’autorisation sélectionnées ? Cette action ne peut pas être annulée.",
+  "snackbarDeleteSuccess": "Règle d’autorisation supprimée et soumise pour approbation",
+  "snackbarProfileDeleteSuccess": "Profil d'autorisation non transactionnel supprimé avec succès.",
+  "emptyNoResultsTitle": "Aucun résultat trouvé",
+  "emptyNoResultsDescription": "Veuillez affiner votre recherche et réessayer.",
+  "emptyNoRulesTitle": "Aucune règle d’autorisation pour le moment",
+  "emptyNoRulesDescription": "Vous n’avez pas encore ajouté de règles d’autorisation.",
+
+  "createTitle": "Créer un profil d'autorisation non transactionnel",
+  "manageTitle": "Gérer le profil d’autorisation non transactionnel",
+  "profileDetailsTitle": "Détails du profil d’autorisation",
+
+  "labelAuthRuleName": "Nom de la règle d’autorisation",
+  "labelAuthRuleDescription": "Description de la règle d’autorisation",
+  "labelAuthProfileDescription": "Description du profil d’autorisation",
+  "labelAuthRuleConstruct": "Structure de la règle d’autorisation",
+  "noAuthorisationRuleCreated": "Aucune règle d’autorisation créée",
+  "placeholderAuthRuleConstruct": "Saisissez votre structure de règle d’autorisation ici ou utilisez le clavier ci-dessous",
+  "labelTransactionLimit": "Limite de transaction",
+
+  "labelClasses": "Classes",
+
+  "buttonAddRule": "AJOUTER UNE RÈGLE",
+  "buttonDeleteRule": "SUPPRIMER UNE RÈGLE",
+  "buttonDeleteProfile": "SUPPRIMER CE PROFIL",
+  "additionalAuthRulesAdded": "RÈGLES D’AUTORISATION SUPPLÉMENTAIRES AJOUTÉES.",
+  "buttonSubmitRuleChanges": "SOUMETTRE LES MODIFICATIONS",
+  "buttonReviewAndSubmit": "EXAMINER ET SOUMETTRE",
+  "buttonSubmitRuleForApproval": "SOUMETTRE LA RÈGLE POUR APPROBATION",
+  "buttonCancel": "ANNULER",
+
+  "buttonUndo": "ANNULER",
+  "buttonAddSelectedClass": "AJOUTER LA CLASSE SÉLECTIONNÉE",
+  "buttonSave": "ENREGISTRER",
+  "buttonSaveEntity": "ENREGISTRER LES FONCTIONS DE L’ENTITÉ",
+  "dialogCancelTitle": "Annuler la création du profil",
+  "dialogCancelHeading": "Êtes-vous sûr de vouloir annuler ?",
+  "dialogCancelSubheading": "Toutes les données saisies seront perdues et vous retournerez au hub des règles d’autorisation non transactionnelles.",
+  "dialogCancelDismiss": "FERMER",
+  "dialogCancelConfirm": "OUI, ANNULER LA CRÉATION DU PROFIL",
+
+  "dialogSecurityWarningTitle": "Avertissement de sécurité",
+  "dialogSecurityWarningHeading": "Êtes-vous sûr de ne pas vouloir créer de règles d’autorisation ?",
+  "dialogSecurityWarningSubheading": "Les règles d’autorisation ne sont pas obligatoires, mais elles ajoutent une couche de sécurité précieuse à un profil d’autorisation.",
+  "dialogSecurityWarningDismiss": "FERMER",
+  "dialogSecurityWarningConfirm": "OUI, CONTINUER VERS L’EXAMEN",
+
+  "dialogRuleDeletionTitle": "Supprimer la règle",
+  "dialogRuleDeletionHeading": "Voulez-vous vraiment supprimer cette règle ?",
+  "dialogRuleDeletionSubheading": "Cette action est irréversible.",
+  "dialogRuleDeletionDismiss": "FERMER",
+  "dialogRuleDeletionConfirm": "OUI, SUPPRIMER CETTE RÈGLE",
+
+  "dialogProfileDeletionTitle": "Suppression du profil",
+  "dialogProfileDeletionHeading": "Voulez-vous vraiment supprimer le profil ?",
+  "dialogProfileDeletionSubheading": "Cette action est irréversible.",
+  "dialogProfileDeletionDismiss": "FERMER",
+  "dialogProfileDeletionConfirm": "OUI, SUPPRIMER CE PROFIL",
+
+  "dialogMaxRulesTitle": "Nombre maximum de règles créé",
+  "dialogMaxRulesHeading": "Nombre maximal de règles autorisées créées.",
+  "dialogMaxRulesSubheading": "Un maximum de {max} règles peut être créé par profil.",
+  "dialogMaxRulesDismiss": "FERMER",
+
+  "dialogAddRuleBlockedTitle": "Terminer la règle en cours",
+  "dialogAddRuleBlockedHeading": "Enregistrez la règle {number} avant d’en ajouter une autre.",
+  "dialogAddRuleBlockedSubheading": "Enregistrez la règle actuelle avant de continuer.",
+  "dialogAddRuleBlockedDismiss": "FERMER",
+
+  "manageMinRulesError": "ERREUR : UNE RÈGLE D’AUTORISATION EST REQUISE PAR PROFIL",
+  "validationProfileNameRequired": "Le nom du profil d’autorisation est obligatoire",
+
+  "errorUnknownAuthorisationClass": "Classe d’autorisation inconnue : \"{value}\"",
+  "errorClassMustMatchExactly": "La classe doit correspondre exactement à : \"{expected}\"",
+
+  "dialogDeleteTitle": "Supprimer la règle d’autorisation",
+  "dialogDeletePrimary": "Oui, supprimer",
+  "dialogDeleteSecondary": "Annuler",
+  "dialogDeleteItemLabel": "profil de règle d’autorisation",
+  "dialogDeleteMessage": "Êtes-vous sûr de vouloir supprimer cette règle d’autorisation ?",
+
+  "successTitle": "Succès",
+  "successCreateHeading": "Créer une règle d’autorisation",
+  "successCreateMessage": "La règle d’autorisation a été créée et soumise pour approbation.",
+  "successManageHeading": "Gérer la règle d’autorisation",
+  "successManageMessage": "La règle d’autorisation a été modifiée et soumise pour approbation.",
+  "successInfoNote": "Veuillez noter que Turpis massa sed elementum tempus egestas. Interdum consectetur libero id faucibus nisl tincidunt. Nascetur ridiculus mus mauris vitae ultricies leo.",
+  "successCreateAnother": "CRÉER UNE AUTRE RÈGLE D’AUTORISATION",
+  "successGoToHub": "ALLER AU HUB DES RÈGLES D’AUTORISATION NON TRANSACTIONNELLES"
+}

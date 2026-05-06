@@ -1,0 +1,183 @@
+@use '@styles/variables' as *;
+
+.container {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    [class*="MuiTableContainer-root"] {
+        padding: 0;
+    }
+
+    [class*="MuiTabs-root"] {
+        margin-right: auto;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: solid 1px $color-border;
+            border-radius: 16px;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: none;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: solid 1px $color-border;
+            color: $color-gray-dark;
+            background: $color-white;
+            text-transform: none;
+
+            &:first-child {
+                border-radius: 16px 0 0 16px;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0 16px 16px 0;
+                border-right: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-secondary;
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        border-radius: 16px;
+        background-color: $color-white;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: 0;
+            border-bottom: solid 1px $color-border;
+            border-radius: 0;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: block;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: 0;
+            color: $color-gray-dark;
+            background: transparent;
+
+            &:first-child {
+                border-radius: 0;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-white;
+                color: $color-secondary;
+                border-right: solid 1px $color-border;
+                border-left: solid 1px $color-border;
+
+                &:first-child {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+
+    [class*="cardcell"] {
+        background-color: $color-white;
+    }
+}
+
+.tableContainer {
+    border: solid 1px $color-table-border;
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.headerRow {
+    margin-top: -1rem;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        padding: 0.75rem 1.25rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+            svg {
+                path {
+                    fill: $color-white;
+                }
+            }
+        }
+    }
+}
+
+.gridContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.dateRangeContainer {
+    flex: 1;
+}
+
+
+.inputContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.selectField {
+    width: 25%;
+
+    >div {
+        border-radius: 16px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        height: 54px;
+    }
+
+    [class*="MuiFormLabel-root-MuiInputLabel-root"] {
+        top: 4px;
+    }
+}
+
+.marginBottomSpace1 {
+    margin-bottom: 1rem;
+}
+
+.searchRow {
+    button {
+        padding: 0.75rem 1.25rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+            svg {
+                path {
+                    fill: $color-white;
+                }
+            }
+        }
+    }
+}

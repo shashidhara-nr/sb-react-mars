@@ -1,0 +1,325 @@
+$color-primary-dark: #0b3aae;
+$color-text-primary: #222e37;
+$color-text-secondary: #5c6c80;
+$color-border-light: #e0e5eb;
+$color-link-blue: #0051ff;
+$color-white: #fff;
+$color-overlay-dark: rgb(0 0 0 / 25%);
+$color-shadow-dark: rgb(15 35 52 / 24%);
+$font-size-heading-18: 18px;
+$font-size-body-16: 16px;
+$font-size-body-14: 14px;
+$font-size-small-12: 12px;
+$spacing-sm: 0.5rem;
+$spacing-md: 0.75rem; 
+$spacing-lg: 1rem;    
+$spacing-xl: 1.5rem;  
+
+$spacing-xl-box: 1.5rem;
+$spacing-border-radius: 16px;
+
+// Z-index
+$z-index-overlay: 1300;
+$z-index-panel: 1400;
+$z-index-dialog: 1500;
+
+// Panel dimensions
+$panel-width-md: 780px;
+$panel-height: 100vh;
+
+// Avatar sizes
+$avatar-size-sm: 28px;
+$avatar-size-md: 24px;
+$avatar-size-lg: 58px;
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: $color-overlay-dark;
+  z-index: $z-index-overlay;
+  cursor: pointer;
+}
+
+.panelWindow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: $panel-height;
+  background-color: $color-white;
+  box-shadow: -4px 0 16px $color-shadow-dark;
+  z-index: $z-index-panel;
+  display: flex;
+  flex-direction: column;
+
+  @media (width >= 900px) {
+    width: $panel-width-md;
+  }
+}
+
+// ============ Header & Summary ============
+.headerSection {
+  padding: $spacing-xl-box;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-md;
+  font-size: $font-size-heading-18 !important;
+  color: $color-text-primary;
+}
+
+.defaultText {
+  font-size: $font-size-small-12 !important;
+  font-weight: 400;
+}
+
+.navigationControls {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.navigationButton {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+
+  &:hover:not(.disabled) {
+    opacity: 0.8;
+  }
+}
+
+.pageNumber {
+  font-size: $font-size-small-12 !important;
+  color: $color-link-blue;
+  font-weight: 400;
+}
+
+.pageInfo {
+  font-size: $font-size-small-12 !important;
+  color: $color-text-secondary;
+  margin-left: $spacing-sm;
+  font-weight: 400;
+}
+
+.pageSeparator {
+  font-size: $font-size-heading-18;
+  color: $color-text-primary;
+}
+
+.summaryCard {
+  border: 1px solid $color-border-light;
+  border-radius: $spacing-border-radius;
+  background-color: $color-white;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.summaryCardRow {
+  display: flex;
+}
+
+.topRow {
+  flex: 1;
+  padding: 1rem 1.5rem; 
+  border-right: 1px solid $color-border-light;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+}
+
+.middleRow {
+    border-top: 1px solid $color-border-light;
+    padding: $spacing-xl-box;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+}
+
+.bottomRow {
+    border-top: 1px solid $color-border-light;
+    padding: 0.875rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $spacing-sm;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba($color-primary-dark, 0.05);
+    }
+  }
+
+.cardColumn {
+  flex: 1;
+  padding: $spacing-xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  &.withBorderRight {
+    border-right: 1px solid $color-border-light;
+  }
+}
+
+.cardLabel {
+  font-size: $font-size-small-12 !important;
+  color: $color-text-secondary;
+}
+
+.cardValue {
+  font-size: $font-size-body-14 !important;
+  color: $color-text-primary;
+}
+
+.linkText {
+    font-size: $font-size-body-14 !important;
+    color: $color-link-blue;
+    font-weight: 600;
+}
+
+
+.updatedDetailsSection {
+  border-top: 1px solid $color-border-light;
+  padding: 0.875rem 1.5rem; 
+}
+
+.updateDetailsHeaderBox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  .headerText {
+    font-size: $font-size-body-16 !important;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+}
+
+.updatedDetailsList {
+  margin: 0 0 0 $spacing-lg;
+  margin-top: $spacing-md;
+  padding-left: $spacing-xl;
+  color: $color-text-primary;
+  font-size: $font-size-body-14;
+  list-style-position: inside;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
+
+.bodyContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-xl-box;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl-box;
+}
+
+
+.footerActions {
+  padding: $spacing-xl;
+  border-top: 1px solid $color-border-light;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .buttonGroup {
+    display: flex;
+    gap: $spacing-lg;
+  }
+}
+
+
+
+
+.dialogHeader {
+  padding: 0.625rem 1rem;
+  background-color: $color-primary-dark;
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+  .closeButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+
+
+
+.dialogBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  text-align: center;
+}
+
+.dialogIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+}
+
+.dialogHeading {
+  font-weight: 500;
+  font-size: $font-size-body-16;
+  color: $color-text-primary;
+}
+
+.dialogMessage {
+  font-size: $font-size-body-14;
+  color: $color-text-primary;
+  max-width: 400px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.dialogFooter {
+  padding: 1.5 * $spacing-sm $spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid;
+  border-color: #e0e0e0;
+  background-color: $color-white;
+}
+

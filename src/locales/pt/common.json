@@ -1,0 +1,12 @@
+{
+  "multipleDeleteConfirmation": "Confirmação de exclusão múltipla",
+  "yesDeleteSelectedItems": "Sim, excluir os itens selecionados",
+  "dismiss": "Descartar",
+  "items": "itens",
+  "markedForDeletion": "marcados para exclusão",
+  "areYouSureYouWantToDelete": "Tem certeza de que deseja excluir os {selectedCount} {itemLabel} selecionados?",
+  "removeFilters": "Remover filtros",
+  "download": "Baixar",
+  "delete": "Excluir",
+  "search": "PESQUISAR"
+}

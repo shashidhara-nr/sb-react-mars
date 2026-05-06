@@ -1,0 +1,298 @@
+@use '@styles/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: $color-bg;
+  min-height: 100vh;
+}
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: $color-text;
+  line-height: 1.2;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+// Success/Error Message
+.message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid;
+
+  &.success {
+    background-color: #dbeafe;
+    border-left-color: #0ea5e9;
+    color: #0c4a6e;
+  }
+
+  &.error {
+    background-color: #fee2e2;
+    border-left-color: #ef4444;
+    color: #7f1d1d;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+// Form Section (Card)
+.formSection {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 6px rgb(0 0 0 / 12%);
+  }
+}
+
+// Section Header
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.sectionIcon {
+  width: 24px;
+  height: 24px;
+  background-color: $color-secondary;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-gray-dark;
+  margin: 0;
+}
+
+// Form Grid
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+// Form Field
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: $color-gray-600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+// Date Range Container
+.dateRangeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  grid-column: span 1;
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .formField {
+    margin-bottom: 0;
+  }
+}
+
+// Toggle Container
+.toggleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-column: span 2;
+  margin-top: 0.5rem;
+
+  @media (width <= 768px) {
+    grid-column: span 1;
+  }
+}
+
+.toggleLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+
+  .MuiSwitch-root {
+    margin-right: 0.75rem;
+  }
+}
+
+// Action Buttons
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid $color-border;
+  margin-top: 1rem;
+
+  @media (width <= 640px) {
+    flex-direction: column-reverse;
+  }
+
+  button {
+    min-width: 120px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Review Note
+.reviewNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: $color-grey-200;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: $color-secondary;
+  color: $color-white;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.stepLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-gray-dark;
+  margin: 0;
+}
+
+.stepDescription {
+  font-size: 12px;
+  color: $color-gray-medium;
+  margin: 0.25rem 0 0;
+}
+
+// Responsive adjustments
+@media (width <= 768px) {
+  .container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .formSection {
+    padding: 1.5rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dateRangeContainer {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+  .toggleContainer {
+    grid-column: span 1;
+  }
+
+  .reviewNote {
+    flex-direction: column;
+  }
+
+  .stepIndicator {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+  }
+}
+
+@media (width <= 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  .formSection {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .actionButtons {
+    flex-direction: column-reverse;
+
+    button {
+      width: 100%;
+    }
+  }
+}

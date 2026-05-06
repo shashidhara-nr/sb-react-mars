@@ -1,0 +1,29 @@
+@use '@styles/variables' as *;
+@use '@styles/fonts' as *;
+@use '@styles/mixins' as *;
+
+ 
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: $color-bg;
+  color: $color-text;
+
+  @include fonts(regular);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $color-primary-hover;
+}

@@ -1,0 +1,20 @@
+{
+  "messageAlerts": "Message alerts",
+  "dashboard": "Dashboard",
+  "messageId": "Message id",
+  "dateSent": "Date sent",
+  "subject": "Subject",
+  "status": "Status",
+  "quickLinks": "Quick links",
+  "searchPlaceholder": "Search by message id or subject",
+  "filter": "FILTER",
+  "filterMessageAlerts": "Filter message alerts",
+  "dateSentFrom": "Date sent from",
+  "dateSentTo": "Date sent to",
+  "cancel": "Cancel",
+  "ok": "Ok",
+  "viewMessageAlert": "VIEW MESSAGE ALERT",
+  "downloadMessageAlerts": "Download",
+  "ascending": "Ascending",
+  "descending": "Descending"
+}

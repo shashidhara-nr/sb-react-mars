@@ -1,0 +1,783 @@
+.container {
+  padding-bottom: 1rem;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.buttonWrapper {
+  &:hover img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.addButton {
+  height: 48px;
+}
+
+.toggleBox {
+  margin-top: 0.25rem;
+}
+
+.searchGrid {
+  margin-top: 0.5rem;
+}
+
+.searchField {
+  & .MuiOutlinedInput-root {
+    border-radius: 12px;
+    background-color: #fff;
+  }
+
+  & .MuiInputBase-input::placeholder {
+    color: #5c6c80;
+    opacity: 1;
+  }
+}
+
+.tableGrid {
+  margin-top: 0.5rem;
+  padding: 0;
+  background-color: #f8f8fa;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.tableWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.actionButton {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.actionIcon {
+  font-size: 20px;
+  color: #0051ff;
+}
+
+.removeFiltersButton {
+  color: #0033a0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.successAlert {
+  background-color: #008545;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.filterIcon {
+  margin-right: 4px;
+}
+
+// Manage Success Page Styles
+.manageSuccessContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.breadcrumbBox {
+  padding: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.heading {
+  margin-top: 16px;
+}
+
+.contentBox {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.innerFlexBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 360px;
+}
+
+.successIcon {
+  margin-bottom: 0.5rem;
+}
+
+.successHeading {
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.25rem;
+  font-size: 20px;
+}
+
+.successMessage {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.billerIdSection {
+  margin-bottom: 0.5rem;
+}
+
+.billerIdLabel {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.billerIdValue {
+  font-size: 24px;
+  font-weight: 600;
+  color: #24292f;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.copyButtonBox {
+  margin-bottom: 0.75rem;
+}
+
+.copyButton {
+  height: 40px;
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.infoIcon {
+  margin-bottom: 0.25rem;
+}
+
+.infoText {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.actionButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.goToBillsButton {
+  width: 200px;
+  height: 48px;
+}
+
+// Create Success Page Styles
+.createSuccessContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.createSuccessBreadcrumbBox {
+  padding: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.createSuccessHeading {
+  margin-top: 16px;
+}
+
+.createSuccessContentBox {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.createSuccessInnerFlexBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.createSuccessCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 360px;
+}
+
+.createSuccessIcon {
+  margin-bottom: 0.5rem;
+}
+
+.createSuccessTitle {
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.25rem;
+  font-size: 20px;
+}
+
+.createSuccessMessage {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.createBillerIdSection {
+  margin-bottom: 0.5rem;
+}
+
+.createBillerIdLabel {
+  font-size: 14px;
+  color: #697786;
+  margin-bottom: 0.25rem;
+}
+
+.createBillerIdValue {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222e37;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.createCopyButtonBox {
+  margin-bottom: 1rem;
+}
+
+.createCopyButton {
+  height: 36px;
+  min-height: 36px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.createInfoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.createInfoIcon {
+  margin-bottom: 0.25rem;
+}
+
+.createInfoText {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.createActionButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.goToBillsHubButton {
+  width: 246px;
+  height: 48px;
+}
+
+.additionalButtonsBox {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.addAnotherBillerWrapper {
+  &:hover img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.addAnotherBillerButton {
+  width: 270px;
+  height: 48px;
+}
+
+// Create Biller Page Styles
+.addBillerContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.stepCardBox {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.stepHeaderBox {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 600 !important;
+}
+
+.referenceTypeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 1.5rem;
+}
+
+.referenceTypeInputWrapper {
+  margin-bottom: 0.5rem;
+}
+
+.phoneNumberWrapper {
+  & .MuiOutlinedInput-root {
+    border-radius: 8px;
+    height: 48px;
+  }
+}
+
+.referenceTypeTextField {
+  & .MuiOutlinedInput-root {
+    border-radius: 8px;
+    height: 48px;
+  }
+
+  & .MuiInputBase-input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14px;
+  }
+
+  & .MuiInputLabel-root.MuiInputLabel-shrink {
+    top: 0;
+    left: 0;
+  }
+}
+
+.referenceTypeActionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.removeReferenceTypeButton {
+  color: #0051ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  height: 36px;
+  min-height: 36px;
+}
+
+.reviewSectionBox {
+  margin-top: 16px;
+}
+
+.referenceReviewCard {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #e0e5eb;
+}
+
+.referenceReviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e5eb;
+}
+
+.referenceIconBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.referenceReviewTitle {
+  font-weight: 400;
+  font-size: 20px;
+  color: #333;
+}
+
+.editButton {
+  color: #0051ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 85px;
+  height: 36px;
+  min-height: 36px;
+  margin-top: -10px;
+  font-size: 15px;
+}
+
+.cancelButton {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 36px;
+  min-height: 36px;
+  width: 110px;
+  margin-top: -10px;
+}
+
+.saveButton {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 36px;
+  min-height: 36px;
+  width: 90px;
+  margin-top: -10px;
+}
+
+.referenceReviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 12px;
+}
+
+.referenceReviewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.referenceReviewLabel {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 0.25rem;
+}
+
+.referenceReviewValue {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.referenceReviewEmptyState {
+  grid-column: 1 / -1;
+}
+
+.mainStepper {
+  background-color: #f4f5f7;
+  box-shadow: none;
+  padding: 0 !important;
+}
+
+.stepLabelDescription {
+  color: #697786;
+  font-size: 12px;
+}
+
+// Manage Biller Page Styles
+.manageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.manageBreadcrumbBox {
+  padding: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.manageHeading {
+  margin-top: 16px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.buttonToggleWrapper {
+  margin-bottom: 1.5rem;
+  width: 280px;
+}
+
+.manageSectionBox {
+  margin-top: 16px;
+}
+
+.manageBillerReferenceCard {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #e0e5eb;
+}
+
+.manageBillerReferenceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e5eb;
+}
+
+.manageBillerReferenceIconBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.manageBillerReferenceTitle {
+  font-weight: 400;
+  font-size: 20px;
+  color: #333;
+}
+
+.manageEditButton {
+  color: #0051ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 85px;
+  height: 36px;
+  min-height: 36px;
+  margin-top: -10px;
+  font-size: 15px;
+}
+
+.manageCancelButton {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 36px;
+  min-height: 36px;
+  width: 110px;
+  margin-top: -10px;
+}
+
+.manageSaveButton {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 36px;
+  min-height: 36px;
+  width: 90px;
+  margin-top: -10px;
+}
+
+.manageReferenceEditingBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.needsActionInfoCard {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #e0e5eb;
+  border-left: 6px solid #1f2937;
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.needsActionInfoIcon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.needsActionInfoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.needsActionInfoTitle {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: #111827;
+}
+
+.needsActionInfoText .needsActionInfoBold {
+  font-weight: 600 !important;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111827;
+}
+
+.needsActionInfoSubtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #4b5563;
+}
+
+.manageReferenceTypeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 1.5rem;
+}
+
+.manageReferenceTypeInputWrapper {
+  margin-bottom: 0.5rem;
+}
+
+.managePhoneNumberWrapper {
+  & .MuiOutlinedInput-root {
+    border-radius: 8px;
+    height: 48px;
+  }
+}
+
+.manageReferenceTypeTextField {
+  & .MuiOutlinedInput-root {
+    border-radius: 8px;
+    height: 48px;
+  }
+
+  & .MuiInputBase-input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14px;
+  }
+
+  & .MuiInputLabel-root.MuiInputLabel-shrink {
+    top: 0;
+    left: 0;
+  }
+}
+
+.manageReferenceTypeActionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.manageRemoveReferenceTypeButton {
+  color: #0051ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  height: 36px;
+  min-height: 36px;
+}
+
+.manageReferenceReviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 12px;
+}
+
+.manageReferenceReviewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.manageReferenceReviewLabel {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 0.25rem;
+}
+
+.manageReferenceReviewValue {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.manageReferenceReviewEmptyState {
+  grid-column: 1 / -1;
+}
+
+.deleteDialogContent {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.deleteDialogText {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}

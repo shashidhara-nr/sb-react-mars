@@ -1,0 +1,20 @@
+{
+  "userAccountDetails": {
+    "userAccountName": "John Smith",
+    "startDate": "01/01/2023",
+    "endDate": "31/12/2025",
+    "authorisationClass": "Admin",
+    "language": "English"
+  },
+  "assignedUserAndRoles": {
+    "userAccountId": "U1234567",
+    "idNumber": "8001015009087",
+    "emailAddress": "john.smith@domain.co.za",
+    "adminRole": "Super Admin",
+    "status": "Active",
+    "userName": "John Smith",
+    "dateOfBirth": "01/01/1980",
+    "mobilePhoneNumber": "+27 82 123 4567",
+    "rolesAssigned": ["Approver", "Viewer", "Editor"]
+  }
+}

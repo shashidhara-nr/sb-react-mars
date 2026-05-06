@@ -1,0 +1,17 @@
+import PropTypes from "prop-types";
+
+export const IconOverflow = () => {
+  return (
+    <svg width="3" height="18" viewBox="0 0 3 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5Z" fill="#0051FF"/>
+      <path d="M1.5 10.5C2.32843 10.5 3 9.82843 3 9C3 8.17157 2.32843 7.5 1.5 7.5C0.671573 7.5 0 8.17157 0 9C0 9.82843 0.671573 10.5 1.5 10.5Z" fill="#0051FF"/>
+      <path d="M1.5 18C2.32843 18 3 17.3284 3 16.5C3 15.6716 2.32843 15 1.5 15C0.671573 15 0 15.6716 0 16.5C0 17.3284 0.671573 18 1.5 18Z" fill="#0051FF"/>
+    </svg>
+  );
+};
+
+IconOverflow.defaultProps = {
+};
+
+IconOverflow.propTypes = {
+};

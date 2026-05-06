@@ -1,0 +1,20 @@
+{
+  "helpCentre": "Central de Ajuda",
+  "dashboard": "Painel de Controle",
+  "businessOnlineTraining": "Treinamento Comercial Online",
+  "operationalGuide": "Guia Operacional",
+  "searchTraining": "Pesquisar treinamento",
+  "introduction": "Introdução",
+  "accountsAndBalances": "Contas e Saldos",
+  "auditAndApprove": "Auditoria e Aprovação",
+  "transact": "Transacionar",
+  "setupAndAdmin": "Configuração e Administração",
+  "investorServices": "Serviços para Investidores",
+  "liquidityManagement": "Gestão de liquidez",
+  "takeTour": "Fazer um tour",
+  "watchNow": "Assista agora",
+  "viewAllVideos": "Ver todos os {{count}} vídeos",
+  "operationalGuideTitle": "Guia Operacional de Banco Eletrônico",
+  "operationalGuideDescription": "Veja procedimentos, processos e funcionalidade do sistema, bem como suas responsabilidades ao usar Banco Eletrônico. Este guia faz parte dos Termos e Condições e é atualizado de tempos em tempos.",
+  "download": "Baixar"
+}

@@ -1,0 +1,23 @@
+import PropTypes from "prop-types";
+
+export const CurrentAccount = () => {
+  return (
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M40 80C57.5278 80 67.2718 80 73.6358 73.6358C80 67.2718 80 57.5278 80 40C80 22.4722 80 12.7283 73.6358 6.36414C67.2718 -9.53674e-07 57.5278 0 40 0C22.4722 0 12.7283 -9.53674e-07 6.36414 6.36414C-9.53674e-07 12.7283 0 22.4722 0 40C0 57.5278 -9.53674e-07 67.2718 6.36414 73.6358C12.7283 80 22.4722 80 40 80Z" fill="url(#paint0_linear_166_2076)"/>
+      <path d="M50 42C51.1046 42 52 41.1046 52 40C52 38.8954 51.1046 38 50 38C48.8954 38 48 38.8954 48 40C48 41.1046 48.8954 42 50 42Z" fill="white"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M20 49C20 51.7098 22.0941 54 24.7895 54H53.2105C55.9059 54 58 51.7098 58 49V46H59C59.5523 46 60 45.5523 60 45V35C60 34.4477 59.5523 34 59 34H58V31C58 28.2902 55.9059 26 53.2105 26H24.7895C22.0941 26 20 28.2902 20 31V49ZM22 31C22 29.2915 23.2991 28 24.7895 28H26V52H24.7895C23.2991 52 22 50.7085 22 49V31ZM46 40C46 37.7909 47.7909 36 50 36H58V44H50C47.7909 44 46 42.2091 46 40ZM44 40C44 36.6863 46.6863 34 50 34H56V31C56 29.2915 54.7009 28 53.2105 28H28V52H53.2105C54.7009 52 56 50.7085 56 49V46H50C46.6863 46 44 43.3137 44 40Z" fill="white"/>
+      <defs>
+        <linearGradient id="paint0_linear_166_2076" x1="1.0509" y1="4.96767e-07" x2="49.7216" y2="3.119" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#00BFFF"/>
+          <stop offset="1" stopColor="#006EFC"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+CurrentAccount.defaultProps = {
+};
+
+CurrentAccount.propTypes = {
+};

@@ -1,0 +1,69 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  
+  /* ✅ RESPONSIVE WIDTH */
+  width: 100%;
+  max-width: 1296px; /* Maximum width on large screens */
+  margin: 0 auto; /* Center the card */
+  box-sizing: border-box;
+  
+  /* Mobile: Add side spacing */
+  @media (max-width: 767px) {
+    margin: 0 16px;
+    padding: 12px;
+  }
+  
+  /* Tablet: Add side spacing */
+  @media (min-width: 768px) and (max-width: 1295px) {
+    margin: 0 24px;
+  }
+  
+  /* Desktop: Center with max-width */
+  @media (min-width: 1296px) {
+    margin: 0 auto;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.cardHeader::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -8px;
+  right: -8px;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.icon {
+  margin-right: 8px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0; /* ✅ Prevent icon from shrinking */
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  
+  /* ✅ Responsive font size */
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+
+.cardContent {
+  display: block; /* ✅ Let children control layout */
+  width: 100%;
+}

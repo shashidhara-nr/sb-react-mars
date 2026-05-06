@@ -1,0 +1,20 @@
+{
+  "helpCentre": "Centre d'aide",
+  "dashboard": "Tableau de bord",
+  "businessOnlineTraining": "Formation commerciale en ligne",
+  "operationalGuide": "Guide opérationnel",
+  "searchTraining": "Rechercher une formation",
+  "introduction": "Introduction",
+  "accountsAndBalances": "Comptes et soldes",
+  "auditAndApprove": "Audit et approbation",
+  "transact": "Transaction",
+  "setupAndAdmin": "Configuration et administration",
+  "investorServices": "Services aux investisseurs",
+  "liquidityManagement": "Gestion de la liquidité",
+  "takeTour": "Faire une visite guidée",
+  "watchNow": "Regarder maintenant",
+  "viewAllVideos": "Regarder tous les {{count}} vidéos",
+  "operationalGuideTitle": "Guide opérationnel des services bancaires électroniques",
+  "operationalGuideDescription": "Consultez les procédures, les processus et les fonctionnalités du système, ainsi que vos responsabilités lors de l'utilisation des services bancaires électroniques. Ce guide fait partie des conditions générales et est mis à jour de temps en temps.",
+  "download": "Télécharger"
+}

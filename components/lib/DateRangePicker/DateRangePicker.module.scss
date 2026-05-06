@@ -1,0 +1,28 @@
+@use '@styles/variables' as *;
+
+.dateRangePicker {
+    // width: 320px;
+    position: relative;
+}
+
+.dateRangePickerIcon {
+    display: flex;
+    align-items: center;
+
+    svg {
+        color: $color-secondary;
+    }
+}
+
+.dateRangePickerPaper {
+    position: absolute;
+    top: 70px;
+    z-index: 1300;
+    padding: 1rem; 
+    border-radius: 8px;
+}
+
+.dateRangePickerActions {
+    margin-top: 1rem;
+    justify-content: flex-end;
+}

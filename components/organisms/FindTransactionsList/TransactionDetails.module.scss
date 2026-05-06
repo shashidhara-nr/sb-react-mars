@@ -1,0 +1,783 @@
+@use '@styles/variables' as *;
+
+.container {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    border-radius: 16px;
+    border: solid 1px $color-table-border;
+    overflow: hidden;
+
+    > div > div {
+      &:first-child {
+        margin-bottom: 0;
+      }
+
+      &:nth-of-type(2) {
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+  }
+
+  [class*="MuiTabs-root"] {
+    margin-right: auto;
+  }
+
+  [class*="MuiTabs-scroller"] {
+    [class*="MuiTabs-flexContainer"] {
+        border: solid 1px $color-border;
+        border-radius: 8px;
+    }
+    [class*="MuiButtonBase-root-MuiTab-root"] {
+        border-right: solid 1px $color-border;
+        color: $color-gray-dark;
+        background: $color-white;
+        text-transform: none;
+
+        &:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        &:nth-last-of-type(1) {
+            border-radius: 0 8px 8px 0;
+            border-right: 0;
+        }
+
+        &[class*="Mui-selected"] {
+            background-color: $color-secondary;
+            color: $color-white;
+        }
+    }
+  }
+}
+.auditWrapper {
+  margin-top: 16px;
+}
+
+.backToList {
+  margin-top: 16px;
+  font-weight: 500;
+  color: #0051ff;
+  cursor: pointer;
+}
+/* ===============================
+   Figma-style Payment Tabs
+   =============================== */
+
+.paymentTabs {
+  /* Tabs container */
+  :global(.MuiTabs-root) {
+    min-height: 40px;
+  }
+
+  /* Remove underline indicator */
+  :global(.MuiTabs-indicator) {
+    display: none;
+  }
+
+  /* Base tab */
+  :global(.MuiTab-root) {
+    min-height: auto;
+    padding: 12px 16px;
+    background-color: #eee;
+    color: #222E37;
+    font-weight: 500;
+    text-transform: none;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Left tab rounding */
+  :global(.MuiTab-root:first-of-type) {
+    border-radius: 6px 0 0 6px;
+  }
+
+  /* Right tab rounding */
+  :global(.MuiTab-root:last-of-type) {
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* Active tab */
+  :global(.MuiTab-root.Mui-selected) {
+    background-color: #0051ff;
+    color: #ffffff;
+  }
+}
+
+/* =========================
+   Audit Trail – Collections Match
+   ========================= */
+
+.auditWrapper {
+  margin-top: 16px;
+  background: #fff;
+  border: 1px solid #e6e8eb;
+  border-radius: 12px;
+  padding: 12px 16px 16px;
+}
+
+/* Header row (count + download) */
+.auditHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Download text style */
+.auditDownloadText {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #0051ff;
+}
+
+/* Ensure pagination stays inside card */
+.auditWrapper :global(.MuiTablePagination-root) {
+  margin-top: 8px;
+}
+
+/* Back link */
+.backToList {
+  margin-top: 16px;
+  font-weight: 500;
+  color: #0051ff;
+  cursor: pointer;
+}
+
+.auditWrapper :global(.MuiTablePagination-displayedRows) {
+  display: none;
+}
+
+.transferToSection {
+  border: 1px solid #ced3d9;
+  border-radius: 16px;
+  overflow: hidden;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: $color-white;
+  border-top: 0;
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-bottom: 1rem;
+}
+
+.transferToHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.batchContainer {
+    background-color: $color-white;
+    border: solid 1px $color-table-border;
+    border-radius: 1rem;
+
+    .batchHeader {
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px $color-table-border;
+
+        button {
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            font-size: 15px;
+            display: flex;
+            min-height: auto;
+        }
+    }
+
+    .batchHeaderTitle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .batchHeaderTitleText {
+        font-weight: 400;
+        font-size: 20px;
+        color: $color-gray-dark;
+    }
+
+    .batchActionBtns {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .batchContent {
+        padding: 0.75rem;
+    }
+
+    .batchInnerContent {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .batchInnerHeader {
+        padding: 0.75rem;
+        border-bottom: solid 1px $color-table-border;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+
+        .batchInnerHeaderTitle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 400;
+
+            .batchInnerHeaderTitleText {
+                font-weight: 400;
+                font-size: 16px;
+                color: $color-gray-dark;
+            }
+        }
+
+        button {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        .searchField > div, .searchBatchField > div {
+            border-radius: 1rem;
+        }
+    }
+
+    .batchInnerBody {
+        padding: 0.75rem;
+        background: $color-grey-200;
+        overflow: auto;
+        max-height: 320px;
+    }
+
+    .batchInnerFooter {
+        background: $color-white;
+        padding: 0.75rem;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchList {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        border: solid 1px $color-table-border;
+        background: $color-white;
+        max-height: 370px;
+        overflow: auto;
+    }
+
+    .batchListItemHeader {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem;
+        justify-content: space-between;
+
+        .batchListItemHeaderLeft {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+             .batchListItemHeaderText {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+        }
+
+        .batchListItemHeaderRight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchListItemHeaderLabel, .batchListItemHeaderValue {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+
+            .batchListItemHeaderValue {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .batchListItemContent {
+        display: none;
+        gap: 1rem;
+        padding: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .batchListItemContentRow {
+        width: calc(50% - 8px);
+    }
+
+    .batchListItemContentRowLabel, .batchListItemContentRowValue {
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-gray-dark;
+    }
+
+    .batchListItemContentRowValue {
+        font-weight: 600;
+    }
+
+    .expanded {
+        display: flex;
+        border-top: solid 1px $color-table-border;
+    }
+    .batchListItem {
+        border-bottom: solid 1px $color-table-border;
+
+        &:nth-last-of-type(1) {
+            border-bottom: 0;
+        }
+    }
+}
+
+.batchContainer {
+    background-color: #F8F8FA;
+    border: solid 1px $color-table-border;
+    border-radius: 1rem;
+    margin: 0 1rem;
+
+    .batchHeader {
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px $color-table-border;
+
+        button {
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            font-size: 15px;
+            display: flex;
+            min-height: auto;
+        }
+    }
+
+    .batchHeaderTitle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .batchHeaderTitleText {
+        font-weight: 400;
+        font-size: 20px;
+        color: $color-gray-dark;
+    }
+
+    .batchActionBtns {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .batchContent {
+        padding: 0.75rem;
+    }
+
+    .batchInnerContent {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .batchInnerHeader {
+        padding: 0.75rem;
+        border-bottom: solid 1px $color-table-border;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        background: $color-white;
+
+        .batchInnerHeaderTitle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchInnerHeaderTitleText {
+                font-weight: 400;
+                font-size: 16px;
+                color: $color-gray-dark;
+            }
+        }
+
+        button {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        .searchField > div, .searchBatchField > div {
+            border-radius: 1rem;
+        }
+    }
+
+    .batchInnerBody {
+        padding: 0.75rem;
+        background: $color-grey-200;
+        overflow: auto;
+        max-height: 320px;
+    }
+
+    .batchInnerFooter {
+        background: $color-white;
+        padding: 0.75rem;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchList {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        border: solid 1px $color-table-border;
+        background: $color-white;
+        margin: 0.5rem;
+    }
+
+    .batchListItemHeader {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem;
+        justify-content: space-between;
+
+        .batchListItemHeaderLeft {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+             .batchListItemHeaderText {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+        }
+
+        .batchListItemHeaderRight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchListItemHeaderLabel, .batchListItemHeaderValue {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+
+            .batchListItemHeaderValue {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .batchListItemContent {
+        display: none;
+        gap: 1rem;
+        padding: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .batchListItemContentRow {
+        width: calc(50% - 8px);
+    }
+
+    .batchListItemContentRowLabel, .batchListItemContentRowValue {
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-gray-dark;
+    }
+
+    .batchListItemContentRowValue {
+        font-weight: 600;
+    }
+
+    .expanded {
+        display: flex;
+        border-top: solid 1px $color-table-border;
+    }
+    .batchListItem {
+        border-bottom: solid 1px $color-table-border;
+
+        &:nth-last-of-type(1) {
+            border-bottom: 0;
+        }
+    }
+}
+
+.fiilterInnerContainer {
+    border-bottom: 1px solid $color-gray-light;
+    flex-flow: column wrap;
+    gap: 1rem;
+    padding: 1rem 0 2rem;
+    display: flex;
+
+    .inputLabel {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $color-black;
+    }
+}
+
+.firstFilterBox {
+    border-top: 1px solid $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+.filterSelectContainer {
+    border-top: solid 1px $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    gap: 2rem;
+}
+
+.filterSelectBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.filterDialogContainer{
+    width: 400px;
+    padding: 24px;
+    padding-top: 16px;
+    border-radius: 16px;
+    min-height: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border: 1px solid $color-gray-light;
+    top: -112px;
+    position: absolute;
+    right: -13px;
+    background: $color-white;
+    border-radius: 16px !important;
+}
+
+.filterDialogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    
+    & .MuiOutlinedInput-root {
+        border-radius: 8px;
+        height: 48px;
+    }
+
+    & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;
+    }
+
+    & .MuiInputLabel-root.MuiInputLabel-shrink {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.filterCloseButton {
+    position: absolute!important;
+    right: 8px;
+    top: 8px;
+}
+
+.filterDialogTitle {
+    font-size: 1.125rem!important;
+    font-weight: 600!important;
+    color: $color-black!important;
+    margin-bottom: 2rem!important;
+}
+
+.filterDialogActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    [class*="MuiButton-colorSecondary"]:first-child {
+        padding: 0;
+    }
+}
+
+.filterDialogPopper {
+    z-index: 1400;
+}
+.slashBlue{
+    color: #0051ff;
+}
+/* ============================= */
+/* Wrapper around TableWithTab  */
+/* ============================= */
+.auditTableWrapper {
+  border: 1px solid #e0e5ef;
+  border-radius: 8px;
+  background-color: #ffffff;
+  overflow: hidden;
+
+  > div > div > div > div > div > div > div:nth-child(1) {
+    width: 100%;
+
+    > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        &:nth-child(2) {
+            display: none;
+        }
+    }
+  }
+}
+
+/* ============================= */
+/* Header row inside TableWithTab */
+/* ============================= */
+
+/* Top info bar (count + actions) */
+.auditTableWrapper :global(.MuiToolbar-root),
+.auditTableWrapper :global([class*='tableTopBar']),
+.auditTableWrapper :global([class*='TableHeader']),
+.auditTableWrapper :global([class*='tableHeader']) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e5ef;
+  background-color: #ffffff;
+}
+
+/* ============================= */
+/* RIGHT PANEL (DOWNLOAD) ALIGN */
+/* ============================= */
+.auditTableWrapper
+  :global(.list-right-panel-actions),
+.auditTableWrapper
+  :global([class*='rightPanel']),
+.auditTableWrapper
+  :global([class*='RightPanel']) {
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* DOWNLOAD text */
+.auditTableWrapper
+  :global(.list-right-panel-actions button span),
+.auditTableWrapper
+  :global(.list-right-panel-actions button p) {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0056ff;
+  text-transform: uppercase;
+}
+
+/* ============================= */
+/* TABLE BORDERS + ROWS */
+/* ============================= */
+
+/* Remove duplicate top border */
+.auditTableWrapper :global(.MuiTable-root) {
+  border-top: none;
+}
+
+/* Table head */
+.auditTableWrapper :global(.MuiTableCell-head) {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e0e5ef;
+}
+
+/* Table body rows */
+.auditTableWrapper :global(.MuiTableCell-body) {
+  font-size: 12px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* ============================= */
+/* PAGINATION INSIDE CARD */
+/* ============================= */
+.auditTableWrapper :global(.MuiTablePagination-root) {
+  border-top: 1px solid #e0e5ef;
+  padding: 8px 12px;
+}
+
+.transferBatchContainer{
+    form {
+        margin-bottom: 0;
+
+        &:first-child {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
+
+.batchInnerLeft {
+    display: flex;
+    gap: 0.5rem;
+    width: 50%;
+}
+
+.batchInnerRight {
+    display: flex;
+    gap: 0.5rem;
+    width: 50%;
+
+    input {
+        height: auto;
+        padding: 0.5rem 0;
+    }
+}
+
+.filterBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.backButton {
+    margin-right: auto!important;
+    padding-left: 0!important;
+}
+
+.auditRightPanel {
+    button {
+        width: auto!important;
+    }
+}

@@ -1,0 +1,193 @@
+.non-trans-audit-approve__button {
+  height: 32px;
+  min-height: 32px;
+  text-transform: none;
+}
+
+.non-trans-audit-approve__remove-button {
+  width: 170px;
+  height: 32px;
+  min-width: 170px;
+  min-height: 32px;
+  text-transform: none;
+}
+
+.non-trans-audit-approve__search-field {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background-color: #fff;
+  }
+
+  :global(.MuiInputBase-input::placeholder) {
+    color: #5C6C80;
+    opacity: 1;
+  }
+}
+
+.non-trans-audit-approve__header-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.non-trans-audit-approve__table-container {
+  margin-top: 16px;
+  padding: 0;
+  background-color: #F8F8FA;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.non-trans-audit-approve__loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 1;
+}
+
+// Dialog styles
+.non-trans-audit-approve__dialog-header {
+  padding: 10px 16px; // py px
+  background-color: #0B3AAE;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.non-trans-audit-approve__dialog-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.non-trans-audit-approve__dialog-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.non-trans-audit-approve__dialog-heading {
+  font-weight: 600;
+}
+
+.non-trans-audit-approve__dialog-confirm-heading {
+  font-weight: 600;
+  color: #222E37;
+  font-size: 16px;
+}
+
+.non-trans-audit-approve__dialog-description {
+  font-size: 14px;
+  color: #222E37;
+  max-width: 400px;
+}
+
+.non-trans-audit-approve__dialog-content {
+  padding-top: 32px;
+  padding-bottom: 20px;
+}
+
+// Table wrapper
+.non-trans-audit-approve__table-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.non-trans-audit-approve__dialog-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.non-trans-audit-approve__dialog-box-inner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.non-trans-audit-approve__decline-heading {
+  font-size: 14px;
+  color: #222E37;
+}
+
+.non-trans-audit-approve__rejection-label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.non-trans-audit-approve__dialog-footer {
+  padding: 12px 16px; // py px
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e0e0e0; // MUI default divider color
+}
+
+.non-trans-audit-approve__alert {
+  background-color: #0B3AAE;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+.non-trans-audit-approve__container {
+  min-height: 90vh;
+  padding-bottom: 32px;
+}
+
+.non-trans-audit-approve__button-toggle-wrapper {
+  margin-top: 8px;
+}
+
+.non-trans-audit-approve__search-wrapper {
+  margin-top: 16px;
+}
+
+.non-trans-audit-approve__action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.non-trans-audit-approve__dialog-close-button {
+  cursor: pointer;
+}
+
+.non-trans-audit-approve__form-field-wrapper {
+  margin-top: 16px;
+}
+
+.non-trans-audit-approve__required-asterisk {
+  color: #D92D20;
+}
+
+.non-trans-audit-approve__snackbar {
+  margin-top: 64px;
+}
+
+.search-button__icon {
+  display: flex;
+  align-items: center;
+  
+  img {
+    transition: filter 0.2s ease;
+  }
+}
+
+:global(button:hover) .search-button__icon img {
+  filter: brightness(0) invert(1);
+}
+

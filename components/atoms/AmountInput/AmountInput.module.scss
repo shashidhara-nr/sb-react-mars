@@ -1,0 +1,102 @@
+.textField {
+  :global(.MuiOutlinedInput-root) {
+    height: 3.5rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.inputAdornment {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.inputWrapper {
+  border-radius: 0.5rem;
+  padding-left: 0;
+
+  input {
+    text-align: right;
+  }
+}
+
+.currencySelect {
+  min-width: 70px;
+  padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b82f6;
+
+  :global(.MuiInput-underline) {
+    &::before,
+    &:hover::before,
+    &::after {
+      border-bottom: none !important;
+    }
+  }
+
+  :global(.MuiSelect-select) {
+    padding-right: 24px !important;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    color: #3b82f6;
+  }
+
+  :global(.MuiSvgIcon-root) {
+    right: -4px;
+    margin-left: 0.25rem;
+    color: #3b82f6;
+  }
+
+  &:global(.Mui-disabled) {
+    color: #9ca3af;
+
+    :global(.MuiSvgIcon-root) {
+      color: #9ca3af;
+    }
+  }
+}
+
+.currencyMenuItem {
+  font-size: 0.875rem;
+  color: #1f2937;
+  font-weight: 400;
+  border: none;
+  border-bottom: none;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &:global(.Mui-selected) {
+    background-color: transparent;
+    color: #3b82f6;
+    font-weight: 600;
+    border: none;
+    border-bottom: none;
+
+    &:hover {
+      background-color: #f3f4f6;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: none;
+  }
+
+  &:global(.Mui-focusVisible) {
+    outline: none;
+    background-color: #f3f4f6;
+    border: none;
+    border-bottom: none;
+  }
+}
+
+.menuPaper {
+  max-height: 300px;
+  margin-top: 0.5rem;
+}

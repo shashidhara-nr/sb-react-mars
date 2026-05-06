@@ -1,0 +1,9 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top-right curved arrow -->
+  <path d="M3 12C3 7.02944 7.02944 3 12 3C15.9656 3 19.3882 5.3082 21 8.6" stroke="#1976D2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M21 5V9H17" stroke="#1976D2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Bottom-left curved arrow -->
+  <path d="M21 12C21 16.9706 16.9706 21 12 21C8.03437 21 4.61177 18.6918 3 15.4" stroke="#1976D2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M3 19V15H7" stroke="#1976D2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

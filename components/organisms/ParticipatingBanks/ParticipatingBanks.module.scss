@@ -1,0 +1,603 @@
+@use '@styles/variables' as *;
+
+.container {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    [class*="MuiTableContainer-root"] {
+        padding: 0;
+    }
+
+    [class*="MuiTabs-root"] {
+        margin-right: auto;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: solid 1px $color-border;
+            border-radius: 12px;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: none;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: solid 1px $color-border;
+            color: $color-gray-dark;
+            background: $color-white;
+
+            &:first-child {
+                border-radius: 12px 0 0 12px;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0 12px 12px 0;
+                border-right: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-secondary;
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: 0;
+            border-bottom: solid 1px $color-border;
+            border-radius: 0;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: block;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: 0;
+            color: $color-gray-dark;
+            background: transparent;
+
+            &:first-child {
+                border-radius: 0;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-white;
+                color: $color-secondary;
+                border-right: solid 1px $color-border;
+                border-left: solid 1px $color-border;
+
+                &:first-child {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+
+    [class*="cardcell"] {
+        background-color: $color-white;
+    }
+}
+
+.tableContainer {
+    border: solid 1px $color-table-border;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.headerRow {
+    margin-top: -1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gridContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.textField {
+    width: 50%;
+
+    > div {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.datePicker {
+    width: 50%;
+    align-self: flex-end;
+
+    > [class*="MuiStack-root"] {
+        > div {
+            width: 100%!important;
+        }
+    }
+
+    [class*="MuiPickersTextField-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.inputContainer {
+    display: flex; 
+    gap: 1rem; 
+    width: 100%;
+}
+
+.selectField {
+    width: 25%;
+
+    > div {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        height: 48px;
+    }
+
+    [class*="MuiFormLabel-root-MuiInputLabel-root"] {
+        top: 4px;
+    }
+}
+
+.seelctDatePicker {
+    width: 25%;
+    align-self: flex-end;
+
+    > [class*="MuiStack-root"] {
+        > div {
+            width: 100%!important;
+        }
+    }
+
+    [class*="MuiPickersTextField-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.searchWithButton {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.searchRow {
+    display: flex;
+    width: 100%;
+
+    [class*="MuiTextField-root"] {
+        border-radius: 12px;
+    }
+}
+
+.btnContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.batchContainer {
+    background-color: $color-white;
+    border: solid 1px $color-table-border;
+    border-radius: 1rem;
+
+    .batchHeader {
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px $color-table-border;
+
+        button {
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            font-size: 15px;
+            display: flex;
+            min-height: auto;
+        }
+    }
+
+    .batchHeaderTitle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .batchHeaderTitleText {
+        font-weight: 400;
+        font-size: 20px;
+        color: $color-gray-dark;
+    }
+
+    .batchActionBtns {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .batchContent {
+        padding: 0.75rem;
+    }
+
+    .batchInnerContent {
+        border: solid 1px $color-table-border;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .batchInnerHeader {
+        padding: 0.75rem;
+        border-bottom: solid 1px $color-table-border;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+
+        .batchInnerHeaderTitle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchInnerHeaderTitleText {
+                font-weight: 400;
+                font-size: 16px;
+                color: $color-gray-dark;
+            }
+        }
+
+        button {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        .searchField > div {
+            border-radius: 1rem;
+        }
+    }
+
+    .batchInnerBody {
+        padding: 0.75rem;
+        background: $color-grey-200;
+        overflow: auto;
+        max-height: 320px;
+    }
+
+    .batchInnerFooter {
+        background: $color-white;
+        padding: 0.75rem;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchList {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        border: solid 1px $color-table-border;
+        background: $color-white;
+    }
+
+    .batchListItemHeader {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem;
+        justify-content: space-between;
+
+        .batchListItemHeaderLeft {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+             .batchListItemHeaderText {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+        }
+
+        .batchListItemHeaderRight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchListItemHeaderLabel, .batchListItemHeaderValue {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+
+            .batchListItemHeaderValue {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .batchListItemContent {
+        display: none;
+        gap: 1rem;
+        padding: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .batchListItemContentRow {
+        width: calc(50% - 8px);
+    }
+
+    .batchListItemContentRowLabel, .batchListItemContentRowValue {
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-gray-dark;
+    }
+
+    .batchListItemContentRowValue {
+        font-weight: 600;
+    }
+
+    .expanded {
+        display: flex;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchListItem {
+        border-bottom: solid 1px $color-table-border;
+
+        &:nth-last-of-type(1) {
+            border-bottom: 0;
+        }
+    }
+}
+
+.fiilterInnerContainer {
+    border-bottom: 1px solid $color-gray-light;
+    flex-flow: column wrap;
+    gap: 1rem;
+    padding: 1rem 0 2rem;
+    display: flex;
+
+    .inputLabel {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $color-black;
+    }
+}
+
+.marginBottomSpace1 {
+    margin-bottom: 1rem;
+}
+
+.firstFilterBox {
+    border-top: 1px solid $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+.filterSelectContainer {
+    border-top: solid 1px $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    gap: 2rem;
+}
+
+.filterSelectBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.filterDialogContainer{
+    width: 420px;
+    padding: 28px;
+    padding-top: 20px;
+    min-height: 0;
+    max-height: 90vh;
+    overflow: visible auto;
+    box-sizing: border-box;
+    border: 1px solid rgb(0 0 0 / 8%);
+    top: -112px;
+    position: absolute;
+    right: -13px;
+    background: $color-white;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+.filterDialogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    
+    & .MuiTextField-root {
+        margin-bottom: 0;
+    }
+
+    & .MuiOutlinedInput-root {
+        border-radius: 12px;
+        height: 48px;
+        background-color: $color-white;
+        border-color: rgb(0 0 0 / 12%);
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: rgb(0 0 0 / 20%);
+        }
+
+        &.Mui-focused {
+            border-color: #1976D2;
+            box-shadow: 0 0 0 3px rgb(25 118 210 / 10%);
+        }
+    }
+
+    & .MuiInputLabel-root {
+        font-size: 0.9rem;
+        color: rgb(0 0 0 / 60%);
+        
+        &.Mui-focused {
+            color: #1976D2;
+        }
+    }
+
+    & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;
+    }
+
+    & .MuiInputLabel-root.MuiInputLabel-shrink {
+        top: -8px;
+        left: 0;
+        background: white;
+        padding: 0 6px;
+    }
+
+    // Ensure select dropdown menus appear above the dialog
+    & [class*="MuiPopover-root"] {
+        z-index: 1401 !important;
+    }
+
+    & [class*="MuiMenu-paper"] {
+        z-index: 1401 !important;
+    }
+}
+
+.filterSelect {
+    & .MuiOutlinedInput-root {
+        border-radius: 12px;
+        height: 48px;
+        background-color: $color-white;
+        border: 1px solid rgb(0 0 0 / 12%);
+        transition: all 0.2s ease;
+        padding: 0 14px;
+
+        &:hover {
+            border-color: rgb(0 0 0 / 20%);
+        }
+
+        &.Mui-focused {
+            border-color: #1976D2;
+            box-shadow: 0 0 0 3px rgb(25 118 210 / 10%);
+        }
+    }
+
+    & .MuiOutlinedInput-input {
+        padding: 0;
+        font-size: 0.95rem;
+        color: $color-black;
+
+        &::placeholder {
+            opacity: 1;
+        }
+    }
+}
+
+.filterSelectPlaceholder {
+    color: rgb(0 0 0 / 40%);
+    font-size: 0.95rem;
+}
+
+.closeIconContainer {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(190deg);
+    margin-right: 1.5rem;
+}
+
+.filterCloseButton {
+    position: absolute!important;
+    right: 12px;
+    top: 12px;
+    width: 36px!important;
+    height: 36px!important;
+    color: rgb(0 0 0 / 50%);
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: rgb(0 0 0 / 70%);
+        background-color: rgb(0 0 0 / 4%);
+    }
+}
+
+.filterDialogTitle {
+    font-size: 1.25rem!important;
+    font-weight: 700!important;
+    color: $color-black!important;
+    margin-bottom: 24px!important;
+    letter-spacing: -0.5px;
+}
+
+.filterDialogPopper {
+    z-index: 1400 !important;
+
+    // Ensure Select dropdown menu appears above the dialog
+    [class*="MuiPopover-root"] {
+        z-index: 1401 !important;
+    }
+
+    [class*="MuiMenu-paper"] {
+        z-index: 1401 !important;
+    }
+}
+
+.filterDialogActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(0 0 0 / 8%);
+
+    button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 44px;
+        font-weight: 600;
+    }
+
+    [class*="MuiButton-colorSecondary"]:first-child {
+        padding: 0;
+    }
+}
+
+.filterText{
+    font-weight: 700 !important;
+}

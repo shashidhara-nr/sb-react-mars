@@ -1,0 +1,35 @@
+.bop-thirdparties-success-alert {
+    background-color: #008545;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.bop-thirdparties-create-box {
+  &:hover {
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+.bop-thirdparties-dialog-box{
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.bop-thirdparties-manage-container{
+     display: flex; 
+     flex-direction: column; 
+     min-height: 100vh; 
+}
+
+.bop-thirdparties-heading{
+    margin-top: 16px;
+    margin-left: 10px;
+}

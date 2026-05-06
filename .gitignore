@@ -1,0 +1,18 @@
+node_modules
+.next
+out
+.env*
+.DS_Store
+.npmrc
+yarn.lock
+next-env.d.ts
+package-lock.json
+next.config.mjs
+tsconfig.json
+tsconfig.tsbuildinfo
+__MACOSX/
+
+# Test coverage
+coverage
+*.lcov
+.nyc_output

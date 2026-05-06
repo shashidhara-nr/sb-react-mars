@@ -1,0 +1,33 @@
+@use '@styles/variables' as *;
+
+.additionalInfoContainer {
+    background: $color-table-border;
+    border-left: 2px solid #0033AA;
+    display: none!important;
+}
+
+.additionalInfoContent {
+    display: flex;
+    gap: 2rem;
+
+    h6 {
+        font-size: 12px;
+        color: $color-gray-500;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 16px;
+        color: $color-gray-dark;
+        font-weight: 600;
+    }
+}
+
+.additionalInfoContentItem {
+    border-left: solid 1px $color-blue-700;
+    padding-left: 0.5rem;
+}
+
+.expanded {
+    display: table-row !important;
+}

@@ -1,0 +1,573 @@
+{
+  "categories": [
+    { "id": "introduction", "label": "Introduction" },
+    { "id": "dashboard", "label": "Dashboard" },
+    { "id": "accounts", "label": "Accounts and balances" },
+    { "id": "audit", "label": "Audit and approve" },
+    { "id": "transact", "label": "Transact" },
+    { "id": "setup", "label": "Setup and administration" },
+    { "id": "investor", "label": "Investor services" },
+    { "id": "liquidity", "label": "Liquidity management" }
+  ],
+  "data": {
+    "Introduction": [
+      {
+        "id": "intro-001",
+        "category": "Introduction",
+        "breadcrumb": "Business Online | Introduction",
+        "title": "Log on",
+        "description": "Learn how to log on to Business Online. Business Online is a platform that spans across the African continent and provides you with instant access to your full banking portfolio. We have simplified your serving by providing you with the slower to select the functionality you need. Business Online also offers improved administration that puts you in control of your banking.",
+        "videos": [
+          {
+            "id": "video-intro-001-1",
+            "title": "Getting Started",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          },
+          {
+            "id": "video-intro-001-2",
+            "title": "Advanced Login",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "intro-002",
+        "category": "Introduction",
+        "breadcrumb": "Business Online | Introduction",
+        "title": "Navigation",
+        "description": "Understand the navigation structure of Business Online and how to move between different sections and features.",
+        "videos": [
+          {
+            "id": "video-intro-002-1",
+            "title": "Navigation Basics",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "intro-003",
+        "category": "Introduction",
+        "breadcrumb": "Business Online | Introduction",
+        "title": "Switch user account",
+        "description": "Learn how to switch between different user accounts and manage multiple business accounts.",
+        "videos": [
+          {
+            "id": "video-intro-003-1",
+            "title": "Account Switching",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          },
+          {
+            "id": "video-intro-003-2",
+            "title": "Managing Multiple Accounts",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          },
+          {
+            "id": "video-intro-003-3",
+            "title": "Account Permissions",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "intro-004",
+        "category": "Introduction",
+        "breadcrumb": "Business Online | Introduction",
+        "title": "Transactional workflow and related statuses",
+        "description": "Understand the transactional workflow process and how various statuses affect your transactions.",
+        "videos": [
+          {
+            "id": "video-intro-004-1",
+            "title": "Understanding Workflows",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          },
+          {
+            "id": "video-intro-004-2",
+            "title": "Transaction Statuses",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          },
+          {
+            "id": "video-intro-004-3",
+            "title": "Approval Process",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "intro-005",
+        "category": "Introduction",
+        "breadcrumb": "Business Online | Introduction",
+        "title": "Non-transactional workflow for product related slef service capability",
+        "description": "Discover the non-transactional workflow features for product-related self-service capabilities.",
+        "videos": [
+          {
+            "id": "video-intro-005-1",
+            "title": "Non-Transactional Workflows",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      }
+    ],
+    "Dashboard": [
+      {
+        "id": "dashboard-001",
+        "category": "Dashboard",
+        "breadcrumb": "Business Online | Dashboard",
+        "title": "Your active tasks",
+        "description": "View and manage all your active tasks and pending actions on the dashboard.",
+        "videos": [
+          {
+            "id": "video-dashboard-001-1",
+            "title": "Active Tasks Overview",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "dashboard-002",
+        "category": "Dashboard",
+        "breadcrumb": "Business Online | Dashboard",
+        "title": "Consolidated balances",
+        "description": "Access consolidated balance information across all your accounts in one view.",
+        "videos": [
+          {
+            "id": "video-dashboard-002-1",
+            "title": "Consolidated Balances",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "dashboard-003",
+        "category": "Dashboard",
+        "breadcrumb": "Business Online | Dashboard",
+        "title": "Dashboard Overview",
+        "description": "Get a comprehensive overview of your dashboard and all available widgets.",
+        "videos": [
+          {
+            "id": "video-dashboard-003-1",
+            "title": "Dashboard Guide",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "dashboard-004",
+        "category": "Dashboard",
+        "breadcrumb": "Business Online | Dashboard",
+        "title": "Customizing Dashboard",
+        "description": "Learn how to customize your dashboard by adding or removing widgets.",
+        "videos": [
+          {
+            "id": "video-dashboard-004-1",
+            "title": "Customization Tutorial",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "dashboard-005",
+        "category": "Dashboard",
+        "breadcrumb": "Business Online | Dashboard",
+        "title": "Dashboard Widgets",
+        "description": "Explore different dashboard widgets and their functionality.",
+        "videos": [
+          {
+            "id": "video-dashboard-005-1",
+            "title": "Widget Overview",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      }
+    ],
+    "Accounts and balances": [
+      {
+        "id": "accounts-001",
+        "category": "Accounts and balances",
+        "breadcrumb": "Business Online | Accounts and balances",
+        "title": "Account balances",
+        "description": "View and track real-time account balances across all your accounts in Business Online.",
+        "videos": [
+          {
+            "id": "video-accounts-001-1",
+            "title": "Account Balances",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "accounts-002",
+        "category": "Accounts and balances",
+        "breadcrumb": "Business Online | Accounts and balances",
+        "title": "Consolidated balances",
+        "description": "Access consolidated balance information to see your total holdings at a glance.",
+        "videos": [
+          {
+            "id": "video-accounts-002-1",
+            "title": "Consolidated View",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "accounts-003",
+        "category": "Accounts and balances",
+        "breadcrumb": "Business Online | Accounts and balances",
+        "title": "Account Details",
+        "description": "Review detailed information about each of your accounts including account numbers and types.",
+        "videos": [
+          {
+            "id": "video-accounts-003-1",
+            "title": "Account Information",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "accounts-004",
+        "category": "Accounts and balances",
+        "breadcrumb": "Business Online | Accounts and balances",
+        "title": "Balance History",
+        "description": "Track your balance history over time to identify trends and patterns.",
+        "videos": [
+          {
+            "id": "video-accounts-004-1",
+            "title": "History Tracking",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "accounts-005",
+        "category": "Accounts and balances",
+        "breadcrumb": "Business Online | Accounts and balances",
+        "title": "Account Statements",
+        "description": "Download and review account statements for audit and reporting purposes.",
+        "videos": [
+          {
+            "id": "video-accounts-005-1",
+            "title": "Statements Guide",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      }
+    ],
+    "Audit and approve": [
+      {
+        "id": "audit-001",
+        "category": "Audit and approve",
+        "breadcrumb": "Business Online | Audit and approve",
+        "title": "Account groups",
+        "description": "Learn how to organize and manage your accounts using account groups for better control.",
+        "videos": [
+          {
+            "id": "video-audit-001-1",
+            "title": "Account Groups",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "audit-002",
+        "category": "Audit and approve",
+        "breadcrumb": "Business Online | Audit and approve",
+        "title": "Find a transaction",
+        "description": "Use search tools to quickly locate specific transactions in your audit trail.",
+        "videos": [
+          {
+            "id": "video-audit-002-1",
+            "title": "Transaction Search",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "audit-003",
+        "category": "Audit and approve",
+        "breadcrumb": "Business Online | Audit and approve",
+        "title": "Approval Workflow",
+        "description": "Understand the approval process and workflow for pending transactions.",
+        "videos": [
+          {
+            "id": "video-audit-003-1",
+            "title": "Workflow Process",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "audit-004",
+        "category": "Audit and approve",
+        "breadcrumb": "Business Online | Audit and approve",
+        "title": "Audit Trail",
+        "description": "Review complete audit trails for compliance and accountability purposes.",
+        "videos": [
+          {
+            "id": "video-audit-004-1",
+            "title": "Audit Trail Guide",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      }
+    ],
+    "Transact": [
+      {
+        "id": "transact-001",
+        "category": "Transact",
+        "breadcrumb": "Business Online | Transact",
+        "title": "Bill payments",
+        "description": "Process bill payments efficiently through Business Online with various payment options.",
+        "videos": [
+          {
+            "id": "video-transact-001-1",
+            "title": "Bill Payment Basics",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "transact-002",
+        "category": "Transact",
+        "breadcrumb": "Business Online | Transact",
+        "title": "Find a transaction",
+        "description": "Search and retrieve transaction details for record-keeping and reconciliation.",
+        "videos": [
+          {
+            "id": "video-transact-002-1",
+            "title": "Transaction Search",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "transact-003",
+        "category": "Transact",
+        "breadcrumb": "Business Online | Transact",
+        "title": "Payment Processing",
+        "description": "Understand how payments are processed and tracked in the system.",
+        "videos": [
+          {
+            "id": "video-transact-003-1",
+            "title": "Payment Processing Guide",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "transact-004",
+        "category": "Transact",
+        "breadcrumb": "Business Online | Transact",
+        "title": "Transaction History",
+        "description": "Access and review your complete transaction history for analysis.",
+        "videos": [
+          {
+            "id": "video-transact-004-1",
+            "title": "History Overview",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "transact-005",
+        "category": "Transact",
+        "breadcrumb": "Business Online | Transact",
+        "title": "Recurring Transactions",
+        "description": "Set up and manage recurring transactions for regular payments.",
+        "videos": [
+          {
+            "id": "video-transact-005-1",
+            "title": "Recurring Setup",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      }
+    ],
+    "Setup and administration": [
+      {
+        "id": "setup-001",
+        "category": "Setup and administration",
+        "breadcrumb": "Business Online | Setup and administration",
+        "title": "Account groups",
+        "description": "Configure account groups to organize your accounts for better management.",
+        "videos": [
+          {
+            "id": "video-setup-001-1",
+            "title": "Group Configuration",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "setup-002",
+        "category": "Setup and administration",
+        "breadcrumb": "Business Online | Setup and administration",
+        "title": "Find a transaction",
+        "description": "Use advanced search features to locate transactions in your setup.",
+        "videos": [
+          {
+            "id": "video-setup-002-1",
+            "title": "Advanced Search",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "setup-003",
+        "category": "Setup and administration",
+        "breadcrumb": "Business Online | Setup and administration",
+        "title": "User Management",
+        "description": "Manage user accounts, roles, and permissions within your organization.",
+        "videos": [
+          {
+            "id": "video-setup-003-1",
+            "title": "User Configuration",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "setup-004",
+        "category": "Setup and administration",
+        "breadcrumb": "Business Online | Setup and administration",
+        "title": "Security Settings",
+        "description": "Configure security settings to protect your Business Online account.",
+        "videos": [
+          {
+            "id": "video-setup-004-1",
+            "title": "Security Guide",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "setup-005",
+        "category": "Setup and administration",
+        "breadcrumb": "Business Online | Setup and administration",
+        "title": "Administration",
+        "description": "Perform administrative tasks and system configuration.",
+        "videos": [
+          {
+            "id": "video-setup-005-1",
+            "title": "Admin Tasks",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      }
+    ],
+    "Investor services": [
+      {
+        "id": "investor-001",
+        "category": "Investor services",
+        "breadcrumb": "Business Online | Investor services",
+        "title": "Account groups",
+        "description": "Organize investor accounts using account groups.",
+        "videos": [
+          {
+            "id": "video-investor-001-1",
+            "title": "Investor Groups",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "investor-002",
+        "category": "Investor services",
+        "breadcrumb": "Business Online | Investor services",
+        "title": "Find a transaction",
+        "description": "Search for investor-related transactions easily.",
+        "videos": [
+          {
+            "id": "video-investor-002-1",
+            "title": "Investor Search",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "investor-003",
+        "category": "Investor services",
+        "breadcrumb": "Business Online | Investor services",
+        "title": "Investment Portfolio",
+        "description": "Monitor and manage your investment portfolio effectively.",
+        "videos": [
+          {
+            "id": "video-investor-003-1",
+            "title": "Portfolio Management",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      }
+    ],
+    "Liquidity management": [
+      {
+        "id": "liquidity-001",
+        "category": "Liquidity management",
+        "breadcrumb": "Business Online | Liquidity management",
+        "title": "Account groups",
+        "description": "Organize liquidity accounts into groups for better management.",
+        "videos": [
+          {
+            "id": "video-liquidity-001-1",
+            "title": "Liquidity Groups",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "liquidity-002",
+        "category": "Liquidity management",
+        "breadcrumb": "Business Online | Liquidity management",
+        "title": "Find a transaction",
+        "description": "Locate liquidity-related transactions quickly.",
+        "videos": [
+          {
+            "id": "video-liquidity-002-1",
+            "title": "Liquidity Search",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      },
+      {
+        "id": "liquidity-003",
+        "category": "Liquidity management",
+        "breadcrumb": "Business Online | Liquidity management",
+        "title": "Cash Flow Management",
+        "description": "Manage your cash flow and liquidity positions effectively.",
+        "videos": [
+          {
+            "id": "video-liquidity-003-1",
+            "title": "Cash Flow Guide",
+            "url": "https://www.w3schools.com/html/movie.mp4"
+          }
+        ]
+      },
+      {
+        "id": "liquidity-004",
+        "category": "Liquidity management",
+        "breadcrumb": "Business Online | Liquidity management",
+        "title": "Liquidity Planning",
+        "description": "Plan and forecast your liquidity requirements.",
+        "videos": [
+          {
+            "id": "video-liquidity-004-1",
+            "title": "Planning Strategy",
+            "url": "https://media.w3.org/2010/05/sintel/trailer.mp4"
+          }
+        ]
+      },
+      {
+        "id": "liquidity-005",
+        "category": "Liquidity management",
+        "breadcrumb": "Business Online| Liquidity management",
+        "title": "Asset Management",
+        "description": "Manage your assets and liquidity reserves.",
+        "videos": [
+          {
+            "id": "video-liquidity-005-1",
+            "title": "Asset Overview",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+          }
+        ]
+      }
+    ]
+  }
+}

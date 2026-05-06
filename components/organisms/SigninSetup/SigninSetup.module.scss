@@ -1,0 +1,134 @@
+.header {
+  background-color: #03a;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: relative;
+}
+
+.headerLeftContent {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.headerCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  width: 103px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.backIcon {
+  color: white;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.backText {
+  color: white;
+  font-family: 'Benton Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0;
+  white-space: nowrap;
+  width: 29px;
+  height: 16px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.downloadSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 100px;
+}
+
+.downloadTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222e37;
+}
+
+.appStoreButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.appButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.visitTitle {
+  margin: 0 0 70px;
+  font-family: 'Benton Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #1a314d;
+}
+
+.infoText {
+  margin: 0;
+  font-family: 'Benton Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 35px;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: bottom;
+  color: #1a314d;
+}
+
+.infoText + .infoText {
+  margin-top: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}

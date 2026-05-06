@@ -1,0 +1,20 @@
+{
+  "helpCentre": "Help Centre",
+  "dashboard": "Dashboard",
+  "businessOnlineTraining": "Business online training",
+  "operationalGuide": "Operational guide",
+  "searchTraining": "Search training",
+  "introduction": "Introduction",
+  "accountsAndBalances": "Accounts and balances",
+  "auditAndApprove": "Audit and approve",
+  "transact": "Transact",
+  "setupAndAdmin": "Setup and administration",
+  "investorServices": "Investor services",
+  "liquidityManagement": "Liquidity management",
+  "takeTour": "Take a tour",
+  "watchNow": "Watch now",
+  "viewAllVideos": "View all {{count}} videos",
+  "operationalGuideTitle": "Electronic Banking Operational Guide",
+  "operationalGuideDescription": "View procedures, processes, and system functionality, along with your responsibilities when using Electronic Banking. This guide forms part of the Terms and Conditions and is updated from time to time.",
+  "download": "Download"
+}

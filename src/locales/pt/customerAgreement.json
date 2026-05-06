@@ -1,0 +1,18 @@
+{
+  "customerAgreement": "Acordo com o cliente",
+  "branchSortCode": "Código da agência / Código de classificação",
+  "countryRegion": "País / Região",
+  "sortCode": "Código de classificação",
+  "bicSwift": "BIC (SWIFT)",
+  "currency": "Moeda",
+  "selectAnAccount": "Selecione uma conta",
+  "addCurrentAccountToBatch": "Adicionar conta atual ao lote",
+  "addToBatch": "Adicionar ao lote",
+  "associatedAccounts": "Contas associadas",
+  "searchWithinBatch": "Pesquisar dentro do lote",
+  "filter": "Filtrar",
+  "rowsPerPage": "Linhas por página",
+  "zeroOfZeroListItems": "0 de 0 itens da lista",
+  "of": "de",
+  "listItems": "itens da lista"
+}

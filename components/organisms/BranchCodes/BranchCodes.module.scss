@@ -1,0 +1,315 @@
+@use '@styles/variables' as *;
+
+.container {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    [class*="MuiTableContainer-root"] {
+        padding: 0;
+    }
+
+    [class*="MuiTabs-root"] {
+        margin-right: auto;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: solid 1px $color-border;
+            border-radius: 12px;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: none;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: solid 1px $color-border;
+            color: $color-gray-dark;
+            background: $color-white;
+
+            &:first-child {
+                border-radius: 12px 0 0 12px;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0 12px 12px 0;
+                border-right: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-secondary;
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: 0;
+            border-bottom: solid 1px $color-border;
+            border-radius: 0;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: block;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: 0;
+            color: $color-gray-dark;
+            background: transparent;
+
+            &:first-child {
+                border-radius: 0;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-white;
+                color: $color-secondary;
+                border-right: solid 1px $color-border;
+                border-left: solid 1px $color-border;
+
+                &:first-child {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.tableContainer {
+    border: solid 1px $color-table-border;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.headerRow {
+    // margin-top: -1rem;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+}
+
+.gridContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.textField {
+    width: 50%;
+
+    >div {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.datePicker {
+    width: 50%;
+    align-self: flex-end;
+
+    >[class*="MuiStack-root"] {
+        >div {
+            width: 100% !important;
+        }
+    }
+
+    [class*="MuiPickersTextField-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.inputContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.selectField {
+    width: 25%;
+
+    >div {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        height: 48px;
+    }
+
+    [class*="MuiFormLabel-root-MuiInputLabel-root"] {
+        top: 4px;
+    }
+}
+
+.seelctDatePicker {
+    width: 25%;
+    align-self: flex-end;
+
+    >[class*="MuiStack-root"] {
+        >div {
+            width: 100% !important;
+        }
+    }
+
+    [class*="MuiPickersTextField-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+        width: 100%;
+        border-color: $color-gray-medium;
+    }
+}
+
+.fiilterInnerContainer {
+    border-bottom: 1px solid $color-gray-light;
+    flex-flow: column wrap;
+    gap: 1rem;
+    padding: 1rem 0 2rem;
+    display: flex;
+
+    .inputLabel {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $color-black;
+    }
+}
+
+.marginBottomSpace1 {
+    margin-bottom: 1rem;
+}
+
+.firstFilterBox {
+    border-top: 1px solid $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+.filterSelectContainer {
+    border-top: solid 1px $color-gray-light;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    gap: 2rem;
+}
+
+.filterSelectBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.filterDialogContainer {
+    width: 400px;
+    padding: 24px;
+    padding-top: 16px;
+    min-height: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border: 1px solid $color-gray-light;
+    top: -112px;
+    position: absolute;
+    right: -13px;
+    background: $color-white;
+    border-radius: 16px !important;
+}
+
+.filterDialogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    & .MuiOutlinedInput-root {
+        border-radius: 8px;
+        height: 48px;
+    }
+
+    & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;
+    }
+
+    & .MuiInputLabel-root.MuiInputLabel-shrink {
+        top: 0;
+        left: 0;
+    }
+}
+
+.blueSelectArrow {
+    :global(.MuiSvgIcon-root) {
+        color: #0051FF;
+    }
+}
+
+.filterCloseButton {
+    position: absolute !important;
+    right: 8px;
+    top: 8px;
+}
+
+.filterDialogTitle {
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    color: $color-black !important;
+    margin-bottom: 2rem !important;
+}
+
+.filterDialogActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    [class*="MuiButton-colorSecondary"]:first-child {
+        padding: 0;
+    }
+}
+
+.filterDialogPopper {
+    z-index: 1400;
+}
+
+.search-icon-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filterText {
+    font-weight: 700 !important;
+}

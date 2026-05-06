@@ -1,0 +1,22 @@
+{
+    "unpaidOptions": "Unpaid options",
+    "dashboard": "Dashboard",
+    "searchPlaceholder": "Search payments by batch ID",
+    "status": "Status",
+    "quickLinks": "Quick links",
+    "allRecords": "All records",
+    "needsAction": "Needs action",
+    "awaitingApproval": "Awaiting approval",
+    "active": "Active",
+    "unpaidOption": "Unpaid option",
+    "manageUnpaidOption": "Manage unpaid option",
+    "createUnpaidOption": "Create an unpaid option",
+    "postingOption": "Posting option",
+    "postingAccount": "Posting account",
+    "unpaidOptionName": "Unpaid option name",
+    "updateTable": "Update table",
+    "filter": "Filter",
+    "download": "Download",
+    "cancel": "Cancel",
+    "ok": "OK"
+}

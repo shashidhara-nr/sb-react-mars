@@ -1,0 +1,18 @@
+{
+  "dashboard": "Painel",
+  "transactionalAuthProfiles": "Perfil de autorização transacional",
+  "searchPlaceholder": "Pesquisar por nome de perfil de autorização",
+  "authProfileName": "Nome do perfil de autorização",
+  "authProfileDescription": "Descrição do perfil de autorização",
+  "currency": "Moeda",
+  "status": "Status",
+  "quickLinks": "Links rápidos",
+  "createAuthProfile": "Criar perfil de autorização",
+  "manageProfile": "Gerenciar perfil",
+  "filter": "Filtrar",
+  "download": "Baixar",
+  "updateTable": "Atualizar tabela",
+  "cancel": "Cancelar",
+  "ok": "OK",
+  "authProfiles": "Perfis de autorização"
+}

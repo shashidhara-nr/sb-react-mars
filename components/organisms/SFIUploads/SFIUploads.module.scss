@@ -1,0 +1,652 @@
+@use '@styles/variables' as *;
+
+.container {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    [class*="MuiTableContainer-root"] {
+        padding: 0;
+    }
+
+    [class*="MuiTabs-root"] {
+        margin-right: auto;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: solid 1px $color-border;
+            border-radius: 12px;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: none;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: solid 1px $color-border;
+            color: $color-gray-dark;
+            background: $color-white;
+
+            &:first-child {
+                border-radius: 12px 0 0 12px;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0 12px 12px 0;
+                border-right: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-secondary;
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    [class*="MuiInputBase-root-MuiOutlinedInput-root"] {
+        border-radius: 12px;
+        background-color: $color-white;
+    }
+
+    [class*="MuiTabs-scroller"] {
+        [class*="MuiTabs-flexContainer"] {
+            border: 0;
+            border-bottom: solid 1px $color-border;
+            border-radius: 0;
+        }
+
+        [class*="MuiTabs-indicator"] {
+            display: block;
+        }
+
+        [class*="MuiButtonBase-root-MuiTab-root"] {
+            border-right: 0;
+            color: $color-gray-dark;
+            background: transparent;
+
+            &:first-child {
+                border-radius: 0;
+            }
+
+            &:nth-last-of-type(1) {
+                border-radius: 0;
+            }
+
+            &[class*="Mui-selected"] {
+                background-color: $color-white;
+                color: $color-secondary;
+                border-right: solid 1px $color-border;
+                border-left: solid 1px $color-border;
+
+                &:first-child {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+
+    [class*="cardcell"] {
+        background-color: $color-white;
+    }
+}
+
+.tableContainer {
+    border: solid 1px $color-table-border;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.headerRow {
+    margin-top: -1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchRow {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    background-color: $color-white;
+    border-radius: 8px;
+    flex-wrap: wrap;
+
+    [class*="MuiFormControl-root"] {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    [class*="MuiTextField-root"] {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+.searchWithButton {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.btnContainer {
+    background-color: $color-white;
+    border: solid 1px $color-table-border;
+    border-radius: 1rem;
+
+    .batchHeader {
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px $color-table-border;
+
+        button {
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            font-size: 15px;
+            display: flex;
+            min-height: auto;
+        }
+    }
+
+    .batchHeaderTitle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .batchHeaderTitleText {
+        font-weight: 400;
+        font-size: 20px;
+        color: $color-gray-dark;
+    }
+
+    .batchActionBtns {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .batchContent {
+        padding: 0.75rem;
+    }
+
+    .batchInnerContent {
+        border: solid 1px $color-table-border;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .batchInnerHeader {
+        padding: 0.75rem;
+        border-bottom: solid 1px $color-table-border;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+
+        .batchInnerHeaderTitle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchInnerHeaderTitleText {
+                font-weight: 400;
+                font-size: 16px;
+                color: $color-gray-dark;
+            }
+        }
+
+        button {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        .searchField > div, .searchBatchField > div {
+            border-radius: 1rem;
+        }
+    }
+
+    .batchInnerBody {
+        padding: 0.75rem;
+        background: $color-grey-200;
+        overflow: auto;
+        max-height: 320px;
+    }
+
+    .batchInnerFooter {
+        background: $color-white;
+        padding: 0.75rem;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchList {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        border: solid 1px $color-table-border;
+        background: $color-white;
+    }
+
+    .batchListItemHeader {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem;
+        justify-content: space-between;
+
+        .batchListItemHeaderLeft {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+             .batchListItemHeaderText {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+        }
+
+        .batchListItemHeaderRight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .batchListItemHeaderLabel, .batchListItemHeaderValue {
+                font-weight: 400;
+                font-size: 14px;
+                color: $color-gray-dark;
+            }
+
+            .batchListItemHeaderValue {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .batchListItemContent {
+        display: none;
+        gap: 1rem;
+        padding: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .batchListItemContentRow {
+        width: calc(50% - 8px);
+    }
+
+    .batchListItemContentRowLabel, .batchListItemContentRowValue {
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-gray-dark;
+    }
+
+    .batchListItemContentRowValue {
+        font-weight: 600;
+    }
+
+    .expanded {
+        display: flex;
+        border-top: solid 1px $color-table-border;
+    }
+
+    .batchListItem {
+        border-bottom: solid 1px $color-table-border;
+
+        &:nth-last-of-type(1) {
+            border-bottom: 0;
+        }
+    }
+}
+
+.filterDialogContainer{
+    width: 400px;
+    padding: 24px;
+    padding-top: 16px;
+    min-height: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border: 1px solid $color-gray-light;
+    top: -112px;
+    position: absolute;
+    right: -13px;
+    background: $color-white;
+    border-radius: 16px !important;
+}
+
+.filterDialogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    
+    & .MuiOutlinedInput-root {
+        border-radius: 8px;
+        height: 48px;
+    }
+
+    & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;
+    }
+
+    & .MuiInputLabel-root.MuiInputLabel-shrink {
+        top: 0;
+        left: 0;
+    }
+}
+
+.filterCloseButton {
+    position: absolute!important;
+    right: 8px;
+    top: 8px;
+}
+
+.filterDialogTitle {
+    font-size: 1.125rem!important;
+    font-weight: 600!important;
+    color: $color-black!important;
+    margin-bottom: 2rem!important;
+}
+
+.filterDialogActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    [class*="MuiButton-colorSecondary"]:first-child {
+        padding: 0;
+    }
+}
+
+.filterDialogPopper {
+    z-index: 1400;
+}
+
+// SFIUploadNewFile Styles
+
+.uploadFormWrapper {
+    padding: 1rem 0;
+}
+
+.uploadFormContent {
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #CED3D9;
+    padding: 12px;
+    width: 100%;
+}
+
+.uploadZone {
+    margin-bottom: 24px;
+}
+
+.sourceFileHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+}
+
+.sourceFileHeaderDivider {
+    border-bottom: 1px solid #E3E6EA;
+    margin: 10px -1rem;
+}
+
+.sourceFileTitle {
+    font-size: 20px !important;
+    font-weight: 600;
+}
+
+.dragDropZone {
+    border: 2px dashed #CED3D9;
+    border-radius: 8px;
+    padding: 4rem;
+    text-align: center;
+    background-color: #FAFBFC;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #F5F6F7;
+        border-color: #0051FF;
+    }
+}
+
+.dragDropInput {
+    display: none;
+}
+
+.dragDropLabel {
+    cursor: pointer;
+}
+
+.dragDropIcon {
+    margin-bottom: 0.5rem;
+}
+
+.infoAlertBox {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.dragDropText {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.dragDropTextBold {
+    font-size: 16px;
+    font-weight: 600 !important;
+}
+
+.fileListItem {
+    display: flex;
+    align-items: center;
+    gap: 6.5px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #FAFBFC;
+    border-radius: 4px;
+    border: 1px solid #E3E6EA;
+}
+
+.fileListItemContent {
+    flex: 1;
+}
+
+.fileListItemName {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.fileListItemError {
+    font-size: 12px;
+    color: #D32F2F;
+    margin-top: 0.25rem;
+}
+
+.fileListItemSuccess {
+    font-size: 12px !important;
+    font-weight: 400;
+    color: #4CAF50;
+}
+
+.fileDestinationField {
+    margin-bottom: 2rem;
+}
+
+.actionButtonsContainer {
+    margin: 12px 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.successScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1.5rem;
+    padding: 40px;
+    border: 1px solid #CED3D9;
+    border-radius: 10px;
+}
+
+.successHeading {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+}
+
+.successText {
+    text-align: center;
+    max-width: 636px;
+    font-size: 18px !important;
+    font-weight: 400;
+    color: #465463;
+}
+
+.successFilename {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    color: #465463;
+}
+
+.successFilenameValue {
+    font-size: 20px !important ;
+    font-family: monospace;
+    color: #222E37;
+    font-weight: 500 !important;
+}
+
+.successButtonsContainer {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.dialogPaper {
+    background: #FFF !important;
+    box-shadow: 0 24px 24px rgb(0 0 0 / 36%) !important;
+    border-radius: 8px !important;
+    
+    [class*="MuiPaper-root"] {
+        box-shadow: 0 24px 24px rgb(0 0 0 / 36%) !important;
+    }
+}
+
+.dialogTitle {
+    background-color: #03A !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+}
+
+.dialogTitleContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.dialogTitleText {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0;
+    flex: 1;
+}
+
+.dialogCloseButton {
+    color: #fff !important;
+    padding: 8px !important;
+    min-width: auto !important;
+    
+    svg {
+        width: 24px !important;
+        height: 24px !important;
+    }
+    
+    &:hover {
+        background-color: rgb(255 255 255 / 10%) !important;
+    }
+}
+
+.dialogContent {
+    padding: 3rem 2rem !important;
+}
+
+.dialogContentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.dialogIcon {
+    font-size: 56px !important;
+    color: #E53935 !important;
+}
+
+.dialogText {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px !important;
+    color: #222E37;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.dialogTextSmall {
+    text-align: center;
+    font-size: 16px !important;
+    font-weight: 400;
+    color: #465463;
+    margin: 0;
+}
+
+.dialogActions {
+    padding: 2rem !important;
+    gap: 1rem;
+    justify-content: space-between !important;
+    background-color: #FFF !important;
+    border-top: none !important;
+    
+    button {
+        color: #0051FF !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+        padding: 0.5rem 1rem !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        
+        &:hover {
+            background-color: transparent !important;
+            opacity: 0.8;
+        }
+    }
+}

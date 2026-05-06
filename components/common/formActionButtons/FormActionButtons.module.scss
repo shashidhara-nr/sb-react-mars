@@ -1,0 +1,21 @@
+.actionButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+
+  &.showCancel {
+    justify-content: space-between;
+  }
+
+  button {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 16px;
+  }
+}

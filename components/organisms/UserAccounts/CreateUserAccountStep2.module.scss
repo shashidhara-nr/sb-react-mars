@@ -1,0 +1,282 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (width <= 768px) {
+    padding: 16px;
+    gap: 12px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222e37;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Read-only fields styling */
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.readOnlyField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.fieldValue {
+  font-size: 14px;
+  font-weight: 400;
+  color: #222e37;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Toggles styling */
+.togglesContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.togglePill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.toggleLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* User selection section */
+.userSelectionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+
+  @media (width <= 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.userSummary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222e37;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.userId {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.userDetails {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  @media (width <= 768px) {
+    gap: 16px;
+  }
+}
+
+.userDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detailLabel {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  margin: 0;
+}
+
+.detailValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: #222e37;
+  margin: 0;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  width: fit-content;
+}
+
+.statusText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2e7d32;
+  margin: 0;
+}
+
+/* Roles styling */
+.rolesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.rolesLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+.rolesPills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rolePill {
+  font-size: 13px;
+  font-weight: 500;
+  height: 32px;
+  min-height: 32px;
+  cursor: default;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+/* Information grid styling */
+.infoGrid {
+  padding: 8px 0;
+}
+
+.infoField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.infoLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.infoValue {
+  font-size: 14px;
+  font-weight: 400;
+  color: #222e37;
+  line-height: 1.5;
+  margin: 0;
+
+  & + .infoValue {
+    margin-top: 2px;
+  }
+}
+
+/* Action buttons */
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+
+  @media (width <= 768px) {
+    flex-direction: column-reverse;
+    gap: 12px;
+    padding-top: 16px;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "unpaidOptions": "Options impayées",
+  "dashboard": "Tableau de bord",
+  "searchPlaceholder": "Rechercher les paiements par ID de lot",
+  "status": "Statut",
+  "quickLinks": "Liens rapides",
+  "allRecords": "Tous les enregistrements",
+  "needsAction": "Nécessite une action",
+  "awaitingApproval": "En attente d'approbation",
+  "active": "Actif",
+  "unpaidOption": "Option impayée",
+  "manageUnpaidOption": "Gérer l'option impayée",
+  "createUnpaidOption": "Créer une option impayée",
+  "postingOption": "Option de comptabilisation",
+  "postingAccount": "Compte de comptabilisation",
+  "unpaidOptionName": "Nom de l'option impayée",
+  "updateTable": "Actualiser le tableau",
+  "filter": "Filtrer",
+  "download": "Télécharger",
+  "cancel": "Annuler",
+  "ok": "OK"
+}

@@ -1,0 +1,108 @@
+.container {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #000;
+  width: 100%;
+  text-align: left;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.input {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #06f;
+  }
+}
+
+.resendButton {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0051ff;
+  text-decoration: none;
+  text-align: left;
+  line-height: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  align-self: flex-start;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (width <= 768px) {
+  .label,
+  .inputContainer,
+  .resendButton {
+    width: 100%;
+  }
+
+  .input {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .label {
+    font-size: 15px;
+  }
+
+  .resendButton {
+    font-size: 13px;
+  }
+}
+
+@media (width <= 480px) {
+  .label,
+  .inputContainer,
+  .resendButton {
+    width: 100%;
+  }
+
+  .input {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .inputContainer {
+    gap: 6px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .resendButton {
+    font-size: 12px;
+  }
+}

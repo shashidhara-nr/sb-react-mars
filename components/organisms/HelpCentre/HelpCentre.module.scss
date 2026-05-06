@@ -1,0 +1,190 @@
+@use '@styles/variables' as *;
+
+
+:global(.react-joyride__floater) {
+  z-index: 10000 !important;
+  border: 0 !important;
+}
+
+:global(.react-joyride__arrow) {
+  left: 20 !important;
+  right: auto !important;
+}
+
+.container {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  [class*="MuiTabs-root"] {
+    margin-right: auto;
+  }
+
+  [class*="MuiTabs-scroller"] {
+    [class*="MuiTabs-flexContainer"] {
+      border: solid 1px $color-border;
+      border-radius: 16px;
+    }
+
+    [class*="MuiTabs-indicator"] {
+      display: none;
+    }
+
+    [class*="MuiButtonBase-root-MuiTab-root"] {
+      border-right: solid 1px $color-border;
+      color: $color-gray-dark;
+      background: $color-white;
+      text-transform: none;
+
+      &:first-child {
+        border-radius: 16px 0 0 16px;
+      }
+
+      &:nth-last-of-type(1) {
+        border-radius: 0 16px 16px 0;
+        border-right: 0;
+      }
+
+      &[class*="Mui-selected"] {
+        background-color: $color-secondary;
+        color: $color-white;
+      }
+    }
+  }
+
+  .headerRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.trainingContainer {
+  width: 100%;
+}
+
+@media (width <= 768px) {
+  .trainingContainer {
+    padding: 0 1rem;
+  }
+}
+
+// HelpCentreCardList Styles
+.cardListContainer {
+  width: 100%;
+  margin-bottom: 32px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+// Title Section
+.cardListTitleSection {
+  padding: 12px !important;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e3e6ea;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .cardListIcon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  .cardListTitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #222e37;
+    margin: 0;
+  }
+}
+
+// Cards Grid
+.cardListGrid {
+  padding: 24px;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  border-bottom: 1px solid #e3e6ea;
+  box-sizing: border-box;
+
+  @media (width >= 1280px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardListCardWrapper {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// Pagination Section
+.cardListPaginationSection {
+  padding: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .cardListPaginationInfo {
+    font-size: 12px;
+    color: #222e37;
+    font-weight: 400;
+  }
+
+  .cardListRightSection {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+// View All Link
+.cardListViewAllLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  .cardListLinkText {
+    font-size: 12px;
+    color: #0062e1;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .cardListLinkIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Navigation Buttons
+.cardListNavButtons {
+  display: flex;
+  gap: 8px;
+
+  .cardListNavButton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &.cardListDisabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .cardListNavIcon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

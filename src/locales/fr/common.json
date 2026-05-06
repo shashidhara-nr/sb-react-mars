@@ -1,0 +1,12 @@
+{
+  "multipleDeleteConfirmation": "Confirmation de suppression multiple",
+  "yesDeleteSelectedItems": "Oui, supprimer les éléments sélectionnés",
+  "dismiss": "Rejeter",
+  "items": "éléments",
+  "markedForDeletion": "marqués pour suppression",
+  "areYouSureYouWantToDelete": "Êtes-vous sûr de vouloir supprimer les {selectedCount} {itemLabel} sélectionnés?",
+  "removeFilters": "Supprimer les filtres",
+  "download": "Télécharger",
+  "delete": "Supprimer",
+  "search": "RECHERCHER"
+}

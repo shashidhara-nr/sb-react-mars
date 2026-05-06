@@ -1,0 +1,19 @@
+{
+  "createUserAccount": "Create user account",
+  "cancel": "Cancel",
+  "reviewUserAccount": "Review user account",
+  "userAccountDetails": "User account details",
+  "userAccountName": "User account name",
+  "startDate": "Start date",
+  "endDate": "End date",
+  "authorisationClass": "Authorisation class",
+  "language": "Language",
+  "assignedUserAndRoles": "Assigned user and roles",
+  "selectUserToAssign": "Select a user to assign to this account",
+  "rolesAssignedToUser": "Roles assigned to this user",
+  "receiveEmailNotifications": "Receive email notifications",
+  "allowMobileAccess": "Allow mobile access",
+  "submit": "Submit",
+  "next": "Next",
+  "description": "Description"
+}

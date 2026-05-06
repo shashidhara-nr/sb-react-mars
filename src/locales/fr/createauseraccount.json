@@ -1,0 +1,14 @@
+{
+  "createUserAccount": "Crear cuenta de usuario",
+  "cancel": "Cancelar",
+  "reviewUserAccount": "Revisar cuenta de usuario",
+  "userAccountDetails": "Detalles de la cuenta de usuario",
+  "userAccountName": "Nombre de la cuenta de usuario",
+  "startDate": "Fecha de inicio",
+  "endDate": "Fecha de finalización",
+  "authorisationClass": "Clase de autorización",
+  "language": "Idioma",
+  "assignedUserAndRoles": "Usuario y roles asignados",
+  "selectUserToAssign": "Seleccione un usuario para asignar a esta cuenta",
+  "rolesAssignedToUser": "Roles asignados a este usuario"
+}

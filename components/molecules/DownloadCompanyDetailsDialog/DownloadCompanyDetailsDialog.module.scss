@@ -1,0 +1,77 @@
+.popoverPaper {
+    width: 560px !important;
+    border-radius: 8px !important;
+}
+
+.popoverContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 16px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #222e37;
+    margin: 0;
+}
+
+.closeButton {
+    color: #666 !important;
+    padding: 4px !important;
+    
+    &:hover {
+        background-color: rgb(0 0 0 / 4%);
+    }
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 24px;
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fieldLabel {
+    font-weight: 600;
+    font-size: 14px;
+    color: #222e37;
+    margin: 0;
+    display: block;
+}
+
+.sortByContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    .MuiFormLabel-root {
+        font-weight: 600;
+        font-size: 14px;
+        color: #222e37;
+        margin-bottom: 4px;
+    }
+}
+
+.actionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+}
+

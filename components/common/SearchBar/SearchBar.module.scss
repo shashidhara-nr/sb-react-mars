@@ -1,0 +1,139 @@
+.searchBarContainer {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+  
+  @media (width <= 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.searchTypeDropdown {
+  flex: 1;
+  min-width: 0;
+  
+  > div {
+    background: white;
+  }
+
+  :global(.MuiInputBase-root) {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    top: 12px;
+    left: 14px;
+    transform: none;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top: 0;
+    left: 0;
+    transform: translate(14px, -9px) scale(0.75);
+    padding-left: 0;
+  }
+
+  :global(.MuiInputBase-input) {
+    padding: 0 16px;
+  }
+
+  :global(.MuiFormHelperText-root) {
+    background-color: #F8F8FA !important;
+  }
+
+  // Target the Box wrapper that contains helper text (below the input)
+  :global(.MuiFormControl-root > .MuiBox-root:last-child) {
+    background-color: #F8F8FA !important;
+  }
+}
+
+.searchField {
+  flex: 2;
+  min-width: 0;
+  position: relative;
+  
+  > div {
+    background: white;
+  }
+  
+  // Ensure consistent height  
+  :global(.MuiInputBase-root) {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+  }
+
+  :global(.MuiInputLabel-root) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    padding-left: 14px;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top: 0;
+    left: 0;
+    transform: translate(14px, -9px) scale(0.75);
+    padding-left: 0;
+  }
+
+  :global(.MuiInputBase-input) {
+    padding: 0 16px;
+  }
+
+  // Target the error message Box (sibling to MuiFormControl)
+  > :global(.MuiBox-root):not(:first-child) {
+    background-color: #F8F8FA !important;
+  }
+}
+
+.searchFieldWithClear {
+  :global(.MuiInputBase-root) {
+    padding-right: 40px;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.searchFieldDisabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.searchButton {
+  flex-shrink: 0;
+
+  :global(button) {
+    height: 48px !important;
+  }
+  
+  &:hover img {
+    filter: brightness(0) invert(1);
+  }
+  
+  @media (width <= 768px) {
+    width: 100%;
+  }
+}

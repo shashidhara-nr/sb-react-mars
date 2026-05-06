@@ -1,0 +1,21 @@
+import PropTypes from "prop-types";
+
+export const Add = ({width, height, bgColor}: {width?: string, height?: string, bgColor?: string}) => {
+  return (
+    <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 5C12.2761 5 12.5 5.22386 12.5 5.5V11.5H18.5C18.7761 11.5 19 11.7239 19 12C19 12.2761 18.7761 12.5 18.5 12.5H12.5V18.5C12.5 18.7761 12.2761 19 12 19C11.7239 19 11.5 18.7761 11.5 18.5V12.5H5.5C5.22386 12.5 5 12.2761 5 12C5 11.7239 5.22386 11.5 5.5 11.5H11.5V5.5C11.5 5.22386 11.7239 5 12 5Z" fill={bgColor}/>
+    </svg>
+  );
+};
+
+Add.defaultProps = {
+  width: "27",
+  height: "27",
+  bgColor: '#0051FF',
+};
+
+Add.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  bgColor: PropTypes.string
+};

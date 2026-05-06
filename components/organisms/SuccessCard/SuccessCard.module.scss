@@ -1,0 +1,155 @@
+/* Variables */
+$white: #fff;
+$border-color: #e4e7eb;
+$green: #15803d;
+$blue: #2563eb;
+$gray-medium: #6b7280;
+$gray-light: #9ca3af;
+
+/* Root */
+.successCard {
+  width: 100%;
+  padding: 40px 64px;
+  background: $white;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+
+  .contentWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+/* ================= ICON ================= */
+
+.statusIcon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+
+  .iconBorder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid $green;
+  }
+
+  .iconInner {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    overflow: hidden;
+
+    .checkIcon {
+      width: 32px;
+      height: 24px;
+      background-color: $green;
+      position: absolute;
+      top: 11px;
+      left: 7px;
+    }
+  }
+
+  .iconGlow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    outline: 8px solid $green;
+    opacity: 0.2;
+  }
+}
+
+/* ================= TEXT ================= */
+
+.textSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  .headingBlock {
+    padding-bottom: 16px;
+    text-align: center;
+
+    .title {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 32px;
+      color: $gray-medium;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 24px;
+      color: $gray-light;
+    }
+  }
+
+  .noteSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    .infoIcon {
+      width: 32px;
+      height: 32px;
+      position: relative;
+
+      .infoInner {
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        background: $blue;
+      }
+    }
+
+    .noteText {
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: $gray-medium;
+      max-width: 636px;
+    }
+  }
+}
+
+/* ================= CTA ================= */
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($blue, 0.08);
+  }
+
+  .ctaText {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $blue;
+    line-height: 16px;
+  }
+}

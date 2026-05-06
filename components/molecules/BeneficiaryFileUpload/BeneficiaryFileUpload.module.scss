@@ -1,0 +1,27 @@
+.beneficiaryList {
+  display: flex;
+  flex-direction: column;
+  padding: 12px; // ✅ 12px on all sides
+  margin: -4px -8px -12px; // ✅ Extend to edges (top, right, bottom, left)
+  max-height: 450px;
+  overflow: hidden auto;
+  background-color: #F8F8FA;
+  
+  // Hide scrollbar for all browsers
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  color: #57606a;
+  font-size: 14px;
+  text-align: center;
+}

@@ -1,0 +1,21 @@
+import PropTypes from "prop-types";
+
+export const Search = ({width, height, bgColor}: {width?: string, height?: string, bgColor?: string}) => {
+  return (
+    <svg width={"32px"} height={"32px"} viewBox={`0 0 32 32`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M13.3333 4C8.17868 4 4 8.17868 4 13.3333C4 18.488 8.17868 22.6667 13.3333 22.6667C15.6745 22.6667 17.8143 21.8047 19.4527 20.3808C19.4749 20.4127 19.5002 20.443 19.5286 20.4714L26.1953 27.1381C26.4556 27.3984 26.8777 27.3984 27.1381 27.1381C27.3984 26.8777 27.3984 26.4556 27.1381 26.1953L20.4714 19.5286C20.443 19.5002 20.4127 19.4749 20.3808 19.4527C21.8047 17.8143 22.6667 15.6745 22.6667 13.3333C22.6667 8.17868 18.488 4 13.3333 4ZM5.33333 13.3333C5.33333 8.91506 8.91506 5.33333 13.3333 5.33333C17.7516 5.33333 21.3333 8.91506 21.3333 13.3333C21.3333 17.7516 17.7516 21.3333 13.3333 21.3333C8.91506 21.3333 5.33333 17.7516 5.33333 13.3333Z" fill={bgColor}/>
+    </svg>
+  );
+};
+
+Search.defaultProps = {
+  width: "32",
+  height: "32",
+  bgColor: '#0051FF',
+};
+
+Search.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  bgColor: PropTypes.string
+};

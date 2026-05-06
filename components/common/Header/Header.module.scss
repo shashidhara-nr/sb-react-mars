@@ -1,0 +1,185 @@
+.header {
+  width: 100%;
+  height: 64px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #03A;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1100;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 64px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 0;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 135px;
+  min-width: 135px;
+  background-color: #03A;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #002280;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .username {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+}
+
+// Tablet (768px - 1024px)
+@media (width <= 1024px) {
+  .header {
+    padding: 0 16px;
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .logoSection {
+    height: 64px;
+    
+    img {
+      height: 32px !important;
+    }
+  }
+
+  .rightSection {
+    height: 64px;
+  }
+
+  .userButton {
+    height: 64px;
+    width: 120px;
+    min-width: 120px;
+    padding: 0 12px;
+    font-size: 13px;
+
+    .username {
+      font-size: 12px;
+    }
+  }
+}
+
+// Mobile (up to 768px)
+@media (width <= 768px) {
+  .header {
+    padding: 0 8px;
+    height: 56px;
+    min-height: 56px;
+  }
+
+  .logoSection {
+    height: 56px;
+    gap: 4px;
+
+    img {
+      height: 24px !important;
+    }
+  }
+
+  .rightSection {
+    height: 56px;
+    gap: 0;
+  }
+
+  .userButton {
+    height: 56px;
+    width: 90px;
+    min-width: 90px;
+    padding: 0 8px;
+    font-size: 11px;
+
+    .username {
+      display: inline;
+      max-width: 45px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    :global(.MuiAvatar-root) {
+      width: 18px !important;
+      height: 18px !important;
+      margin-right: 3px !important;
+    }
+
+    :global(.MuiSvgIcon-root) {
+      width: 16px !important;
+      height: 16px !important;
+      margin-left: 2px !important;
+    }
+  }
+}
+
+// Small mobile (up to 480px)
+@media (width <= 480px) {
+  .header {
+    padding: 0 4px;
+    height: 52px;
+    min-height: 52px;
+  }
+
+  .logoSection {
+    height: 52px;
+    
+    img {
+      height: 20px !important;
+    }
+  }
+
+  .rightSection {
+    height: 52px;
+  }
+
+  .userButton {
+    height: 52px;
+    width: 50px;
+    min-width: 50px;
+    padding: 0 4px;
+
+    .username {
+      display: none;
+    }
+
+    :global(.MuiAvatar-root) {
+      width: 16px !important;
+      height: 16px !important;
+      margin-right: 0 !important;
+    }
+
+    :global(.MuiSvgIcon-root) {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+}

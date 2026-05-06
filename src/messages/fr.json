@@ -1,0 +1,19 @@
+{
+  "createUserAccount": "Créer un compte utilisateur",
+  "cancel": "Annuler",
+  "reviewUserAccount": "Examiner le compte utilisateur",
+  "userAccountDetails": "Détails du compte utilisateur",
+  "userAccountName": "Nom du compte utilisateur",
+  "startDate": "Date de début",
+  "endDate": "Date de fin",
+  "authorisationClass": "Classe d'autorisation",
+  "language": "Langue",
+  "assignedUserAndRoles": "Utilisateur et rôles attribués",
+  "selectUserToAssign": "Sélectionnez un utilisateur à attribuer à ce compte",
+  "rolesAssignedToUser": "Rôles attribués à cet utilisateur",
+  "receiveEmailNotifications": "Recevoir les notifications par e-mail",
+  "allowMobileAccess": "Autoriser l'accès mobile",
+  "submit": "Soumettre",
+  "next": "Suivant",
+  "description": "Description"
+}

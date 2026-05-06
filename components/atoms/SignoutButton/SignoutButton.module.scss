@@ -1,0 +1,87 @@
+.signoutButton {
+  display: flex;
+  flex-direction: row; // Explicitly set horizontal direction
+  align-items: center;
+  justify-content: center;
+  gap: 4px; // Increased gap for better spacing
+  background-color: #003FCA;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  white-space: nowrap; // Prevent text wrapping
+  flex-shrink: 0; // Prevent button from shrinking
+  
+  // Desktop
+  width: 119px;
+  min-width: 119px;
+  height: 64px;
+  padding:  10px 16px;
+  
+  &:hover {
+    background-color: #002280;
+  }
+  
+  &:focus {
+    outline:  none;
+  }
+
+  .buttonText {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap; // Prevent text wrapping
+  }
+  
+  // Tablet
+  @media (width <=1024px) {
+    width: 110px;
+    min-width: 110px;
+    height: 64px;
+    gap: 4px;
+    padding: 0 12px;
+
+    .buttonText {
+      font-size: 12px;
+    }
+  }
+  
+  // Mobile
+  @media (width <= 768px) {
+    width: 90px;
+    min-width: 90px;
+    height: 56px;
+    gap: 4px;
+    padding: 0 8px;
+
+    .buttonText {
+      font-size: 12px;
+    }
+    
+    :global(.MuiAvatar-root) {
+      width: 18px !important;
+      height:  18px !important;
+    }
+  }
+  
+  // Small mobile
+  @media (width <= 480px) {
+    width: 50px;
+    min-width: 50px;
+    height: 52px;
+    padding: 0 4px;
+    justify-content: center;
+    
+    .buttonText {
+      display: none;
+    }
+    
+    :global(.MuiAvatar-root) {
+      width: 20px !important;
+      height:  20px !important;
+    }
+  }
+}

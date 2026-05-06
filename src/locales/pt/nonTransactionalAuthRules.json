@@ -1,0 +1,116 @@
+{
+  "breadcrumbDashboard": "Painel",
+  "breadcrumbNonTransactional": "Regras de autorização não transacionais",
+
+  "pageHeadingProfile": "Perfil de autorização não transacional",
+  "pageHeadingHub": "Regras de autorização não transacionais",
+
+  "buttonCreateRule": "Criar uma regra de autorização",
+  "buttonCreateProfile": "CRIAR UM PERFIL DE AUTORIZAÇÃO NÃO TRANSACIONAL",
+  "buttonFilter": "Filtro",
+  "buttonDelete": "Eliminar",
+  "buttonRemoveFilters": "Remover filtros",
+  "buttonResetAll": "REPOR TODAS AS FUNÇÕES DA ENTIDADE",
+
+  "searchPlaceholder": "Pesquisar regras de autorização pré-definidas",
+  "noRulesToSearch": "Sem regras de autorização para pesquisar",
+
+  "tableHeaderRule": "Regras de autorização pré-definidas",
+  "tableHeaderDescription": "Descrição da regra de autorização pré-definida",
+  "tableHeaderLinks": "Links rápidos",
+
+  "nonTransactionalRuleTitle": "Regra de autorização não transacional {number}",
+  "authorisationRuleTitle": "Regra de autorização {number}",
+
+  "deleteConfirmationItemLabel": "regras de autorização",
+  "deleteConfirmationMessage": "Tem certeza de que deseja excluir as {count} regras de autorização selecionadas? Esta ação não pode ser desfeita.",
+  "snackbarDeleteSuccess": "Regra de autorização eliminada e enviada para aprovação",
+  "snackbarProfileDeleteSuccess": "Perfil de autorização não transacional excluído com sucesso.",
+
+  "emptyNoResultsTitle": "Nenhum resultado encontrado",
+  "emptyNoResultsDescription": "Refine sua pesquisa e tente novamente.",
+  "emptyNoRulesTitle": "Ainda não há regras de autorização",
+  "emptyNoRulesDescription": "Você ainda não adicionou nenhuma regra de autorização.",
+
+  "createTitle": "Criar um perfil de autorização não transacional",
+  "manageTitle": "Gerenciar perfil de autorização não transacional",
+  "profileDetailsTitle": "Detalhes do perfil de autorização",
+
+  "labelAuthRuleName": "Nome da regra de autorização",
+  "labelAuthRuleDescription": "Descrição da regra de autorização",
+  "labelAuthProfileDescription": "Descrição do perfil de autorização",
+  "labelAuthRuleConstruct": "Estrutura da regra de autorização",
+  "noAuthorisationRuleCreated": "Nenhuma regra de autorização criada",
+  "placeholderAuthRuleConstruct": "Digite sua estrutura de regra de autorização aqui ou use o teclado abaixo",
+  "labelTransactionLimit": "Limite de transação",
+
+  "labelClasses": "Classes",
+
+  "buttonAddRule": "ADICIONAR UMA REGRA",
+  "buttonDeleteRule": "EXCLUIR UMA REGRA",
+  "buttonDeleteProfile": "EXCLUIR ESTE PERFIL",
+  "additionalAuthRulesAdded": "REGRAS DE AUTORIZAÇÃO ADICIONAIS ADICIONADAS.",
+  "buttonSubmitRuleChanges": "ENVIAR ALTERAÇÕES",
+  "buttonReviewAndSubmit": "REVISAR E ENVIAR",
+  "buttonSubmitRuleForApproval": "ENVIAR REGRA PARA APROVAÇÃO",
+  "buttonCancel": "CANCELAR",
+
+  "buttonUndo": "DESFAZER",
+  "buttonAddSelectedClass": "ADICIONAR CLASSE SELECIONADA",
+  "buttonSave": "SALVAR",
+  "buttonSaveEntity": "SALVAR FUNÇÕES DA ENTIDADE",
+  "dialogCancelTitle": "Cancelar a criação do perfil",
+  "dialogCancelHeading": "Tem a certeza de que pretende cancelar?",
+  "dialogCancelSubheading": "Todos os dados introduzidos serão perdidos e irá regressar ao hub de regras de autorização não transacionais.",
+  "dialogCancelDismiss": "DISPENSAR",
+  "dialogCancelConfirm": "SIM, CANCELAR A CRIAÇÃO DO PERFIL",
+
+  "dialogSecurityWarningTitle": "Aviso de segurança",
+  "dialogSecurityWarningHeading": "Tem certeza de que não quer criar regras de autorização?",
+  "dialogSecurityWarningSubheading": "As regras de autorização não são obrigatórias, mas adicionam uma camada valiosa de segurança a um perfil de autorização.",
+  "dialogSecurityWarningDismiss": "DISPENSAR",
+  "dialogSecurityWarningConfirm": "SIM, CONTINUAR PARA REVISÃO",
+
+  "dialogRuleDeletionTitle": "Excluir regra",
+  "dialogRuleDeletionHeading": "Tem a certeza de que pretende eliminar esta regra?",
+  "dialogRuleDeletionSubheading": "Esta ação não pode ser anulada.",
+  "dialogRuleDeletionDismiss": "DISPENSAR",
+  "dialogRuleDeletionConfirm": "SIM, EXCLUIR ESTA REGRA",
+
+  "dialogProfileDeletionTitle": "Exclusão do perfil",
+  "dialogProfileDeletionHeading": "Tem a certeza de que pretende excluir o perfil?",
+  "dialogProfileDeletionSubheading": "Esta ação não pode ser anulada.",
+  "dialogProfileDeletionDismiss": "DISPENSAR",
+  "dialogProfileDeletionConfirm": "SIM, EXCLUIR ESTE PERFIL",
+
+  "dialogMaxRulesTitle": "Número máximo de regras criadas",
+  "dialogMaxRulesHeading": "Número máximo permitido de regras criadas.",
+  "dialogMaxRulesSubheading": "É possível criar um máximo de {max} regras por perfil.",
+  "dialogMaxRulesDismiss": "DISPENSAR",
+
+  "dialogAddRuleBlockedTitle": "Concluir regra atual",
+  "dialogAddRuleBlockedHeading": "Guarde a regra {number} antes de adicionar outra.",
+  "dialogAddRuleBlockedSubheading": "Guarde a regra atual antes de continuar.",
+  "dialogAddRuleBlockedDismiss": "DISPENSAR",
+
+  "manageMinRulesError": "ERRO: É NECESSÁRIA UMA REGRA DE AUTORIZAÇÃO POR PERFIL",
+  "validationProfileNameRequired": "O nome do perfil de autorização é obrigatório",
+
+  "errorUnknownAuthorisationClass": "Classe de autorização desconhecida: \"{value}\"",
+  "errorClassMustMatchExactly": "A classe deve corresponder exatamente a: \"{expected}\"",
+
+  "dialogDeleteTitle": "Excluir regra de autorização",
+  "dialogDeletePrimary": "Sim, excluir",
+  "dialogDeleteSecondary": "Cancelar",
+  "dialogDeleteItemLabel": "perfil de regra de autorização",
+  "dialogDeleteMessage": "Tem certeza de que deseja excluir esta regra de autorização?",
+
+  "successTitle": "Sucesso",
+  "successCreateHeading": "Criar uma regra de autorização",
+  "successCreateMessage": "Regra de autorização criada e enviada para aprovação.",
+  "successManageHeading": "Gerenciar regra de autorização",
+  "successManageMessage": "Regra de autorização editada e enviada para aprovação.",
+  "successInfoNote": "Por favor note que Turpis massa sed elementum tempus egestas. Interdum consectetur libero id faucibus nisl tincidunt. Nascetur ridiculus mus mauris vitae ultricies leo.",
+  "successCreateAnother": "CRIAR OUTRA REGRA DE AUTORIZAÇÃO",
+  "successGoToHub": "IR PARA O HUB DE REGRAS DE AUTORIZAÇÃO NÃO TRANSACIONAIS"
+}

@@ -1,0 +1,28 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.subtitle {
+  top: 14px;
+  font-size: 10px;
+}
+
+.heading h2 {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.heading h3 {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.heading label {
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+}

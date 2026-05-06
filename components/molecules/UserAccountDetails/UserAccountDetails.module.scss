@@ -1,0 +1,299 @@
+.pageWrapper {
+  width: 100%;
+  max-width: 100vw;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 767px) {
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1295px) {
+    padding: 1.5rem;
+  }
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 24px 0;
+  max-width: 1296px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 767px) {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+.container {
+  display: grid;
+  gap: 32px;
+  width: 100%;
+  max-width: 1296px;
+  margin: 0 auto;
+
+  @media (max-width: 767px) {
+    gap: 16px;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 1296px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+}
+
+.cancelButton {
+  width: 112px;
+  height: 48px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.primaryButton {
+  width: 235px;
+  height: 48px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+// Icon hover
+.saveIcon {
+  transition: filter 0.2s;
+}
+.buttonContainer :global(button:hover) .saveIcon {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* ===== GRID ===== */
+.gridContainer {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== MOBILE (< 768px) ===== */
+@media (max-width: 767px) {
+  .gridContainer {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .emptySpace {
+    display: none; /* Hide empty spacer */
+  }
+
+  /* Make all fields full width */
+  .textField :global(.MuiFormControl-root),
+  .datePicker :global(.MuiFormControl-root),
+  .selectField :global(.MuiFormControl-root),
+  .countrySelect :global(.MuiFormControl-root) {
+    width: 100% !important;
+  }
+}
+
+/* ===== TABLET (768px - 1295px) ===== */
+@media (min-width: 768px) and (max-width: 1295px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 flexible columns */
+  }
+
+  .textField {
+    grid-column: 1; /* Stay in first column */
+  }
+
+  /* Make fields responsive but cap at 628px */
+  .textField :global(.MuiFormControl-root),
+  .datePicker :global(.MuiFormControl-root),
+  .selectField :global(.MuiFormControl-root),
+  .countrySelect :global(.MuiFormControl-root) {
+    width: 100% !important;
+    max-width: 628px;
+  }
+}
+
+/* ===== DESKTOP (≥ 1296px) ===== */
+@media (min-width: 1296px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 628px); /* Fixed 628px columns */
+  }
+
+  .textField {
+    grid-column: 1;
+  }
+
+  .datePicker :global(.MuiFormControl-root),
+  .selectField :global(.MuiFormControl-root),
+  .countrySelect :global(.MuiFormControl-root) {
+    width: 628px !important;
+  }
+}
+
+/* ===== TEXTFIELD COMMON STYLES ===== */
+.textField :global(.MuiOutlinedInput-root),
+.textField :global(.MuiInputBase-root) {
+  border-radius: 8px !important;
+}
+
+.textField :global(.MuiInputBase-root) {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.textField :global(.MuiInputLabel-root) {
+  top: 45%;
+  transform: translateY(-50%);
+  left: 0;
+  padding-left: 14px;
+}
+
+.textField :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+  top: 0;
+  left: 0;
+  transform: translate(14px, -9px) scale(0.75);
+  padding-left: 0;
+}
+
+.textField :global(.MuiInputBase-input) {
+  padding: 0 16px;
+}
+
+/* ===== DATEPICKER COMMON STYLES ===== */
+.datePicker {
+  :global(.MuiFormControl-root) {
+    overflow: hidden;
+  }
+
+  :global(.MuiOutlinedInput-root),
+  :global(.MuiPickersOutlinedInput-root) {
+    min-height: 48px !important;
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    box-sizing: border-box;
+    border-radius: 8px !important;
+  }
+
+  :global(.MuiInputBase-root),
+  :global(.MuiPickersInputBase-root),
+  :global(.MuiInputBase-input) {
+    height: 48px !important;
+    padding: 0 14px !important;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  :global(.MuiOutlinedInput-input),
+  :global(.MuiPickersOutlinedInput-input) {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 8px !important;
+    box-sizing: border-box;
+  }
+
+  :global(.MuiInputLabel-root) {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    left: 14px !important;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top: -5px !important;
+    left: 15px !important;
+    transform: scale(0.75) !important;
+  }
+
+  :global(.MuiInputAdornment-root) {
+    height: auto !important;
+    margin: 0 !important;
+  }
+}
+
+.datePicker :global(.MuiStack-root) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ===== SELECT FIELD COMMON STYLES ===== */
+.selectField {
+  :global(.MuiFormControl-root) {
+    height: 48px !important;
+    margin: 0 !important;
+  }
+
+  :global(.MuiInputBase-root),
+  :global(.MuiOutlinedInput-root) {
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    border-radius: 8px !important;
+  }
+
+  :global(.MuiSelect-select) {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 14px !important;
+    box-sizing: border-box;
+  }
+
+  /* Andar wala blue label (jab empty ho) */
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    top: 45% !important; /* ← Isko adjust karo */
+    transform: translateY(-50%) !important;
+    left: 14px !important;
+  }
+
+  /* Upar wala blue label (jab focused/filled ho) */
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top:0px !important; /* ← Isko adjust karo */
+    left: 1px !important;
+  }
+}
+
+/* ===== COUNTRY SELECT COMMON STYLES ===== */
+.countrySelect {
+  :global(.MuiFormControl-root) {
+    height: 48px !important;
+    margin: 0 !important;
+  }
+
+  :global(.MuiInputBase-root),
+  :global(.MuiOutlinedInput-root),
+  :global(.MuiAutocomplete-inputRoot) {
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    border-radius: 8px !important;
+  }
+
+  :global(.MuiAutocomplete-input) {
+    height: 48px !important;
+    padding: 0 14px !important;
+    box-sizing: border-box;
+  }
+
+  /* Target the actual input element and move placeholder left using margin */
+  :global(.MuiInputBase-input) {
+    margin-left: -16px !important; /* Shifts placeholder and typed text left */
+  }
+}

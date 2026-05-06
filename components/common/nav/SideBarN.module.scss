@@ -1,0 +1,245 @@
+.sidebarRoot {
+  width: 80px;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 16px; /* theme spacing(2) */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.menuList {
+  width: 100%;
+  gap: 8px; /* theme spacing(1) */
+  padding-bottom: 0;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+  min-height: 72px;
+  height: 72px;
+  width: 90px;
+  min-width: 90px;
+  border-radius: 0;
+  background-color: transparent;
+  position: relative;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  color: #222;
+  padding-left: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 81, 255, 0.16);
+  }
+}
+
+.menuItemIndicator {
+  position: absolute;
+  left: -5px;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 4px;
+  border-radius: 0 2px 2px 0;
+  background-color: #0051ff;
+}
+
+.menuItemIcon {
+  min-width: 0;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+}
+
+.menuItemText {
+  font-size: 10px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.submenuDrawerPaper {
+  width: 180px;
+  position: fixed;
+  left: 80px;
+  top: 0;
+  border-radius: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  z-index: 1301;
+}
+
+.submenuDrawerContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.submenuList {
+  padding: 0;
+  margin: 0;
+}
+
+.submenuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  min-height: 48px;
+  border-radius: 0;
+  background-color: transparent;
+  transition: background 0.2s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 81, 255, 0.08);
+  }
+}
+
+.submenuItemIcon {
+  min-width: 0;
+  color: #222;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+}
+
+.submenuItemText {
+  font-size: 16px;
+  color: #222;
+  font-weight: 400;
+}
+
+.navDrawerPaper {
+  width: 280px;
+  position: fixed;
+  left: 80px;
+  top: 0;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  z-index: 1301;
+}
+
+.navDrawerContent {
+  display: flex;
+  height: 100%;
+}
+
+.flexGrowSpacer {
+  flex-grow: 1;
+}
+
+.externalSectionWrapper {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.externalDividerWrapper {
+  border-bottom: 1px solid #eee;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.externalList {
+  width: 100%;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.externalItemWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.externalItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 64px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 12px;
+  background-color: transparent;
+  position: relative;
+  box-shadow: none;
+  transition: background 0.2s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.externalItemIndicator {
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  height: 50px;
+  width: 4px;
+  border-radius: 4px;
+}
+
+.externalItemIcon {
+  min-width: 0;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+}
+
+.externalItemText {
+  font-size: 10px;
+  font-weight: 400;
+  text-align: center;
+}

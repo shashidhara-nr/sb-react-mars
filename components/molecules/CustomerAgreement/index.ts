@@ -1,0 +1,1 @@
+export { default as CustomerAgreement } from './CustomerAgreement';

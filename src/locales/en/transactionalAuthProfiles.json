@@ -1,0 +1,18 @@
+{
+    "dashboard": "Dashboard",
+    "transactionalAuthProfiles": "Transactional authorisation profile",
+    "searchPlaceholder": "Search by authorisation profile name",
+    "authProfileName": "Authorisation profile name",
+    "authProfileDescription": "Authorisation profile description",
+    "currency": "Currency",
+    "status": "Status",
+    "quickLinks": "Quick Links",
+    "createAuthProfile": "Create authorisation profile",
+    "manageProfile": "Manage profile",
+    "filter": "Filter",
+    "download": "Download",
+    "updateTable": "Update table",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "authProfiles": "Authorisation profiles"
+}

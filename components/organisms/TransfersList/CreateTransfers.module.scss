@@ -1,0 +1,653 @@
+@use '@styles/variables' as *;
+
+// Color constants
+$primary-color: #0051ff;
+$primary-light: rgba(0, 81, 255, 0.08);
+$primary-lighter: rgba(0, 81, 255, 0.1);
+$border-color: #CED3D9;
+$border-light: #E3E6EA;
+$background-light: #FAFBFC;
+$background-white: #fff;
+$text-secondary: rgba(0, 0, 0, 0.54);
+$error-color: #e31e46;
+$error-light: rgba(227, 30, 70, 0.08);
+
+// Spacing constants
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+// Font sizes
+$font-xs: 11px;
+$font-sm: 12px;
+$font-base: 14px;
+$font-md: 15px;
+$font-lg: 16px;
+$font-xl: 18px;
+
+// Z-index
+$z-index-hidden: -1;
+
+.paperContainer {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.transferFormContainer {
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  background-color: $background-white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  background-color: $background-white;
+  overflow: hidden;
+}
+
+.sectionInner {
+  background-color: $background-white;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background-color: $background-white;
+  border-bottom: 0;
+  padding-bottom: 8px;
+
+  h6 {
+    font-size: $font-lg;
+    font-weight: 400;
+  }
+
+  // Remove top border for headers inside the main form container
+  .transferFormContainer & {
+    border-top: none;
+  }
+}
+
+.sectionContent {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.sectionDivider {
+  height: 1px;
+  background-color: $border-light;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.createTransfersForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+
+  form {
+    > div {
+      border-radius: 12px !important;
+    }
+  }
+}
+
+.transferModeContainer {
+  display: inline-flex;
+  border: 1px solid $primary-color;
+  border-radius: $radius-md;
+  overflow: hidden;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.transferModeButton {
+  padding: 12px $spacing-md;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: $font-base;
+  border: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background-color: $background-white;
+  color: $primary-color;
+
+  &.active {
+    background-color: $primary-color;
+    color: $background-white;
+  }
+
+  &:not(:last-child) {
+    border-right: 1px solid $primary-color;
+  }
+
+  &:hover {
+    background-color: $primary-light;
+
+    &.active {
+      background-color: $primary-color;
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: $border-light;
+}
+
+.batchHeader {
+  padding: $spacing-sm;
+  background-color: $background-white;
+  border-bottom: 1px solid $border-light;
+}
+
+.batchHeaderContainer {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  width: 100%;
+}
+
+.paymentIdSection {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+  width: 50%;
+
+  p {
+    font-size: $font-base;
+  }
+}
+
+.editButton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5;
+  border-radius: $radius-sm;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $primary-lighter;
+  }
+}
+
+.searchAndFilterSection {
+  display: flex;
+  gap: $spacing-sm;
+  flex: 1;
+  align-items: center;
+
+  > div > div {
+    border-radius: 0.5rem !important;
+  }
+}
+
+.searchField {
+  flex: 1;
+}
+
+.filterButton {
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 $spacing-md;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.batchItemsContainer {
+  padding: $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: $color-grey-200;
+
+  button {
+    min-height: auto!important;
+
+    > span:first-child {
+      margin: 8px 0;
+    }
+  }
+}
+
+.emptyBatchState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.accordion {
+  &:global(.MuiAccordion-root) {
+    &:before {
+      display: none;
+    }
+
+    box-shadow: none;
+    border: 1px solid $border-color;
+    border-radius: $radius-md!important;
+    background-color: $background-white;
+    overflow: hidden;
+    margin-top: 0!important;
+
+    &.Mui-expanded {
+      margin: 0;
+    }
+  }
+}
+
+.accordionSummary {
+  padding: $spacing-md;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  background-color: $background-white;
+
+  :global(.MuiAccordionSummary-content) {
+    align-items: center;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  :global(.MuiAccordionSummary-expandIconWrapper) {
+    order: 3;
+  }
+}
+
+.accordionSummaryLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.accordionSummaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 0;
+
+  .accountName {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .accountNumber {
+    font-size: $font-sm;
+    color: $text-secondary;
+    line-height: 1.2;
+  }
+}
+
+.accountNumberLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-left: solid 1px $color-primary;
+  border-right: solid 1px $color-primary;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  .label {
+    font-size: $font-base;
+    color: $text-secondary;
+    letter-spacing: 0.3px;
+  }
+
+  .value {
+    font-size: $font-base;
+  }
+}
+
+.transferAmountSection {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  .label {
+    font-size: $font-base;
+    color: $text-secondary;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .value {
+    font-size: $font-base;
+  }
+}
+
+.chevronAndDelete {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.deleteButton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: $radius-sm;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $error-light;
+  }
+}
+
+.accordionDetails {
+  padding: 8px!important;
+  background-color: $background-white;
+  border-top: 1px solid $border-light;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.detailsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.detailsField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  width: calc(50% - 0.25rem);
+  margin-bottom: 0.5rem;
+
+  .fieldLabel {
+    font-size: $font-xs;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: $text-secondary;
+    text-transform: uppercase;
+    background-color: $background-white;
+    z-index: 1;
+  }
+
+  .fieldValue {
+    padding: $spacing-md;
+    background-color: $background-white;
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+
+    p {
+      font-size: $font-base;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  }
+}
+
+.fieldValuePlain {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+
+  p {
+    font-size: $font-base;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+.creditAmountField {
+  .fieldValue {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.detailsFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $spacing-md;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 8px $spacing-md;
+  cursor: pointer;
+  color: $error-color;
+  font-size: $font-base;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  border-radius: $radius-sm;
+
+  &:hover {
+    background-color: $error-light;
+  }
+}
+
+.batchFooter {
+  padding: 0 0 0 $spacing-md;
+  background-color: $background-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  border-top: solid 1px $border-light;
+
+  .totalAmount {
+    font-size: $font-base;
+    font-weight: 600;
+  }
+}
+
+.batchButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.batchButton {
+  height: 48px;
+  padding: 0 $spacing-lg;
+  font-size: $font-base;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.datePickerContainer {
+  max-width: 50%;
+}
+
+.datePickerLabel {
+  font-size: $font-sm;
+  font-weight: 500;
+}
+
+.stepLabel {
+  cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+  }
+}
+
+.reviewActionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+}
+
+.addInstructionContainer {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    padding: 0;
+    height: auto;
+    min-height: auto;
+  }
+}
+
+.addInstructionLink {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  p {
+    color: $primary-color;
+    font-size: $font-base;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.reviewActionButtons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  button {
+    padding: $spacing-md $spacing-lg;
+    height: 48px;
+    font-size: $font-base;
+    font-weight: 600;
+    text-transform: uppercase;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    border-radius: $radius-sm;
+  }
+}
+
+.reviewActionFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.reviewActionEnd {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .content {
+    > div {
+      background: transparent;
+    }
+  }
+
+  .stepLabel{
+    align-items: flex-start;
+  } 
+
+  .stepDescription {
+    font-size: 12px;
+  }
+
+  .createTransfersFormCont {
+    form {
+      > div {
+        border: 0;
+
+        > div {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .sectionSubHeader {
+    display: flex;
+    width: calc(100% + 2rem);
+    gap: 1rem;
+    border-bottom: solid 1px $border-light;
+    padding-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-left: -1rem;
+    padding-left: 1rem;
+  }
+}
+
+.batchSectionContainer {
+  border: solid 1px $border-color;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.accordionSummaryRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}

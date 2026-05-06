@@ -1,0 +1,48 @@
+.tabsSection {
+  :global(.MuiTabs-flexContainer) {
+    gap: 0;
+  }
+
+  :global(.MuiTab-root) {
+    text-transform: none;
+    min-height: 40px;
+    padding: 10px 20px;
+    border: 1px solid #E3E6EA;
+  }
+
+  :global(.MuiTab-root:first-of-type) {
+    border-radius: 12px 0 0 12px;
+  }
+  
+  :global(.MuiTab-root:last-of-type) {
+    border-radius: 0 12px 12px 0;
+  }
+}
+
+.searchField {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background-color: #fff;
+    min-height: 40px;
+  }
+
+  :global(.MuiInputBase-input::placeholder) {
+    color: #5C6C80;
+    opacity: 1;
+  }
+
+  font-size: 15px;
+}
+
+.tableContainerGrid {
+  margin-top: 8px;
+  padding: 0;
+  background-color: #F8F8FA;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

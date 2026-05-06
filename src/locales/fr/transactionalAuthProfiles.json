@@ -1,0 +1,18 @@
+{
+  "dashboard": "Tableau de bord",
+  "transactionalAuthProfiles": "Profil d'autorisation transactionnel",
+  "searchPlaceholder": "Rechercher par nom de profil d'autorisation",
+  "authProfileName": "Nom du profil d'autorisation",
+  "authProfileDescription": "Description du profil d'autorisation",
+  "currency": "Devise",
+  "status": "Statut",
+  "quickLinks": "Liens rapides",
+  "createAuthProfile": "Créer un profil d'autorisation",
+  "manageProfile": "Gérer le profil",
+  "filter": "Filtrer",
+  "download": "Télécharger",
+  "updateTable": "Actualiser le tableau",
+  "cancel": "Annuler",
+  "ok": "OK",
+  "authProfiles": "Profils d'autorisation"
+}

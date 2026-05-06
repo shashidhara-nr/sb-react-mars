@@ -1,0 +1,111 @@
+@use '@styles/variables' as *;
+
+.filterDialogPopper {
+    z-index: 1400;
+}
+
+.filterDialogContainer {
+    width: 765px;
+    padding: 16px;
+    min-height: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: $color-white;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.filterCloseButton {
+    padding: 4px !important;
+    margin: 0 !important;
+}
+
+.filterDialogTitle {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: $color-black !important;
+    margin: 0 !important;
+}
+
+.filterDialogContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    & .MuiOutlinedInput-root {
+        border-radius: 8px;
+        height: 48px;
+    }
+
+    & .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;
+    }
+
+    & .MuiInputLabel-root.MuiInputLabel-shrink {
+        top: 0;
+        left: 0;
+    }
+}
+
+.filterDialogActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    [class*="MuiButton-colorSecondary"]:first-child {
+        padding: 0;
+    }
+}
+
+.sortByLabel {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: $color-black !important;
+    margin-bottom: 12px !important;
+    margin-top: 0 !important;
+}
+
+.formControlLabel {
+    margin-bottom: 1rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.readOnlyField {
+    padding: 10px 12px;
+    border: 1px solid $color-gray-light;
+    border-radius: 8px;
+    background: $color-grey-200;
+    color: $color-gray-dark;
+    font-size: 14px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.fieldLabel {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: $color-black !important;
+    margin-bottom: 12px !important;
+}

@@ -1,0 +1,27 @@
+.rootLoading {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rootLoading .blockLarge {
+  height: 28px;
+  width: 280px;
+  background: #e5e7eb;
+  border-radius: 6px;
+}
+
+.rootLoading .blockMedium {
+  height: 18px;
+  width: 180px;
+  background: #eceef0;
+  border-radius: 6px;
+}
+
+.rootLoading .blockPanel {
+  height: 220px;
+  width: 100%;
+  background: #f3f4f6;
+  border-radius: 10px;
+}

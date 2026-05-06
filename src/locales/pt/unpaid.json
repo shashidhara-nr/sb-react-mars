@@ -1,0 +1,22 @@
+{
+  "unpaidOptions": "Opções não pagas",
+  "dashboard": "Painel",
+  "searchPlaceholder": "Pesquisar pagamentos por ID de lote",
+  "status": "Status",
+  "quickLinks": "Links rápidos",
+  "allRecords": "Todos os registros",
+  "needsAction": "Precisa de ação",
+  "awaitingApproval": "Aguardando aprovação",
+  "active": "Ativo",
+  "unpaidOption": "Opção não paga",
+  "manageUnpaidOption": "Gerenciar opção não paga",
+  "createUnpaidOption": "Criar uma opção não paga",
+  "postingOption": "Opção de postagem",
+  "postingAccount": "Conta de postagem",
+  "unpaidOptionName": "Nome da opção não paga",
+  "updateTable": "Atualizar tabela",
+  "filter": "Filtrar",
+  "download": "Baixar",
+  "cancel": "Cancelar",
+  "ok": "OK"
+}

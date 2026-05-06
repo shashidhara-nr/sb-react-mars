@@ -1,0 +1,87 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.container {
+  display: grid;
+  gap: 32px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.fullWidth {
+  :global(.MuiFormControl-root) {
+    width: 1272px !important;
+    height: 48px !important; /* ✅ Fixed height for container */
+    margin: 0 !important; /* Remove extra spacing */
+  }
+
+  :global(.MuiInputBase-root),
+  :global(.MuiOutlinedInput-root) {
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    border-radius: 8px !important;
+  }
+
+  :global(.MuiSelect-select) {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 14px !important;
+    box-sizing: border-box;
+  }
+
+  /* Andar wala blue label (jab empty ho) */
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    top: 45% !important; /* ← Isko adjust karo */
+    transform: translateY(-50%) !important;
+    left: 14px !important;
+  }
+
+  /* Upar wala blue label (jab focused/filled ho) */
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top: 0px !important; /* ← Isko adjust karo */
+    left: 1px !important;
+  }
+}
+.halfWidth {
+  :global(.MuiFormControl-root) {
+    width: 628px !important;
+    height: 48px !important; /* ✅ Fixed height for container */
+    margin: 0 !important; /* Remove extra spacing */
+  }
+
+  :global(.MuiInputBase-root),
+  :global(.MuiOutlinedInput-root) {
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    border-radius: 8px !important;
+  }
+
+  :global(.MuiSelect-select) {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 14px !important;
+    box-sizing: border-box;
+  }
+
+  /* Andar wala blue label (jab empty ho) */
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    top: 45% !important; /* ← Isko adjust karo */
+    transform: translateY(-50%) !important;
+    left: 14px !important;
+  }
+
+  /* Upar wala blue label (jab focused/filled ho) */
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    top: 0px !important; /* ← Isko adjust karo */
+    left: 1px !important;
+  }
+}

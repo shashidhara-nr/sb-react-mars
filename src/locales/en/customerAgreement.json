@@ -1,0 +1,18 @@
+{
+  "customerAgreement": "Customer Agreement",
+  "branchSortCode": "Branch / Sort code",
+  "countryRegion": "Country / Region",
+  "sortCode": "Sort code",
+  "bicSwift": "BIC (SWIFT)",
+  "currency": "Currency",
+  "selectAnAccount": "Select an account",
+  "addCurrentAccountToBatch": "Add current account to batch",
+  "addToBatch": "Add to batch",
+  "associatedAccounts": "Associated accounts",
+  "searchWithinBatch": "Search within batch",
+  "filter": "Filter",
+  "rowsPerPage": "Rows per page",
+  "zeroOfZeroListItems": "0 of 0 list items",
+  "of": "of",
+  "listItems": "list items"
+}

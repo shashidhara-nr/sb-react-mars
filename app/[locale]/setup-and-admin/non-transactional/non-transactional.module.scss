@@ -1,0 +1,55 @@
+.container {
+  padding-bottom: 1rem;
+}
+
+.iconHover {
+  &:hover img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+/* Buttons */
+.deleteButton {
+  width: 155px;
+  height: 36px;
+  min-width: 155px;
+  min-height: 36px;
+}
+
+.removeFiltersButton {
+  width: 170px;
+  height: 32px;
+  min-width: 170px;
+  min-height: 32px;
+  text-transform: none;
+}
+
+.resetButton {
+  width: 283px;
+  height: 48px;
+}
+
+.saveButton {
+  width: 283px;
+  height: 48px;
+  background-color: #E3E6EA !important;
+}
+
+.addRuleButton {
+  height: 48px;
+}
+
+.createRuleButton {
+  height: 48px;
+}
+
+/* Icons */
+
+.deleteIconFilter {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(87%) saturate(3066%)
+    hue-rotate(339deg) brightness(93%) contrast(95%);
+}
+
+.funnelIcon {
+  margin-right: 4px;
+}

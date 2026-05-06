@@ -1,0 +1,18 @@
+{
+  "customerAgreement": "Accord client",
+  "branchSortCode": "Code agence / Code de tri",
+  "countryRegion": "Pays / Région",
+  "sortCode": "Code de tri",
+  "bicSwift": "BIC (SWIFT)",
+  "currency": "Devise",
+  "selectAnAccount": "Sélectionnez un compte",
+  "addCurrentAccountToBatch": "Ajouter le compte actuel au lot",
+  "addToBatch": "Ajouter au lot",
+  "associatedAccounts": "Comptes associés",
+  "searchWithinBatch": "Rechercher dans le lot",
+  "filter": "Filtrer",
+  "rowsPerPage": "Lignes par page",
+  "zeroOfZeroListItems": "0 sur 0 éléments de liste",
+  "of": "sur",
+  "listItems": "éléments de liste"
+}
