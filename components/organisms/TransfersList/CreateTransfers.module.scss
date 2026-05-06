@@ -2,15 +2,15 @@
 
 // Color constants
 $primary-color: #0051ff;
-$primary-light: rgba(0, 81, 255, 0.08);
-$primary-lighter: rgba(0, 81, 255, 0.1);
+$primary-light: rgb(0 81 255 / 8%);
+$primary-lighter: rgb(0 81 255 / 10%);
 $border-color: #CED3D9;
 $border-light: #E3E6EA;
 $background-light: #FAFBFC;
 $background-white: #fff;
-$text-secondary: rgba(0, 0, 0, 0.54);
+$text-secondary: rgb(0 0 0 / 54%);
 $error-color: #e31e46;
-$error-light: rgba(227, 30, 70, 0.08);
+$error-light: rgb(227 30 70 / 8%);
 
 // Spacing constants
 $spacing-xs: 8px;
@@ -43,7 +43,6 @@ $z-index-hidden: -1;
 .stepContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
 }
 
 .transferFormContainer {
@@ -250,7 +249,7 @@ $z-index-hidden: -1;
 
 .accordion {
   &:global(.MuiAccordion-root) {
-    &:before {
+    &::before {
       display: none;
     }
 
@@ -277,7 +276,6 @@ $z-index-hidden: -1;
   background-color: $background-white;
 
   :global(.MuiAccordionSummary-content) {
-    align-items: center;
     margin: 0;
     flex: 1;
     display: flex;

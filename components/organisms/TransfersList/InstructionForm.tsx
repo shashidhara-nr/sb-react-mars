@@ -17,7 +17,8 @@ import {
   CURRENCY_OPTIONS, 
   COLORS,
 } from './constant';
-import IconChevronDown from 'public/icons/chevron_down.svg';
+import IconChevronDown from 'public/icons/icn_chevron_down.svg';
+import IconChevronUp from 'public/icons/icn_chevron_up.svg';
 import IconSearch from 'public/icons/icn_search.svg';
 import { getRulesForField } from 'src/utils/transferCreateLogic';
 import CustomPagination from 'components/lib/Tables/TablePagination';
@@ -56,6 +57,8 @@ interface InstructionFormProps {
   };
   onUpdate: (instructionId: number, updatedData: any) => void;
   onDelete: (instructionId: number) => void;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }
 
 const InstructionForm: React.FC<InstructionFormProps> = ({
@@ -63,6 +66,8 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
   instructionData,
   onUpdate,
   onDelete,
+  isCollapsed = false,
+  onToggleCollapse,
 }) => {
   const t = useTranslations('transfers');
   const [transferMode, setTransferMode] = useState(instructionData.transferMode || 0);
@@ -283,12 +288,45 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
   };
 
   return (
-    <Box className={styles.transferFormContainer}>
+    <Box className={styles.transferFormContainer} sx={{ 
+      height: isCollapsed ? '48px' : 'auto',
+      overflow: isCollapsed ? 'hidden' : 'visible',
+      transition: 'all 0.3s ease-in-out',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       {/* Transfer From Section */}
-      <Box className={styles.sectionInner}>
-        <Box className={styles.sectionHeader}>
-          <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
-          <Typography variant="h6">Instruction {instructionNumber}</Typography>
+      <Box className={styles.sectionInner} sx={{ flex: isCollapsed ? 'none' : '1' }}>
+        <Box className={styles.sectionHeader} sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          userSelect: 'none',
+          minHeight: '48px',
+          height: '48px',
+          paddingRight: '16px'
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1 }}>
+            <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
+            <Typography variant="h6">Instruction {instructionNumber}</Typography>
+          </Box>
+          {onToggleCollapse && (
+            <Box sx={{ 
+              display: 'flex', 
+              alignItems: 'center',
+              cursor: 'pointer'
+            }} onClick={(e) => {
+              e.stopPropagation();
+              onToggleCollapse();
+            }}>
+              <Icon 
+                name={isCollapsed ? "chevronDown" : "chevronUp"} 
+                width="20" 
+                height="20" 
+                bgColor={"#0051FF"}
+              />
+            </Box>
+          )}
         </Box>
         <Box className={styles.sectionContent}>
           <Box className={styles.transferModeContainer}>

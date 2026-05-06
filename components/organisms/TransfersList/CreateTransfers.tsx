@@ -25,6 +25,8 @@ import {
   COLORS,
 } from './constant';
 import IconChevronDown from 'public/icons/chevron_down.svg';
+import IconChevronUp from 'public/icons/icn_chevron_up.svg';
+import IconChevronDownNew from 'public/icons/icn_chevron_down.svg';
 import IconSearch from 'public/icons/icn_search.svg';
 import { getRulesForField } from 'src/utils/transferCreateLogic';
 import CustomPagination from 'components/lib/Tables/TablePagination';
@@ -48,6 +50,7 @@ const CreateTransfers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState<15 | 30 | 50>(15);
   const [nextInstructionId, setNextInstructionId] = useState(1);
+  const [collapsedInstructions, setCollapsedInstructions] = useState<Set<number>>(new Set());
   const [cancellationDialogOpen, setCancellationDialogOpen] = useState(false);
   const [errorDialogOpen, setErrorDialogOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('We are unable to process your request. Please try again or contact your bank representative.');
@@ -483,6 +486,18 @@ const CreateTransfers = () => {
     setInstructions((prev) => prev.filter((instruction) => instruction.instructionId !== instructionId));
   }, []);
 
+  const handleToggleInstructionCollapse = useCallback((instructionId: number) => {
+    setCollapsedInstructions((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(instructionId)) {
+        newSet.delete(instructionId);
+      } else {
+        newSet.add(instructionId);
+      }
+      return newSet;
+    });
+  }, []);
+
   return (
     <section className={styles.container}>
       <BreadcrumbList links={breadcrumbLinks} />
@@ -520,25 +535,16 @@ const CreateTransfers = () => {
                     <Box className={styles.stepContent}>
                       {/* Render all added instructions */}
                       {instructions.length > 0 && (
-                        <Box sx={{ marginBottom: 4 }}>
-                          <Typography variant="h6" sx={{ marginBottom: 2 }}>Added Instructions</Typography>
+                        <Box>
                           {instructions.map((instruction, index) => (
-                            <Box key={instruction.instructionId} sx={{ marginBottom: 3, border: `1px solid ${COLORS.BORDER}`, borderRadius: '8px', padding: 2 }}>
-                              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
-                                <Typography variant="h6">Instruction {index + 1}</Typography>
-                                <Button 
-                                  buttonVariant="tertiary" 
-                                  sx={{ textTransform: 'none', padding: '4px 8px', color: '#FF0000' }} 
-                                  onClick={() => handleDeleteInstruction(instruction.instructionId)}
-                                >
-                                  DELETE
-                                </Button>
-                              </Box>
+                            <Box key={instruction.instructionId} sx={{ marginBottom: 3}}>
                               <InstructionForm 
                                 instructionNumber={index + 1}
                                 instructionData={instruction}
                                 onUpdate={handleUpdateInstruction}
                                 onDelete={handleDeleteInstruction}
+                                isCollapsed={collapsedInstructions.has(instruction.instructionId)}
+                                onToggleCollapse={() => handleToggleInstructionCollapse(instruction.instructionId)}
                               />
                             </Box>
                           ))}
@@ -547,15 +553,22 @@ const CreateTransfers = () => {
 
                       {/* Form for adding new instruction */}
                       <Box sx={{ marginBottom: 3 }}>
-                        <Typography variant="h6" sx={{ marginBottom: 2 }}>
-                          {instructions.length > 0 ? 'Add New Instruction' : 'Create Instruction'}
-                        </Typography>
                         <Box className={styles.transferFormContainer}>
                         {/* Transfer From Section */}
                         <Box className={styles.sectionInner}>
-                          <Box className={styles.sectionHeader}>
-                            <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
-                            <Typography variant="h6">{t('paymentDetails')}</Typography>
+                          <Box className={styles.sectionHeader} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', userSelect: 'none' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
+                              <Typography variant="h6">{t('addAnInstruction')}</Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                              <Icon 
+                                name="chevronUp" 
+                                width="20" 
+                                height="20" 
+                                bgColor={"#0051FF"}
+                              />
+                            </Box>
                           </Box>
                           <Box className={styles.sectionContent}>
                             <Box className={styles.transferModeContainer}>
@@ -777,7 +790,6 @@ const CreateTransfers = () => {
                   {currentStep === 2 && (
                     <Box className={styles.stepContent}>
                       {/* Transfer Type Section */}
-                      <Box className={styles.section}>
                         <Box className={styles.sectionHeader}>
                           <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
                           <Typography variant="h6">{t('transferType')}</Typography>
@@ -795,7 +807,6 @@ const CreateTransfers = () => {
                             </Box>
                           </Box>
                         </Box>
-                      </Box>
 
                       {/* Instructions as Accordions */}
                       <Box sx={{ marginTop: 3 }}>
@@ -811,7 +822,6 @@ const CreateTransfers = () => {
                               sx={{ backgroundColor: COLORS.BACKGROUND_LIGHT }}
                             >
                               <Icon name="instructions" width="20" height="20" bgColor={"#0051FF"} />
-                              <Typography sx={{ marginLeft: 1, fontWeight: 600 }}>Instruction {index + 1}</Typography>
                               <Box sx={{ marginLeft: 'auto', display: 'flex', gap: 1 }}>
                                 <Button buttonVariant="tertiary" sx={{ textTransform: 'none', padding: '4px 8px' }} onClick={() => setCurrentStep(1)}>
                                   {t('edit') || 'EDIT'}
