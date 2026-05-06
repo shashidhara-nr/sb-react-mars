@@ -132,13 +132,57 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
     onUpdate(instructionData.instructionId, updatedData);
   }, [instructionData, ACCOUNT_INFO_OPTIONS, transferMode, batchItems, paymentDate, onUpdate]);
 
+  const handleTransferModeChange = useCallback((newMode: number) => {
+    // Swap Transfer From and Transfer To data when switching modes
+    const swappedData = {
+      ...instructionData,
+      // Swap source and destination accounts
+      sourceAccount: instructionData.destinationAccount,
+      sourceAccountName: instructionData.destinationAccount ? 
+        ACCOUNT_INFO_OPTIONS.find(acc => acc.value === instructionData.destinationAccount)?.name || '' : '',
+      sourceAccountNumber: instructionData.destinationAccount ? 
+        ACCOUNT_INFO_OPTIONS.find(acc => acc.value === instructionData.destinationAccount)?.accNumber || '' : '',
+      sourceAccountBranch: instructionData.destinationAccount ? 
+        ACCOUNT_INFO_OPTIONS.find(acc => acc.value === instructionData.destinationAccount)?.sortCode || '' : '',
+      sourceAccountBic: instructionData.destinationAccount ? 
+        ACCOUNT_INFO_OPTIONS.find(acc => acc.value === instructionData.destinationAccount)?.bic || '' : '',
+      sourceAccountCountry: instructionData.destinationAccount ? 
+        ACCOUNT_INFO_OPTIONS.find(acc => acc.value === instructionData.destinationAccount)?.countryRegion || '' : '',
+      destinationAccount: instructionData.sourceAccount,
+      transferAmount: '',
+      transferMode: newMode,
+      // Swap currency fields
+      transferCurrency: instructionData.debitCurrency,
+      debitCurrency: instructionData.transferCurrency,
+      debitReference: instructionData.creditReference,
+      creditReference: '',
+    };
+    
+    setTransferMode(newMode);
+    onUpdate(instructionData.instructionId, swappedData);
+    
+    // Reset form fields after swap
+    methodsDetails.setValue('sourceAccount', swappedData.sourceAccount);
+    methodsDetails.setValue('destinationAccount', swappedData.destinationAccount);
+    methodsDetails.setValue('transferCurrency', swappedData.transferCurrency);
+    methodsDetails.setValue('debitCurrency', swappedData.debitCurrency);
+    methodsDetails.setValue('debitReference', swappedData.debitReference);
+    methodsDetails.setValue('creditReference', '');
+    methodsDetails.setValue('transferAmount', '');
+  }, [instructionData, ACCOUNT_INFO_OPTIONS, methodsDetails, onUpdate]);
+
   const handleAddToBatch = useCallback(() => {
-    if (!instructionData.destinationAccount || !instructionData.transferAmount) {
+    // In mode 0 (single to multiple): batch from destinationAccount
+    // In mode 1 (multiple to single): batch from sourceAccount
+    const accountToAdd = transferMode === 0 ? instructionData.destinationAccount : instructionData.sourceAccount;
+    const amountField = instructionData.transferAmount;
+    
+    if (!accountToAdd || !amountField) {
       return;
     }
 
     const selectedAccount = ACCOUNT_INFO_OPTIONS.find(
-      (option) => option.value === instructionData.destinationAccount
+      (option) => option.value === accountToAdd
     );
 
     const nextId = batchItems.length + 1;
@@ -149,7 +193,7 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
       sortCode: selectedAccount?.sortCode || '',
       bic: selectedAccount?.bic || '',
       transferAmount: instructionData.transferAmount,
-      creditReference: instructionData.creditReference || `${nextId}`,
+      creditReference: transferMode === 0 ? (instructionData.creditReference || `${nextId}`) : (instructionData.debitReference || `${nextId}`),
       currency: selectedAccount?.currency || 'ZAR',
     };
 
@@ -158,18 +202,20 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
 
     const updatedData = {
       ...instructionData,
-      destinationAccount: '',
+      destinationAccount: transferMode === 0 ? '' : instructionData.destinationAccount,
+      sourceAccount: transferMode === 1 ? '' : instructionData.sourceAccount,
       transferAmount: '',
-      creditReference: '',
+      creditReference: transferMode === 0 ? '' : instructionData.creditReference,
+      debitReference: transferMode === 1 ? '' : instructionData.debitReference,
       batchItems: updatedBatchItems,
     };
 
     onUpdate(instructionData.instructionId, updatedData);
 
-    methodsDetails.setValue('destinationAccount', '');
+    methodsDetails.setValue(transferMode === 0 ? 'destinationAccount' : 'sourceAccount', '');
     methodsDetails.setValue('transferAmount', '');
-    methodsDetails.setValue('creditReference', '');
-  }, [instructionData, batchItems, ACCOUNT_INFO_OPTIONS, methodsDetails, onUpdate]);
+    methodsDetails.setValue(transferMode === 0 ? 'creditReference' : 'debitReference', '');
+  }, [instructionData, batchItems, ACCOUNT_INFO_OPTIONS, methodsDetails, onUpdate, transferMode]);
 
   const handleClearBatch = useCallback(() => {
     setBatchItems([]);
@@ -330,13 +376,13 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
         </Box>
         <Box className={styles.sectionContent}>
           <Box className={styles.transferModeContainer}>
-            <Box onClick={() => { setTransferMode(0); handleChange('transferMode', 0); }} className={`${styles.transferModeButton} ${transferMode === 0 ? styles.active : ''}`}>{t('singleToMultiple')}</Box>
-            <Box onClick={() => { setTransferMode(1); handleChange('transferMode', 1); }} className={`${styles.transferModeButton} ${transferMode === 1 ? styles.active : ''}`}>{t('multipleToSingle')}</Box>
+            <Box onClick={() => handleTransferModeChange(0)} className={`${styles.transferModeButton} ${transferMode === 0 ? styles.active : ''}`}>{t('singleToMultiple')}</Box>
+            <Box onClick={() => handleTransferModeChange(1)} className={`${styles.transferModeButton} ${transferMode === 1 ? styles.active : ''}`}>{t('multipleToSingle')}</Box>
           </Box>
           <Box className={styles.divider} />
           <Box className={styles.sectionSubHeader}>
             <Icon name="accounts" width="24" height="24"  bgColor={"#0051FF"} />
-            <Typography variant="h6">{t(transferMode === 0 ? 'transferFrom' : 'transferTo')}</Typography>
+            <Typography variant="h6">{t('transferFrom')}</Typography>
           </Box>
           <Box className={styles.accountDropdownContainer}>
             <Box className={styles.accountDropdown}>
@@ -375,7 +421,7 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
       <Box className={styles.sectionInner}>
         <Box className={styles.sectionHeader}>
           <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-          <Typography variant="h6">{t(transferMode === 0 ? 'transferTo' : 'transferFrom')}</Typography>
+          <Typography variant="h6">{t('transferTo')}</Typography>
         </Box>
         <Box className={styles.sectionContent}>
           <Box className={styles.accountDropdownContainer}>

@@ -49,7 +49,7 @@ $z-index-hidden: -1;
   border: 1px solid $border-color;
   border-radius: $radius-lg;
   background-color: $background-white;
-  overflow: hidden;
+  overflow: hidden !important;
   display: flex;
   flex-direction: column;
 }
@@ -73,7 +73,9 @@ $z-index-hidden: -1;
   padding: $spacing-md;
   background-color: $background-white;
   border-bottom: 0;
-  padding-bottom: 8px;
+
+  // padding-bottom: 8px;
+  border-radius: 12px;
 
   h6 {
     font-size: $font-lg;

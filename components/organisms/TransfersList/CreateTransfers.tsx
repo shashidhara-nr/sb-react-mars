@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState, ChangeEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import styles from './CreateTransfers.module.scss';
-import { Box, Grid, Paper, Step, StepContent, StepLabel, Stepper, Typography, TextField, InputAdornment, Accordion, AccordionSummary, AccordionDetails, FormHelperText } from '@mui/material';
+import { Box, Grid, Paper, Step, StepContent, StepLabel, Stepper, Typography, TextField, InputAdornment, Accordion, AccordionSummary, AccordionDetails, FormHelperText, Tooltip } from '@mui/material';
 import { BreadcrumbList } from 'components/lib/Page/Breadcrumb';
 import { Button } from 'components/lib/Forms';
 import DatePicker from 'components/lib/DatePicker';
@@ -25,8 +25,6 @@ import {
   COLORS,
 } from './constant';
 import IconChevronDown from 'public/icons/chevron_down.svg';
-import IconChevronUp from 'public/icons/icn_chevron_up.svg';
-import IconChevronDownNew from 'public/icons/icn_chevron_down.svg';
 import IconSearch from 'public/icons/icn_search.svg';
 import { getRulesForField } from 'src/utils/transferCreateLogic';
 import CustomPagination from 'components/lib/Tables/TablePagination';
@@ -211,6 +209,11 @@ const CreateTransfers = () => {
       showError('Please select a source account and add at least one batch item before adding an instruction.');
       return;
     }
+    
+    if (!paymentDate) {
+        showError('Please select a payment date.');
+        return;
+      }
 
     const newInstruction = {
       instructionId: nextInstructionId,
@@ -559,7 +562,7 @@ const CreateTransfers = () => {
                           <Box className={styles.sectionHeader} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', userSelect: 'none' }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
-                              <Typography variant="h6">{t('addAnInstruction')}</Typography>
+                              <Typography variant="h6">{t('paymentDetails')}</Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                               <Icon 
@@ -770,9 +773,18 @@ const CreateTransfers = () => {
 
                       {/* ADD AN INSTRUCTION - Outside the form container */}
                       <Box className={styles.addInstructionContainer}>
-                        <Button buttonVariant="tertiary" startIcon={<Icon name="add" width="20" height="20"  bgColor={"#0051FF"} />} onClick={handleAddInstruction}>
-                          {t('addAnInstruction')}
-                        </Button>
+                        <Tooltip title={instructionCount > 0 && instructions.length >= instructionCount ? `Maximum ${instructionCount} instructions allowed` : ''} placement="top">
+                          <span>
+                            <Button 
+                              buttonVariant="tertiary" 
+                              startIcon={<Icon name="add" width="20" height="20"  bgColor={"#0051FF"} />} 
+                              onClick={handleAddInstruction}
+                              disabled={instructionCount > 0 && instructions.length >= instructionCount}
+                            >
+                              {t('addAnInstruction')}
+                            </Button>
+                          </span>
+                        </Tooltip>
                       </Box>
 
                       {/* Action Buttons - Outside the form container */}
@@ -878,7 +890,7 @@ const CreateTransfers = () => {
                                       key={item.id}
                                       sx={{
                                         padding: 2,
-                                        borderBottom: itemIndex < instruction.transferTo.length - 1 ? `1px solid ${COLORS.BORDER_LIGHT}` : 'none',
+                                        // borderBottom: itemIndex < instruction.transferTo.length - 1 ? `1px solid ${COLORS.BORDER_LIGHT}` : 'none',
                                         display: 'grid',
                                         gridTemplateColumns: '100px 1fr 150px 150px',
                                         gap: 2,
