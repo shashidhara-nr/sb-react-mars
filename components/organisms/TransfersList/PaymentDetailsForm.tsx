@@ -148,6 +148,45 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({
           </Box>
         </Box>
 
+        {/* Batch Buttons - Only show below Transfer From for Multiple to Single */}
+        {transferMode === 1 && (
+          <Box className={styles.batchButtonsContainer}>
+            <Button buttonVariant="tertiary" startIcon={<Icon name="delete" width="20" height="20"  bgColor={"#0051FF"} />} onClick={handleClearBatch} className={styles.batchButton}>{t('clearBatch')}</Button>
+            <Button buttonVariant="secondary" startIcon={<Icon name="add" width="20" height="20" bgColor={"#0051FF"} />} onClick={handleAddToBatch} className={styles.batchButton}>{t('addToBatch')}</Button>
+          </Box>
+        )}
+
+        {/* Batch List Section - Only show below Transfer From for Multiple to Single */}
+        {transferMode === 1 && (
+          <>
+            <Box className={styles.sectionDivider} />
+            <BatchListSection
+              transferMode={transferMode}
+              searchBatch={searchBatch}
+              setSearchBatch={setSearchBatch}
+              paginatedBatchItems={paginatedBatchItems}
+              expandedBatchItem={expandedBatchItem}
+              handleExpandBatchItem={handleExpandBatchItem}
+              handleRemoveBatchItem={handleRemoveBatchItem}
+              filteredBatchItems={filteredBatchItems}
+              currentPage={currentPage}
+              rowsPerPage={rowsPerPage}
+              handlePageChange={handlePageChange}
+              handleRowsPerPageChange={handleRowsPerPageChange}
+              totalBatchAmount={totalBatchAmount}
+              headerContent={
+                <Box className={styles.paymentIdSection}>
+                  <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
+                  <Typography variant="body2">{paymentId}</Typography>
+                  <Box onClick={() => setPaymentId('')} className={styles.editButton}>
+                    <Icon name="edit" width="18" height="18" bgColor={"#0051FF"} />
+                  </Box>
+                </Box>
+              }
+            />
+          </>
+        )}
+
         <Box className={styles.sectionDivider} />
 
         {/* Transfer To Section */}
@@ -185,38 +224,47 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({
                 />
               </Box>
             </RHFProvider>
-            <Box className={styles.batchButtonsContainer}>
-              <Button buttonVariant="tertiary" startIcon={<Icon name="delete" width="20" height="20"  bgColor={"#0051FF"} />} onClick={handleClearBatch} className={styles.batchButton}>{t('clearBatch')}</Button>
-              <Button buttonVariant="secondary" startIcon={<Icon name="add" width="20" height="20" bgColor={"#0051FF"} />} onClick={handleAddToBatch} className={styles.batchButton}>{t('addToBatch')}</Button>
-            </Box>
-          </Box>
         </Box>
+      </Box>
 
-        {/* Batch List Section */}
-        <BatchListSection
-          transferMode={transferMode}
-          searchBatch={searchBatch}
-          setSearchBatch={setSearchBatch}
-          paginatedBatchItems={paginatedBatchItems}
-          expandedBatchItem={expandedBatchItem}
-          handleExpandBatchItem={handleExpandBatchItem}
-          handleRemoveBatchItem={handleRemoveBatchItem}
-          filteredBatchItems={filteredBatchItems}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-          handlePageChange={handlePageChange}
-          handleRowsPerPageChange={handleRowsPerPageChange}
-          totalBatchAmount={totalBatchAmount}
-          headerContent={
-            <Box className={styles.paymentIdSection}>
-              <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-              <Typography variant="body2">{paymentId}</Typography>
-              <Box onClick={() => setPaymentId('')} className={styles.editButton}>
-                <Icon name="edit" width="18" height="18" bgColor={"#0051FF"} />
-              </Box>
-            </Box>
-          }
-        />
+      {/* Batch Buttons - Only show below Transfer To for Single to Multiple */}
+      {transferMode === 0 && (
+        <Box className={styles.batchButtonsContainer}>
+          <Button buttonVariant="tertiary" startIcon={<Icon name="delete" width="20" height="20"  bgColor={"#0051FF"} />} onClick={handleClearBatch} className={styles.batchButton}>{t('clearBatch')}</Button>
+          <Button buttonVariant="secondary" startIcon={<Icon name="add" width="20" height="20" bgColor={"#0051FF"} />} onClick={handleAddToBatch} className={styles.batchButton}>{t('addToBatch')}</Button>
+        </Box>
+      )}
+
+      {/* Batch List Section - Only show below Transfer To for Single to Multiple */}
+      {transferMode === 0 && (
+          <>
+            <Box className={styles.sectionDivider} />
+            <BatchListSection
+              transferMode={transferMode}
+              searchBatch={searchBatch}
+              setSearchBatch={setSearchBatch}
+              paginatedBatchItems={paginatedBatchItems}
+              expandedBatchItem={expandedBatchItem}
+              handleExpandBatchItem={handleExpandBatchItem}
+              handleRemoveBatchItem={handleRemoveBatchItem}
+              filteredBatchItems={filteredBatchItems}
+              currentPage={currentPage}
+              rowsPerPage={rowsPerPage}
+              handlePageChange={handlePageChange}
+              handleRowsPerPageChange={handleRowsPerPageChange}
+              totalBatchAmount={totalBatchAmount}
+              headerContent={
+                <Box className={styles.paymentIdSection}>
+                  <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
+                  <Typography variant="body2">{paymentId}</Typography>
+                  <Box onClick={() => setPaymentId('')} className={styles.editButton}>
+                    <Icon name="edit" width="18" height="18" bgColor={"#0051FF"} />
+                  </Box>
+                </Box>
+              }
+            />
+          </>
+        )}
 
         <Box className={styles.sectionDivider} />
 

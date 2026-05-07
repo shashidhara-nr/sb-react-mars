@@ -491,7 +491,7 @@ $z-index-hidden: -1;
   display: flex;
   justify-content: flex-end;
   gap: $spacing-md;
-  margin-top: $spacing-sm;
+  margin: $spacing-md;
 }
 
 .batchButton {
@@ -638,11 +638,9 @@ $z-index-hidden: -1;
 
 .batchSectionContainer {
   border: solid 1px $border-color;
-  margin-left: 1rem;
-  margin-right: 1rem;
   border-radius: $radius-lg;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .accordionSummaryRight {
