@@ -66,6 +66,7 @@
   "selectDestinationAccount": "Select Destination Account",
   "pleaseSelectATransferType": "Please select a transfer type",
   "creditAmount": "Credit amount",
+  "debitAmount": "Debit amount",
   "accNumber": "ACC. NUMBER",
   "branchSortCode": "Branch / Sort code",
   "bicSwift": "BIC (SWIFT)",
