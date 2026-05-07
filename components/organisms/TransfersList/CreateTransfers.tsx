@@ -450,48 +450,95 @@ const CreateTransfers = () => {
     },
   ];
 
-  const transferFromFields = [
-    {
-      name: 'transferCurrency',
-      label: t('transferCurrency'),
-      value: transferDetails?.transferCurrency || '',
-      type: 'select' as const,
-      required: true,
-      options: CURRENCY_OPTIONS,
-    },
-    {
-      name: 'debitCurrency',
-      label: t('debitCurrency'),
-      value: transferDetails?.debitCurrency || '',
-      type: 'select' as const,
-      required: true,
-      options: CURRENCY_OPTIONS,
-    },
-    {
-      name: 'debitReference',
-      label: t('debitReference'),
-      value: transferDetails?.debitReference || '',
-      type: 'text' as const,
-      required: false,
-    },
-  ];
+  const transferFromFieldsSingleToMultiple = [
+      {
+        name: 'transferCurrency',
+        label: t('transferCurrency'),
+        value: transferDetails?.transferCurrency || '',
+        type: 'select' as const,
+        required: true,
+        options: CURRENCY_OPTIONS,
+      },
+      {
+        name: 'debitCurrency',
+        label: t('debitCurrency'),
+        value: transferDetails?.debitCurrency || '',
+        type: 'select' as const,
+        required: true,
+        options: CURRENCY_OPTIONS,
+      },
+      {
+        name: 'debitReference',
+        label: t('debitReference'),
+        value: transferDetails?.debitReference || '',
+        type: 'text' as const,
+        required: false,
+      },
+    ];
+  
+    const transferFromFieldsMultipleToSingle = [
+      {
+        name: 'transferCurrency',
+        label: t('transferCurrency'),
+        value: transferDetails?.transferCurrency || '',
+        type: 'select' as const,
+        required: true,
+        options: CURRENCY_OPTIONS,
+      },
+      {
+        name: 'debitAmount',
+        label: t('debitAmount'),
+        value: transferDetails?.debitAmount || '',
+        type: 'text' as const,
+        required: true,
+      },
+      {
+        name: 'debitCurrency',
+        label: t('debitCurrency'),
+        value: transferDetails?.debitCurrency || '',
+        type: 'select' as const,
+        required: true,
+        options: CURRENCY_OPTIONS,
+      },
+      {
+        name: 'debitReference',
+        label: t('debitReference'),
+        value: transferDetails?.debitReference || '',
+        type: 'text' as const,
+        required: false,
+      },
+    ];
+  
+    const transferToFieldsSingleToMultiple = [
+      {
+        name: 'transferAmount',
+        label: t('transferAmount'),
+        value: transferDetails?.transferAmount || '',
+        type: 'text' as const,
+        required: true,
+      },
+      {
+        name: 'creditReference',
+        label: t('creditReference'),
+        value: transferDetails?.creditReference || '',
+        type: 'text' as const,
+        required: false,
+      },
+    ];
+  
+    const transferToFieldsMultipleToSingle = [
+      {
+        name: 'creditReference',
+        label: t('creditReference'),
+        value: transferDetails?.creditReference || '',
+        type: 'text' as const,
+        required: false,
+      },
+    ];
 
-  const transferToFields = [
-    {
-      name: 'transferAmount',
-      label: t('transferAmount'),
-      value: transferDetails?.transferAmount || '',
-      type: 'text' as const,
-      required: true,
-    },
-    {
-      name: 'creditReference',
-      label: t('creditReference'),
-      value: transferDetails?.creditReference || '',
-      type: 'text' as const,
-      required: false,
-    },
-  ];
+  // Conditionally select the correct field arrays based on transfer mode
+  const transferFromFields = transferMode === 0 ? transferFromFieldsSingleToMultiple : transferFromFieldsMultipleToSingle;
+  const transferToFields = transferMode === 0 ? transferToFieldsSingleToMultiple : transferToFieldsMultipleToSingle;
 
   const handlePaymentDateChange = (date: unknown) => {
     if (date && dayjs.isDayjs(date)) {

@@ -47,6 +47,7 @@ interface InstructionFormProps {
     sourceAccountCountry: string;
     transferCurrency: string;
     debitCurrency: string;
+    debitAmount?: string;
     debitReference: string;
     destinationAccount: string;
     transferAmount: string;
@@ -97,6 +98,7 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
     destinationAccount: instructionData.destinationAccount || '',
     transferCurrency: instructionData.transferCurrency || '',
     debitCurrency: instructionData.debitCurrency || '',
+    debitAmount: instructionData.debitAmount || '',
     debitReference: instructionData.debitReference || '',
     transferAmount: instructionData.transferAmount || '',
     creditReference: instructionData.creditReference || '',
@@ -240,7 +242,7 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
     return batchItems.reduce((sum, item) => sum + parseFloat(String(item.transferAmount) || '0'), 0);
   }, [batchItems]);
 
-  const transferFromFields = [
+  const transferFromFieldsSingleToMultiple = [
     {
       name: 'transferCurrency',
       label: t('transferCurrency'),
@@ -266,7 +268,40 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
     },
   ];
 
-  const transferToFields = [
+  const transferFromFieldsMultipleToSingle = [
+    {
+      name: 'transferCurrency',
+      label: t('transferCurrency'),
+      value: instructionData.transferCurrency || '',
+      type: 'select' as const,
+      required: true,
+      options: CURRENCY_OPTIONS,
+    },
+    {
+      name: 'debitAmount',
+      label: t('debitAmount'),
+      value: instructionData.debitAmount || '',
+      type: 'text' as const,
+      required: true,
+    },
+    {
+      name: 'debitCurrency',
+      label: t('debitCurrency'),
+      value: instructionData.debitCurrency || '',
+      type: 'select' as const,
+      required: true,
+      options: CURRENCY_OPTIONS,
+    },
+    {
+      name: 'debitReference',
+      label: t('debitReference'),
+      value: instructionData.debitReference || '',
+      type: 'text' as const,
+      required: false,
+    },
+  ];
+
+  const transferToFieldsSingleToMultiple = [
     {
       name: 'transferAmount',
       label: t('transferAmount'),
@@ -282,6 +317,20 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
       required: false,
     },
   ];
+
+  const transferToFieldsMultipleToSingle = [
+    {
+      name: 'creditReference',
+      label: t('creditReference'),
+      value: instructionData.creditReference || '',
+      type: 'text' as const,
+      required: false,
+    },
+  ];
+
+  // Conditionally select the correct field arrays based on transfer mode
+  const transferFromFields = transferMode === 0 ? transferFromFieldsSingleToMultiple : transferFromFieldsMultipleToSingle;
+  const transferToFields = transferMode === 0 ? transferToFieldsSingleToMultiple : transferToFieldsMultipleToSingle;
 
   const handlePaymentDateChange = (date: unknown) => {
     if (date && dayjs.isDayjs(date)) {

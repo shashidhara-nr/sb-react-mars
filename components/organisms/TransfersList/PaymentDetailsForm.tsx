@@ -115,7 +115,7 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({
             <Box className={styles.divider} />
             <Box className={styles.sectionSubHeader}>
               <Icon name="accounts" width="24" height="24"  bgColor={"#0051FF"} />
-              <Typography variant="h6">{t(transferMode === 0 ? 'transferFrom' : 'transferTo')}</Typography>
+              <Typography variant="h6">{t('transferFrom')}</Typography>
             </Box>
             <Box className={styles.accountDropdownContainer}>
               <Box className={styles.accountDropdown}>
@@ -154,7 +154,7 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({
         <Box className={styles.sectionInner}>
           <Box className={styles.sectionHeader}>
             <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-            <Typography variant="h6">{t(transferMode === 0 ? 'transferTo' : 'transferFrom')}</Typography>
+            <Typography variant="h6">{t('transferTo')}</Typography>
           </Box>
           <Box className={styles.sectionContent}>
             <Box className={styles.accountDropdownContainer}>
