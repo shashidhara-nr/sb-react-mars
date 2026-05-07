@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useMemo, useState, ChangeEvent } from 'react';
+import { useCallback, useMemo, useState, ChangeEvent, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import styles from './CreateTransfers.module.scss';
@@ -29,6 +29,7 @@ import IconSearch from 'public/icons/icn_search.svg';
 import { getRulesForField } from 'src/utils/transferCreateLogic';
 import CustomPagination from 'components/lib/Tables/TablePagination';
 import InstructionForm from './InstructionForm';
+import PaymentDetailsForm from './PaymentDetailsForm';
 
 const CreateTransfers = () => {
   const t = useTranslations('transfers');
@@ -69,6 +70,18 @@ const CreateTransfers = () => {
     creditReference: '',
     paymentDate: null,
   });
+
+  useEffect(() => {
+    // Sync transferMode across all instructions when it changes
+    if (instructions.length > 0) {
+      setInstructions((prev) =>
+        prev.map((instruction) => ({
+          ...instruction,
+          transferMode,
+        }))
+      );
+    }
+  }, [transferMode]);
 
   const detailsDefaultValues = {
     transferType: transferDetails?.transferType || '',
@@ -205,61 +218,74 @@ const CreateTransfers = () => {
   }, [transferDetails, batchItems, ACCOUNT_INFO_OPTIONS, methodsDetails]);
 
   const handleAddInstruction = useCallback(() => {
-    if (!transferDetails.sourceAccount || batchItems.length === 0) {
-      showError('Please select a source account and add at least one batch item before adding an instruction.');
-      return;
-    }
-    
-    if (!paymentDate) {
+    try {
+      // Get only NEW items added since the last instruction
+      const newItemsForInstruction = batchItems.slice(lastInstructionItemCount);
+      
+      // Validate that we have all required data to create an instruction
+      if (newItemsForInstruction.length === 0) {
+        showError('Please add at least one item to the batch before creating an instruction.');
+        return;
+      }
+
+      if (!transferDetails.sourceAccount) {
+        showError('Please select a source account.');
+        return;
+      }
+
+      if (!paymentDate) {
         showError('Please select a payment date.');
         return;
       }
 
-    const newInstruction = {
-      instructionId: nextInstructionId,
-      sourceAccount: transferDetails.sourceAccount || '',
-      sourceAccountName: transferDetails.sourceAccountName || '',
-      sourceAccountNumber: transferDetails.sourceAccountNumber || '',
-      sourceAccountBranch: transferDetails.sourceAccountBranch || '',
-      sourceAccountBic: transferDetails.sourceAccountBic || '',
-      sourceAccountCountry: transferDetails.sourceAccountCountry || '',
-      transferCurrency: transferDetails.transferCurrency || '',
-      debitCurrency: transferDetails.debitCurrency || '',
-      debitReference: transferDetails.debitReference || '',
-      destinationAccount: '',
-      transferAmount: '',
-      creditReference: '',
-      paymentDate: paymentDate,
-      batchItems: [...batchItems],
-      transferMode: transferMode,
-    };
+      const newInstruction = {
+        instructionId: nextInstructionId,
+        sourceAccount: transferDetails.sourceAccount || '',
+        sourceAccountName: transferDetails.sourceAccountName || '',
+        sourceAccountNumber: transferDetails.sourceAccountNumber || '',
+        sourceAccountBranch: transferDetails.sourceAccountBranch || '',
+        sourceAccountBic: transferDetails.sourceAccountBic || '',
+        sourceAccountCountry: transferDetails.sourceAccountCountry || '',
+        transferCurrency: transferDetails.transferCurrency || '',
+        debitCurrency: transferDetails.debitCurrency || '',
+        debitReference: transferDetails.debitReference || '',
+        destinationAccount: '',
+        transferAmount: '',
+        creditReference: '',
+        paymentDate: paymentDate,
+        batchItems: [...batchItems],
+        transferMode: transferMode,
+      };
 
-    setInstructions((prev) => [...prev, newInstruction]);
-    setNextInstructionId((prev) => prev + 1);
+      setInstructions((prev) => [...prev, newInstruction]);
+      setNextInstructionId((prev) => prev + 1);
 
-    // Reset form for next instruction
-    setTransferDetails((prev: any) => ({
-      ...prev,
-      sourceAccount: '',
-      sourceAccountName: '',
-      sourceAccountNumber: '',
-      sourceAccountBranch: '',
-      sourceAccountBic: '',
-      sourceAccountCountry: '',
-      destinationAccount: '',
-      transferCurrency: '',
-      debitCurrency: '',
-      debitReference: '',
-      transferAmount: '',
-      creditReference: '',
-    }));
+      // Reset form for next instruction
+      setTransferDetails((prev: any) => ({
+        ...prev,
+        sourceAccount: '',
+        sourceAccountName: '',
+        sourceAccountNumber: '',
+        sourceAccountBranch: '',
+        sourceAccountBic: '',
+        sourceAccountCountry: '',
+        destinationAccount: '',
+        transferCurrency: '',
+        debitCurrency: '',
+        debitReference: '',
+        transferAmount: '',
+        creditReference: '',
+      }));
 
-    methodsDetails.reset();
-    setBatchItems([]);
-    setPaymentDate(null);
-    setTransferMode(0);
-
-  }, [transferDetails, batchItems, paymentDate, transferMode, methodsDetails, nextInstructionId]);
+      methodsDetails.reset();
+      setBatchItems([]);
+      setPaymentDate(null);
+      setTransferMode(0);
+    } catch (error) {
+      console.error('Error adding instruction:', error);
+      showError('Failed to add instruction. Please try again.');
+    }
+  }, [batchItems, lastInstructionItemCount, transferDetails, paymentDate, instructions, methodsDetails, transferMode]);
 
   const handleClearBatch = useCallback(() => {
     setBatchItems([]);
@@ -339,73 +365,27 @@ const CreateTransfers = () => {
       // Step 0: Validate only transfer type
       methodsDetails.handleSubmit(onValid, onInvalid)();
     } else if (currentStep === 1) {
-      // Step 1: Check if we have instructions to review
-      // If there are unsaved batch items, save them as an instruction first
+      // Step 1: Skip validation if batch items exist, otherwise validate all payment details
       if (batchItems.length > 0) {
-        // Save current instruction before proceeding to review
-        if (!transferDetails.sourceAccount) {
-          showError('Please select a source account before proceeding to review.');
-          return;
-        }
-        // if (!paymentDate) {
-        //   showError('Please select a payment date before proceeding to review.');
-        //   return;
-        // }
-
-        // Create instruction from current form data
-        const newInstruction = {
-          instructionId: nextInstructionId,
-          sourceAccount: transferDetails.sourceAccount || '',
-          sourceAccountName: transferDetails.sourceAccountName || '',
-          sourceAccountNumber: transferDetails.sourceAccountNumber || '',
-          sourceAccountBranch: transferDetails.sourceAccountBranch || '',
-          sourceAccountBic: transferDetails.sourceAccountBic || '',
-          sourceAccountCountry: transferDetails.sourceAccountCountry || '',
-          transferCurrency: transferDetails.transferCurrency || '',
-          debitCurrency: transferDetails.debitCurrency || '',
-          debitReference: transferDetails.debitReference || '',
-          destinationAccount: '',
-          transferAmount: '',
-          creditReference: '',
-          paymentDate: paymentDate,
-          batchItems: [...batchItems],
-          transferMode: transferMode,
-        };
-
-        // Add to instructions and proceed
-        setInstructions((prev) => [...prev, newInstruction]);
-        setNextInstructionId((prev) => prev + 1);
-
-        // Reset form for next session
-        setTransferDetails((prev: any) => ({
-          ...prev,
-          sourceAccount: '',
-          sourceAccountName: '',
-          sourceAccountNumber: '',
-          sourceAccountBranch: '',
-          sourceAccountBic: '',
-          sourceAccountCountry: '',
-          destinationAccount: '',
-          transferCurrency: '',
-          debitCurrency: '',
-          debitReference: '',
-          transferAmount: '',
-          creditReference: '',
-        }));
-
-        methodsDetails.reset();
-        setBatchItems([]);
-        setPaymentDate(null);
-        setTransferMode(0);
-
-        // Proceed to review
-        onValid();
-      } else if (instructions.length > 0) {
-        // We have saved instructions, proceed to review step
+        // Skip validation when batch items are present
         onValid();
       } else {
-        // No batch items and no instructions
-        showError('Please add at least one item to the batch and create an instruction before proceeding to review.');
+        // First trigger validation on all required fields
+        methodsDetails.trigger([
+          'sourceAccount',
+          'transferCurrency',
+          'debitCurrency',
+          'destinationAccount',
+          'transferAmount',
+          'paymentDate',
+        ]).then((isValid) => {
+          if (isValid) {
+            onValid();
+          }
+        }).catch((error) => {
+          console.error('Validation error:', error);
+          showError('An error occurred during validation. Please try again.');
+        });
       }
     } else {
       // Other steps - just proceed
@@ -524,12 +504,25 @@ const CreateTransfers = () => {
   };
 
   const handleUpdateInstruction = useCallback((instructionId: number, updatedData: any) => {
-    setInstructions((prev) =>
-      prev.map((instruction) =>
+    setInstructions((prev) => {
+      // If transferMode is being updated, sync it across all instructions
+      if (updatedData.transferMode !== undefined) {
+        return prev.map((instruction) => ({
+          ...instruction,
+          ...(instruction.instructionId === instructionId ? updatedData : { transferMode: updatedData.transferMode }),
+        }));
+      }
+      // Otherwise, update only the specific instruction
+      return prev.map((instruction) =>
         instruction.instructionId === instructionId ? { ...instruction, ...updatedData } : instruction
-      )
-    );
-  }, []);
+      );
+    });
+    
+    // Also update the main transferMode state if it changed
+    if (updatedData.transferMode !== undefined && updatedData.transferMode !== transferMode) {
+      setTransferMode(updatedData.transferMode);
+    }
+  }, [transferMode]);
 
   const handleDeleteInstruction = useCallback((instructionId: number) => {
     setInstructions((prev) => prev.filter((instruction) => instruction.instructionId !== instructionId));
@@ -546,7 +539,7 @@ const CreateTransfers = () => {
       return newSet;
     });
   }, []);
-
+  
   return (
     <section className={styles.container}>
       <BreadcrumbList links={breadcrumbLinks} />
@@ -601,221 +594,41 @@ const CreateTransfers = () => {
                       )}
 
                       {/* Form for adding new instruction */}
-                      <Box sx={{ marginBottom: 3 }}>
-                        <Box className={styles.transferFormContainer}>
-                        {/* Transfer From Section */}
-                        <Box className={styles.sectionInner}>
-                          <Box className={styles.sectionHeader} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', userSelect: 'none' }}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <Icon name="bank" width="24" height="24" bgColor={"#0051FF"} />
-                              <Typography variant="h6">{t('paymentDetails')}</Typography>
-                            </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                              <Icon 
-                                name="chevronUp" 
-                                width="20" 
-                                height="20" 
-                                bgColor={"#0051FF"}
-                              />
-                            </Box>
-                          </Box>
-                          <Box className={styles.sectionContent}>
-                            <Box className={styles.transferModeContainer}>
-                              <Box onClick={() => setTransferMode(0)} className={`${styles.transferModeButton} ${transferMode === 0 ? styles.active : ''}`}>{t('singleToMultiple')}</Box>
-                              <Box onClick={() => setTransferMode(1)} className={`${styles.transferModeButton} ${transferMode === 1 ? styles.active : ''}`}>{t('multipleToSingle')}</Box>
-                            </Box>
-                            <Box className={styles.divider} />
-                            <Box className={styles.sectionSubHeader}>
-                              <Icon name="accounts" width="24" height="24"  bgColor={"#0051FF"} />
-                              <Typography variant="h6">{t(transferMode === 0 ? 'transferFrom' : 'transferTo')}</Typography>
-                            </Box>
-                            <Box className={styles.accountDropdownContainer}>
-                              <Box className={styles.accountDropdown}>
-                                <Controller
-                                  name="sourceAccount"
-                                  control={methodsDetails.control}
-                                  rules={getRulesForField('sourceAccount', () => transferDetails)}
-                                  render={({ field, fieldState: { error } }) => (
-                                    <Box>
-                                      <AccountInfoDropdown label={t('selectSourceAccount')} value={field.value || ''} options={ACCOUNT_INFO_OPTIONS} onChange={(e: any) => { field.onChange(e.target.value); handleChange('sourceAccount', e.target.value); }} iconChevronDown={IconChevronDown} startIcon={IconSearch} fullWidth />
-                                      {error && <FormHelperText error sx={{ mt: 0.5 }}>{error.message}</FormHelperText>}
-                                    </Box>
-                                  )}
-                                />
-                              </Box>
-                            </Box>
-                            <RHFProvider methods={methodsDetails} onSubmit={() => {}} asForm={false}>
-                              <Box className={styles.createTransfersFormCont}>
-                                <CreateJournyForm 
-                                  fields={transferFromFields as any} 
-                                  onChange={handleChange} 
-                                  mode="edit" 
-                                  ShowActionBtns={false} 
-                                  renderWithRHF 
-                                  formMethods={methodsDetails}
-                                  rulesProvider={(name, getVals) => getRulesForField(name as any, getVals)}
-                                />
-                              </Box>
-                            </RHFProvider>
-                          </Box>
-                        </Box>
-
-                        <Box className={styles.sectionDivider} />
-
-                        {/* Transfer To Section */}
-                        <Box className={styles.sectionInner}>
-                          <Box className={styles.sectionHeader}>
-                            <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-                            <Typography variant="h6">{t(transferMode === 0 ? 'transferTo' : 'transferFrom')}</Typography>
-                          </Box>
-                          <Box className={styles.sectionContent}>
-                            <Box className={styles.accountDropdownContainer}>
-                              <Box className={styles.accountDropdown}>
-                                <Controller
-                                  name="destinationAccount"
-                                  control={methodsDetails.control}
-                                  rules={getRulesForField('destinationAccount', () => transferDetails)}
-                                  render={({ field, fieldState: { error } }) => (
-                                    <Box>
-                                      <AccountInfoDropdown label={t('searchAccounts')} value={field.value || ''} options={ACCOUNT_INFO_OPTIONS} onChange={(e: any) => { field.onChange(e.target.value); handleChange('destinationAccount', e.target.value); }} iconChevronDown={IconChevronDown} startIcon={IconSearch} fullWidth />
-                                      {error && <FormHelperText error sx={{ mt: 0.5 }}>{error.message}</FormHelperText>}
-                                    </Box>
-                                  )}
-                                />
-                              </Box>
-                            </Box>
-                            <RHFProvider methods={methodsDetails} onSubmit={() => {}} asForm={false}>
-                              <Box className={styles.createTransfersFormCont}>
-                                <CreateJournyForm 
-                                  fields={transferToFields as any} 
-                                  onChange={handleChange} 
-                                  mode="edit" 
-                                  ShowActionBtns={false} 
-                                  renderWithRHF 
-                                  formMethods={methodsDetails}
-                                  rulesProvider={(name, getVals) => getRulesForField(name as any, getVals)}
-                                />
-                              </Box>
-                            </RHFProvider>
-                            <Box className={styles.batchButtonsContainer}>
-                              <Button buttonVariant="tertiary" startIcon={<Icon name="delete" width="20" height="20"  bgColor={"#0051FF"} />} onClick={handleClearBatch} className={styles.batchButton}>{t('clearBatch')}</Button>
-                              <Button buttonVariant="secondary" startIcon={<Icon name="add" width="20" height="20" bgColor={"#0051FF"} />} onClick={handleAddToBatch} className={styles.batchButton}>{t('addToBatch')}</Button>
-                            </Box>
-                          </Box>
-                        </Box>
-
-                        {/* Batch List Section */}
-                        <Box className={styles.batchSectionContainer}>
-                          <Box className={styles.batchHeader}>
-                            <Box className={styles.batchHeaderContainer}>
-                              <Box className={styles.paymentIdSection}>
-                                <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-                                <Typography variant="body2">{paymentId}</Typography>
-                                <Box onClick={() => setPaymentId('')} className={styles.editButton}>
-                                  <Icon name="edit" width="18" height="18" bgColor={"#0051FF"} />
-                                </Box>
-                              </Box>
-                              <Box className={styles.searchAndFilterSection}>
-                                <TextField fullWidth value={searchBatch} onChange={(e) => setSearchBatch(e.target.value)} placeholder={t('searchWithinBatch')} variant="outlined" size="small" className={styles.searchField} InputProps={{ startAdornment: (<InputAdornment position="start"><Icon name="search" width="18" height="18"  bgColor={"#0051FF"} /></InputAdornment>) }} />
-                                <Button buttonVariant="tertiary" startIcon={<Icon name="filter" width="18" height="18"  bgColor={"#0051FF"} />} className={styles.filterButton}>{t('filter')}</Button>
-                              </Box>
-                            </Box>
-                          </Box>
-                          <Box className={styles.batchItemsContainer}>
-                            {paginatedBatchItems.length > 0 ? (
-                              paginatedBatchItems.map((item, index) => (
-                                <Accordion key={item.id} expanded={expandedBatchItem === item.id} onChange={handleExpandBatchItem(item.id)} className={styles.accordion}>
-                                  <AccordionSummary expandIcon={<Icon name="arrow" width="20" height="20"  bgColor={"#0051FF"} />} className={styles.accordionSummary}>
-                                    <Box className={styles.accordionSummaryLeft}>
-                                      <Icon name="user" width="24" height="24" bgColor={"#0051FF"} />
-                                      <Box className={styles.accordionSummaryContent}>
-                                        <Typography className={styles.accountName}>{index + 1}. {item.accountName}</Typography>
-                                      </Box>
-                                    </Box>
-                                    <Box className={styles.accordionSummaryRight}>
-                                      <Box className={styles.accountNumberLabel}>
-                                        <Typography className={styles.label}>{t('accNumber')}</Typography>
-                                        <Typography className={styles.value}>{item.accountNumber}</Typography>
-                                      </Box>
-                                      <Box className={styles.transferAmountSection}>
-                                        <Typography className={styles.label}>{t('transferAmount')}</Typography>
-                                        <Typography className={styles.value}>{item.currency} {item.transferAmount}</Typography>
-                                      </Box>
-                                      <Box className={styles.chevronAndDelete}>
-                                        <Box onClick={(e) => { e.stopPropagation(); handleRemoveBatchItem(item.id); }} className={styles.deleteButton}>
-                                          <Icon name="delete" width="18" height="18"  bgColor={"#0051FF"} />
-                                        </Box>
-                                      </Box>
-                                    </Box>
-                                  </AccordionSummary>
-                                  <AccordionDetails className={styles.accordionDetails}>
-                                    <Box className={styles.detailsGrid}>
-                                      <Box className={styles.detailsField}>
-                                        <Typography className={styles.fieldLabel}>{t('branchSortCode')}</Typography>
-                                        <Box className={styles.fieldValuePlain}><Typography>{item.sortCode || '-'}</Typography></Box>
-                                      </Box>
-                                      <Box className={styles.detailsField}>
-                                        <Typography className={styles.fieldLabel}>{t('bicSwift')}</Typography>
-                                        <Box className={styles.fieldValuePlain}><Typography>{item.bic || '-'}</Typography></Box>
-                                      </Box>
-                                      <Box className={styles.detailsField}>
-                                        <Typography className={styles.fieldLabel}>{t('creditAmount')}</Typography>
-                                        <Box className={`${styles.fieldValue} ${styles.creditAmountField}`}><Typography>R {item.transferAmount}</Typography></Box>
-                                      </Box>
-                                      <Box className={styles.detailsField}>
-                                        <Typography className={styles.fieldLabel}>{t('creditReference')}</Typography>
-                                        <Box className={styles.fieldValue}><Typography>{item.creditReference}</Typography></Box>
-                                      </Box>
-                                    </Box>
-                                  </AccordionDetails>
-                                </Accordion>
-                              ))
-                            ) : (
-                              <Box className={styles.emptyBatchState}>
-                                <Typography variant="body2" color="text.secondary">{t('noBatchItemsAdded')}</Typography>
-                              </Box>
-                            )}
-                          </Box>
-                          <Box className={styles.batchFooter}>
-                            <Typography className={styles.totalAmount}>{t('total')}: R {totalBatchAmount.toFixed(2)}</Typography>
-                            {filteredBatchItems.length !== 0 && (
-                              <CustomPagination
-                                rows={filteredBatchItems}
-                                page={currentPage}
-                                rowsPerPage={rowsPerPage}
-                                onPageChange={handlePageChange}
-                                onRowsPerPageChange={handleRowsPerPageChange}
-                              />
-                            )}
-                          </Box>
-                        </Box>
-
-                        <Box className={styles.sectionDivider} />
-
-                        {/* Payment Schedule Section */}
-                        <Box className={styles.sectionInner}>
-                          <Box className={styles.sectionHeader}>
-                            <Icon name="accounts" width="24" height="24" bgColor={"#0051FF"} />
-                            <Typography variant="h6">{t('paymentSchedule')}</Typography>
-                          </Box>
-                          <Box className={styles.sectionContent}>
-                            <Box className={styles.datePickerContainer}>
-                              <Controller
-                                name="paymentDate"
-                                control={methodsDetails.control}
-                                rules={getRulesForField('paymentDate', () => transferDetails)}
-                                render={({ field, fieldState: { error } }) => (
-                                  <Box>
-                                    <DatePicker label="" value={field.value || paymentDate} onChange={(date) => { field.onChange(date); handlePaymentDateChange(date); }} placeholder="31/05/2023" fullWidth />
-                                    {error && <FormHelperText error sx={{ mt: 0.5 }}>{error.message}</FormHelperText>}
-                                  </Box>
-                                )}
-                              />
-                            </Box>
-                          </Box>
-                        </Box>
-                        </Box>
-                      </Box>
+                      <PaymentDetailsForm
+                        transferMode={transferMode}
+                        setTransferMode={setTransferMode}
+                        transferDetails={transferDetails}
+                        handleChange={handleChange}
+                        transferFromFields={transferFromFields}
+                        methodsDetails={methodsDetails}
+                        ACCOUNT_INFO_OPTIONS={ACCOUNT_INFO_OPTIONS}
+                        transferToFields={transferToFields}
+                        handleAddToBatch={handleAddToBatch}
+                        handleClearBatch={handleClearBatch}
+                        batchItems={batchItems}
+                        searchBatch={searchBatch}
+                        setSearchBatch={setSearchBatch}
+                        expandedBatchItem={expandedBatchItem}
+                        handleExpandBatchItem={handleExpandBatchItem}
+                        handleRemoveBatchItem={handleRemoveBatchItem}
+                        paginatedBatchItems={paginatedBatchItems}
+                        currentPage={currentPage}
+                        rowsPerPage={rowsPerPage}
+                        handlePageChange={handlePageChange}
+                        handleRowsPerPageChange={handleRowsPerPageChange}
+                        totalBatchAmount={totalBatchAmount}
+                        filteredBatchItems={filteredBatchItems}
+                        paymentId={paymentId}
+                        setPaymentId={setPaymentId}
+                        paymentDate={paymentDate}
+                        handlePaymentDateChange={handlePaymentDateChange}
+                        handleAddInstruction={handleAddInstruction}
+                        instructionCount={instructionCount}
+                        instructions={instructions}
+                        IconChevronDown={IconChevronDown}
+                        IconSearch={IconSearch}
+                        getRulesForField={getRulesForField}
+                      />
 
                       {/* ADD AN INSTRUCTION - Outside the form container */}
                       <Box className={styles.addInstructionContainer}>
@@ -845,6 +658,7 @@ const CreateTransfers = () => {
                       </Box>
                     </Box>
                   )}
+
                   {currentStep === 2 && (
                     <Box className={styles.stepContent}>
                       {/* Transfer Type Section */}
@@ -902,27 +716,27 @@ const CreateTransfers = () => {
                                 <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, paddingLeft: 4 }}>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Account name</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.sourceAccountName || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.sourceAccountName || '-'}</Typography>
                                   </Box>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Account number</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.sourceAccountNumber || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.sourceAccountNumber || '-'}</Typography>
                                   </Box>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Transfer Currency</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.transferCurrency || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.transferCurrency || '-'}</Typography>
                                   </Box>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Debit Currency</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.debitCurrency || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.debitCurrency || '-'}</Typography>
                                   </Box>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Branch Code</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.sourceAccountBranch || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.sourceAccountBranch || '-'}</Typography>
                                   </Box>
                                   <Box>
                                     <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>BIC/SWIFT</Typography>
-                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.sourceAccountBic || '-'}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.sourceAccountBic || '-'}</Typography>
                                   </Box>
                                 </Box>
                               </Box>
@@ -931,7 +745,7 @@ const CreateTransfers = () => {
                               <Box sx={{ marginBottom: 3 }}>
                                 <Typography sx={{ fontSize: '14px', fontWeight: 600, marginBottom: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                                   <Icon name="accounts" width="20" height="20" bgColor={"#0051FF"} />
-                                  Transfer To ({instruction.batchItems?.length || 0} items)
+                                  Transfer To ({instruction?.batchItems?.length || 0} items)
                                 </Typography>
                                 
                                 {/* Search Bar */}
@@ -956,7 +770,7 @@ const CreateTransfers = () => {
 
                                 {/* Batch Items as Accordions */}
                                 <Box sx={{ paddingLeft: 4 }}>
-                                  {instruction.batchItems?.map((item: any, itemIndex: number) => (
+                                  {(instruction?.batchItems || []).map((item: any, itemIndex: number) => (
                                     <Accordion 
                                       key={item.id} 
                                       sx={{ 
@@ -1068,7 +882,7 @@ const CreateTransfers = () => {
                                 {/* Total Amount Summary */}
                                 <Box sx={{ paddingLeft: 4, marginTop: 2 }}>
                                   <Typography sx={{ fontSize: '14px', fontWeight: 600 }}>
-                                    {t('total') || 'Total'}: {instruction.batchItems?.reduce((sum: number, item: any) => sum + parseFloat(item.transferAmount || 0), 0).toFixed(2)}
+                                    {t('total') || 'Total'}: {(instruction?.batchItems || []).reduce((sum: number, item: any) => sum + parseFloat(item.transferAmount || 0), 0).toFixed(2)}
                                   </Typography>
                                 </Box>
                               </Box>
@@ -1081,7 +895,7 @@ const CreateTransfers = () => {
                                 </Typography>
                                 <Box sx={{ paddingLeft: 4 }}>
                                   <Typography sx={{ fontSize: '12px', color: '#666', marginBottom: '4px' }}>Payment Date</Typography>
-                                  <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction.paymentDate ? instruction.paymentDate.format('DD/MM/YYYY') : '-'}</Typography>
+                                  <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>{instruction?.paymentDate ? instruction?.paymentDate.format('DD/MM/YYYY') : '-'}</Typography>
                                 </Box>
                               </Box>
                             </AccordionDetails>

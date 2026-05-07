@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, ChangeEvent, useState } from 'react';
+import { useCallback, useMemo, ChangeEvent, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './CreateTransfers.module.scss';
 import { Box, TextField, InputAdornment, Accordion, AccordionSummary, AccordionDetails, FormHelperText } from '@mui/material';
@@ -77,6 +77,20 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
   const [rowsPerPage, setRowsPerPage] = useState<15 | 30 | 50>(15);
   const [batchItems, setBatchItems] = useState<BatchItem[]>(instructionData.batchItems || []);
   const [paymentDate, setPaymentDate] = useState<Dayjs | null>(instructionData.paymentDate || null);
+
+  // Sync local transferMode when parent updates (from other instruction or PaymentDetailsForm changes)
+  useEffect(() => {
+    setTransferMode(instructionData.transferMode);
+  }, [instructionData.transferMode]);
+
+  // Handler for transfer mode button clicks - immediately notify parent
+  const handleTransferModeChange = useCallback((mode: number) => {
+    setTransferMode(mode);
+    onUpdate(instructionData.instructionId, { 
+      ...instructionData, 
+      transferMode: mode
+    });
+  }, [instructionData, onUpdate]);
 
   const detailsDefaultValues = {
     sourceAccount: instructionData.sourceAccount || '',
@@ -330,8 +344,8 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
         </Box>
         <Box className={styles.sectionContent}>
           <Box className={styles.transferModeContainer}>
-            <Box onClick={() => setTransferMode(0)} className={`${styles.transferModeButton} ${transferMode === 0 ? styles.active : ''}`}>{t('singleToMultiple')}</Box>
-            <Box onClick={() => setTransferMode(1)} className={`${styles.transferModeButton} ${transferMode === 1 ? styles.active : ''}`}>{t('multipleToSingle')}</Box>
+            <Box onClick={() => handleTransferModeChange(0)} className={`${styles.transferModeButton} ${transferMode === 0 ? styles.active : ''}`}>{t('singleToMultiple')}</Box>
+            <Box onClick={() => handleTransferModeChange(1)} className={`${styles.transferModeButton} ${transferMode === 1 ? styles.active : ''}`}>{t('multipleToSingle')}</Box>
           </Box>
           <Box className={styles.divider} />
           <Box className={styles.sectionSubHeader}>
