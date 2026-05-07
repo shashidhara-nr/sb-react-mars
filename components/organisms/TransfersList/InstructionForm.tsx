@@ -32,6 +32,7 @@ interface BatchItem {
   sortCode: string;
   bic: string;
   transferAmount: string;
+  debitAmount?: string;
   creditReference: string;
   currency: string;
 }
@@ -129,6 +130,9 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
   })), []);
 
   const handleChange = useCallback((name: string, value: any) => {
+    if (transferMode === 1 && (name === 'debitAmount' || name === 'sourceAccount')) {
+      console.log('[Mode 1] Form change detected:', { name, value, instructionDataBefore: { sourceAccount: instructionData.sourceAccount, debitAmount: instructionData.debitAmount } });
+    }
     const updatedData = { ...instructionData, [name]: value };
 
     if (name === 'sourceAccount') {
@@ -150,43 +154,87 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
   }, [instructionData, ACCOUNT_INFO_OPTIONS, transferMode, batchItems, paymentDate, onUpdate]);
 
   const handleAddToBatch = useCallback(() => {
-    if (!instructionData.destinationAccount || !instructionData.transferAmount) {
-      return;
+    // Mode 0: Single to Multiple - capture destination account
+    if (transferMode === 0) {
+      if (!instructionData.destinationAccount || !instructionData.transferAmount) {
+        return;
+      }
+
+      const selectedAccount = ACCOUNT_INFO_OPTIONS.find(
+        (option) => option.value === instructionData.destinationAccount
+      );
+
+      const nextId = batchItems.length + 1;
+      const newBatchItem: BatchItem = {
+        id: nextId,
+        accountName: selectedAccount?.name || '',
+        accountNumber: selectedAccount?.accNumber || '',
+        sortCode: selectedAccount?.sortCode || '',
+        bic: selectedAccount?.bic || '',
+        transferAmount: instructionData.transferAmount,
+        creditReference: instructionData.creditReference || `${nextId}`,
+        currency: selectedAccount?.currency || 'ZAR',
+      };
+
+      const updatedBatchItems = [...batchItems, newBatchItem];
+      setBatchItems(updatedBatchItems);
+
+      const updatedData = {
+        ...instructionData,
+        destinationAccount: '',
+        transferAmount: '',
+        creditReference: '',
+        batchItems: updatedBatchItems,
+      };
+
+      onUpdate(instructionData.instructionId, updatedData);
+
+      methodsDetails.setValue('destinationAccount', '');
+      methodsDetails.setValue('transferAmount', '');
+      methodsDetails.setValue('creditReference', '');
     }
+    // Mode 1: Multiple to Single - capture source account
+    else if (transferMode === 1) {
+      if (!instructionData.sourceAccount || !instructionData.debitAmount || instructionData.debitAmount.toString().trim() === '') {
+        console.log('Mode 1 Add to Batch validation failed:', { sourceAccount: instructionData.sourceAccount, debitAmount: instructionData.debitAmount });
+        return;
+      }
 
-    const selectedAccount = ACCOUNT_INFO_OPTIONS.find(
-      (option) => option.value === instructionData.destinationAccount
-    );
+      const selectedAccount = ACCOUNT_INFO_OPTIONS.find(
+        (option) => option.value === instructionData.sourceAccount
+      );
 
-    const nextId = batchItems.length + 1;
-    const newBatchItem: BatchItem = {
-      id: nextId,
-      accountName: selectedAccount?.name || '',
-      accountNumber: selectedAccount?.accNumber || '',
-      sortCode: selectedAccount?.sortCode || '',
-      bic: selectedAccount?.bic || '',
-      transferAmount: instructionData.transferAmount,
-      creditReference: instructionData.creditReference || `${nextId}`,
-      currency: selectedAccount?.currency || 'ZAR',
-    };
+      const nextId = batchItems.length + 1;
+      const newBatchItem: BatchItem = {
+        id: nextId,
+        accountName: selectedAccount?.name || '',
+        accountNumber: selectedAccount?.accNumber || '',
+        sortCode: selectedAccount?.sortCode || '',
+        bic: selectedAccount?.bic || '',
+        transferAmount: instructionData.debitAmount!,
+        creditReference: instructionData.debitReference || `${nextId}`,
+        currency: selectedAccount?.currency || 'ZAR',
+        debitAmount: instructionData.debitAmount,
+      };
 
-    const updatedBatchItems = [...batchItems, newBatchItem];
-    setBatchItems(updatedBatchItems);
+      const updatedBatchItems = [...batchItems, newBatchItem];
+      setBatchItems(updatedBatchItems);
 
-    const updatedData = {
-      ...instructionData,
-      destinationAccount: '',
-      transferAmount: '',
-      creditReference: '',
-      batchItems: updatedBatchItems,
-    };
+      const updatedData = {
+        ...instructionData,
+        sourceAccount: '',
+        debitAmount: '',
+        debitReference: '',
+        batchItems: updatedBatchItems,
+      };
 
-    onUpdate(instructionData.instructionId, updatedData);
+      onUpdate(instructionData.instructionId, updatedData);
 
-    methodsDetails.setValue('destinationAccount', '');
-    methodsDetails.setValue('transferAmount', '');
-    methodsDetails.setValue('creditReference', '');
-  }, [instructionData, batchItems, ACCOUNT_INFO_OPTIONS, methodsDetails, onUpdate]);
+      methodsDetails.setValue('sourceAccount', '');
+      methodsDetails.setValue('debitAmount', '');
+      methodsDetails.setValue('debitReference', '');
+    }
+  }, [instructionData, batchItems, transferMode, ACCOUNT_INFO_OPTIONS, methodsDetails, onUpdate])
 
   const handleClearBatch = useCallback(() => {
     setBatchItems([]);
