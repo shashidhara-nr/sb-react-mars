@@ -127,10 +127,52 @@ const CreateTransfers = () => {
   const onSelectStep = useCallback(
     (stepIndex: number) => {
       if (stepIndex <= lastHighestProgressIndex) {
+        // When going back from Step 2 (Review & Submit) to Step 1 (Payment Details)
+        if (stepIndex === 1 && currentStep === 2 && instructions.length > 0) {
+          // Get the last instruction from the array
+          const lastInstruction = instructions[instructions.length - 1];
+          
+          // Restore data to PaymentDetailsForm
+          setTransferDetails((prev: any) => ({
+            ...prev,
+            sourceAccount: lastInstruction.sourceAccount || '',
+            sourceAccountName: lastInstruction.sourceAccountName || '',
+            sourceAccountNumber: lastInstruction.sourceAccountNumber || '',
+            sourceAccountBranch: lastInstruction.sourceAccountBranch || '',
+            sourceAccountBic: lastInstruction.sourceAccountBic || '',
+            sourceAccountCountry: lastInstruction.sourceAccountCountry || '',
+            transferCurrency: lastInstruction.transferCurrency || '',
+            debitCurrency: lastInstruction.debitCurrency || '',
+            debitAmount: lastInstruction.debitAmount || '',
+            debitReference: lastInstruction.debitReference || '',
+            destinationAccount: lastInstruction.destinationAccount || '',
+            transferAmount: lastInstruction.transferAmount || '',
+            creditReference: lastInstruction.creditReference || '',
+          }));
+          
+          setPaymentDate(lastInstruction.paymentDate || null);
+          setTransferMode(lastInstruction.transferMode || 0);
+          setBatchItems(lastInstruction.batchItems || []);
+          
+          // Update react-hook-form values
+          methodsDetails.setValue('sourceAccount', lastInstruction.sourceAccount || '');
+          methodsDetails.setValue('transferCurrency', lastInstruction.transferCurrency || '');
+          methodsDetails.setValue('debitCurrency', lastInstruction.debitCurrency || '');
+          methodsDetails.setValue('paymentDate', lastInstruction.paymentDate || null);
+          methodsDetails.setValue('destinationAccount', lastInstruction.destinationAccount || '');
+          methodsDetails.setValue('transferAmount', lastInstruction.transferAmount || '');
+          methodsDetails.setValue('debitAmount', lastInstruction.debitAmount || '');
+          methodsDetails.setValue('debitReference', lastInstruction.debitReference || '');
+          methodsDetails.setValue('creditReference', lastInstruction.creditReference || '');
+          
+          // Remove last instruction from array (so it shows in form, not in list)
+          setInstructions((prev) => prev.slice(0, -1));
+        }
+        
         setCurrentStep(stepIndex);
       }
     },
-    [lastHighestProgressIndex],
+    [lastHighestProgressIndex, currentStep, instructions, methodsDetails],
   );
 
   const handleChange = (name: string, value: any) => {
@@ -407,33 +449,82 @@ const CreateTransfers = () => {
       // Step 0: Validate only transfer type
       methodsDetails.handleSubmit(onValid, onInvalid)();
     } else if (currentStep === 1) {
-      // Step 1: Skip validation if batch items exist, otherwise validate all payment details
+      // Step 1: When moving to Review & Submit - Auto-save PaymentDetailsForm data to instructions array
       if (batchItems.length > 0) {
-        // Skip validation when batch items are present
-        onValid();
-      } else {
-        // First trigger validation on all required fields
-        methodsDetails.trigger([
-          'sourceAccount',
-          'transferCurrency',
-          'debitCurrency',
-          'destinationAccount',
-          'transferAmount',
-          'paymentDate',
-        ]).then((isValid) => {
-          if (isValid) {
-            onValid();
+        try {
+          // Validate required fields
+          if (!transferDetails.sourceAccount) {
+            showError('Please select a source account.');
+            return;
           }
-        }).catch((error) => {
-          console.error('Validation error:', error);
-          showError('An error occurred during validation. Please try again.');
-        });
+
+          if (!paymentDate) {
+            showError('Please select a payment date.');
+            return;
+          }
+
+          // Create instruction from current PaymentDetailsForm data
+          const newInstruction = {
+            instructionId: nextInstructionId,
+            sourceAccount: transferDetails.sourceAccount || '',
+            sourceAccountName: transferDetails.sourceAccountName || '',
+            sourceAccountNumber: transferDetails.sourceAccountNumber || '',
+            sourceAccountBranch: transferDetails.sourceAccountBranch || '',
+            sourceAccountBic: transferDetails.sourceAccountBic || '',
+            sourceAccountCountry: transferDetails.sourceAccountCountry || '',
+            transferCurrency: transferDetails.transferCurrency || '',
+            debitCurrency: transferDetails.debitCurrency || '',
+            debitAmount: transferDetails.debitAmount || '',
+            debitReference: transferDetails.debitReference || '',
+            destinationAccount: transferDetails.destinationAccount || '',
+            transferAmount: transferDetails.transferAmount || '',
+            creditReference: transferDetails.creditReference || '',
+            paymentDate: paymentDate,
+            batchItems: [...batchItems],
+            transferMode: transferMode,
+          };
+
+          // Add to instructions array
+          setInstructions((prev) => [...prev, newInstruction]);
+          setNextInstructionId((prev) => prev + 1);
+
+          // Clear form for next instruction
+          setTransferDetails((prev: any) => ({
+            ...prev,
+            sourceAccount: '',
+            sourceAccountName: '',
+            sourceAccountNumber: '',
+            sourceAccountBranch: '',
+            sourceAccountBic: '',
+            sourceAccountCountry: '',
+            destinationAccount: '',
+            transferCurrency: '',
+            debitCurrency: '',
+            debitAmount: '',
+            debitReference: '',
+            transferAmount: '',
+            creditReference: '',
+          }));
+
+          methodsDetails.reset();
+          setBatchItems([]);
+          setPaymentDate(null);
+          setTransferMode(0);
+
+          // Move to Review & Submit
+          onValid();
+        } catch (error) {
+          console.error('Error saving PaymentDetailsForm:', error);
+          showError('Failed to save payment details. Please try again.');
+        }
+      } else {
+        showError('Please add at least one item to the batch before proceeding to review.');
       }
     } else {
       // Other steps - just proceed
       onValid();
     }
-  }, [currentStep, steps.length, methodsDetails, batchItems, instructions]);
+  }, [currentStep, steps.length, methodsDetails, batchItems, instructions, transferDetails, paymentDate, transferMode, nextInstructionId, showError]);
 
   const handleCancelClick = useCallback(() => {
     setCancellationDialogOpen(true);
