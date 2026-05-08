@@ -942,13 +942,13 @@ const CreateTransfers = () => {
 
                       {/* ADD AN INSTRUCTION - Outside the form container */}
                       <Box className={styles.addInstructionContainer}>
-                        <Tooltip title={instructionCount > 0 && instructions.length + 1 > instructionCount ? `Maximum ${instructionCount} instructions allowed` : ''} placement="top">
+                        <Tooltip title={instructionCount > 0 && instructions.length + 1 >= instructionCount ? `Maximum ${instructionCount} instructions allowed` : ''} placement="top">
                           <span>
                             <Button 
                               buttonVariant="tertiary" 
                               startIcon={<Icon name="add" width="20" height="20"  bgColor={"#0051FF"} />} 
                               onClick={handleAddInstruction}
-                              disabled={instructionCount > 0 && instructions.length + 1 > instructionCount}
+                              disabled={instructionCount > 0 && instructions.length + 1 >= instructionCount}
                             >
                               {t('addAnInstruction')}
                             </Button>
