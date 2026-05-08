@@ -40,7 +40,9 @@ import {
   Accounts,
   Exclamation,
   BackArrow,
-  Download
+  Download,
+  ChevronUp,
+  ChevronDown
 } from "assets/customIcons";
 
 interface IconWrapperProps {
@@ -132,7 +134,9 @@ export const Icon: React.FC<IconProps> = ({
     accounts: Accounts,
     exclamation: Exclamation,
     backArrow: BackArrow,
-    download: Download
+    download: Download,
+    chevronUp: ChevronUp,
+    chevronDown: ChevronDown
   };
 
   const IconComponent = components[name];

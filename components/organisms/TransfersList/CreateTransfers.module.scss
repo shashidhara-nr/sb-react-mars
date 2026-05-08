@@ -2,15 +2,15 @@
 
 // Color constants
 $primary-color: #0051ff;
-$primary-light: rgba(0, 81, 255, 0.08);
-$primary-lighter: rgba(0, 81, 255, 0.1);
+$primary-light: rgb(0 81 255 / 8%);
+$primary-lighter: rgb(0 81 255 / 10%);
 $border-color: #CED3D9;
 $border-light: #E3E6EA;
 $background-light: #FAFBFC;
 $background-white: #fff;
-$text-secondary: rgba(0, 0, 0, 0.54);
+$text-secondary: rgb(0 0 0 / 54%);
 $error-color: #e31e46;
-$error-light: rgba(227, 30, 70, 0.08);
+$error-light: rgb(227 30 70 / 8%);
 
 // Spacing constants
 $spacing-xs: 8px;
@@ -43,14 +43,13 @@ $z-index-hidden: -1;
 .stepContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
 }
 
 .transferFormContainer {
   border: 1px solid $border-color;
   border-radius: $radius-lg;
   background-color: $background-white;
-  overflow: hidden;
+  overflow: hidden !important;
   display: flex;
   flex-direction: column;
 }
@@ -74,7 +73,9 @@ $z-index-hidden: -1;
   padding: $spacing-md;
   background-color: $background-white;
   border-bottom: 0;
-  padding-bottom: 8px;
+
+  // padding-bottom: 8px;
+  border-radius: 12px;
 
   h6 {
     font-size: $font-lg;
@@ -250,7 +251,7 @@ $z-index-hidden: -1;
 
 .accordion {
   &:global(.MuiAccordion-root) {
-    &:before {
+    &::before {
       display: none;
     }
 
@@ -277,7 +278,6 @@ $z-index-hidden: -1;
   background-color: $background-white;
 
   :global(.MuiAccordionSummary-content) {
-    align-items: center;
     margin: 0;
     flex: 1;
     display: flex;
@@ -473,7 +473,7 @@ $z-index-hidden: -1;
 }
 
 .batchFooter {
-  padding: 0 0 0 $spacing-md;
+  padding: $spacing-md;
   background-color: $background-white;
   display: flex;
   justify-content: space-between;
@@ -491,7 +491,7 @@ $z-index-hidden: -1;
   display: flex;
   justify-content: flex-end;
   gap: $spacing-md;
-  margin-top: $spacing-sm;
+  margin: $spacing-md;
 }
 
 .batchButton {
@@ -529,6 +529,7 @@ $z-index-hidden: -1;
 .addInstructionContainer {
   display: flex;
   justify-content: flex-end;
+  margin: 8px 12px 14px 0
 
   button {
     padding: 0;
@@ -638,11 +639,9 @@ $z-index-hidden: -1;
 
 .batchSectionContainer {
   border: solid 1px $border-color;
-  margin-left: 1rem;
-  margin-right: 1rem;
   border-radius: $radius-lg;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .accordionSummaryRight {
@@ -650,4 +649,47 @@ $z-index-hidden: -1;
   align-items: center;
   gap: 0.5rem;
   flex-shrink: 0;
+}
+
+// Review and Submit Page Styles (Step 2 - Accordion Styling)
+.reviewAccordion {
+  &:global(.MuiAccordion-root) {
+    &::before {
+      display: none;
+    }
+
+    box-shadow: none;
+    border: 1px solid $border-light;
+    border-radius: $radius-md !important;
+    background-color: $background-white;
+    overflow: hidden;
+    margin-top: 0 !important;
+    margin-bottom: $spacing-md;
+
+    &.Mui-expanded {
+      margin: 0 0 $spacing-md;
+    }
+  }
+}
+
+.reviewAccordionSummary {
+  padding: $spacing-md $spacing-lg;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  background-color: $background-white;
+
+  :global(.MuiAccordionSummary-content) {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  :global(.MuiAccordionSummary-expandIconWrapper) {
+    order: 3;
+  }
 }

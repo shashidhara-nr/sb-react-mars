@@ -38,3 +38,5 @@ export { Accounts } from "./accounts";
 export { Exclamation } from "./exclamation";
 export { BackArrow } from "./backArrow";
 export { Download } from "./download";
+export { ChevronUp } from "./chevronUp";
+export { ChevronDown } from "./chevronDown";
