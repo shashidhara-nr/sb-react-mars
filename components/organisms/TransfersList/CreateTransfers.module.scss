@@ -473,7 +473,7 @@ $z-index-hidden: -1;
 }
 
 .batchFooter {
-  padding: 0 0 0 $spacing-md;
+  padding: $spacing-md;
   background-color: $background-white;
   display: flex;
   justify-content: space-between;
@@ -529,6 +529,7 @@ $z-index-hidden: -1;
 .addInstructionContainer {
   display: flex;
   justify-content: flex-end;
+  margin: 8px 12px 14px 0
 
   button {
     padding: 0;
@@ -648,4 +649,47 @@ $z-index-hidden: -1;
   align-items: center;
   gap: 0.5rem;
   flex-shrink: 0;
+}
+
+// Review and Submit Page Styles (Step 2 - Accordion Styling)
+.reviewAccordion {
+  &:global(.MuiAccordion-root) {
+    &::before {
+      display: none;
+    }
+
+    box-shadow: none;
+    border: 1px solid $border-light;
+    border-radius: $radius-md !important;
+    background-color: $background-white;
+    overflow: hidden;
+    margin-top: 0 !important;
+    margin-bottom: $spacing-md;
+
+    &.Mui-expanded {
+      margin: 0 0 $spacing-md;
+    }
+  }
+}
+
+.reviewAccordionSummary {
+  padding: $spacing-md $spacing-lg;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  background-color: $background-white;
+
+  :global(.MuiAccordionSummary-content) {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  :global(.MuiAccordionSummary-expandIconWrapper) {
+    order: 3;
+  }
 }

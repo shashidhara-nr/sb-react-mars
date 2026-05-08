@@ -15,6 +15,8 @@ export interface DatePickerProps {
   disabled?: boolean;
   sx?: any;
   dataTestId?: string;
+  minDate?: Dayjs;
+  maxDate?: Dayjs;
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({
@@ -29,6 +31,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   disabled,
   sx,
   dataTestId,
+  minDate,
+  maxDate,
 }) => {
   const handleDateChange = (newValue: Dayjs | null) => {
     const formattedDate = newValue ? newValue.format('YYYY-MM-DD') : '';
@@ -44,6 +48,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
         value={dayjsValue}
         onChange={handleDateChange}
         format="DD/MM/YYYY"
+        minDate={minDate}
+        maxDate={maxDate}
         slotProps={{
           textField: {
             fullWidth: true,

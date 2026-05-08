@@ -11,7 +11,7 @@ import RHFProvider from 'components/common/forms/RHFProvider';
 import { CreateJournyForm } from 'components/common';
 import { Controller, UseFormReturn } from 'react-hook-form';
 import DatePicker from 'components/lib/DatePicker';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { COLORS } from './constant';
 import BatchListSection from './BatchListSection';
 
@@ -282,7 +282,7 @@ const PaymentDetailsForm: React.FC<PaymentDetailsFormProps> = ({
                 rules={getRulesForField('paymentDate', () => transferDetails)}
                 render={({ field, fieldState: { error } }) => (
                   <Box>
-                    <DatePicker label="" value={field.value || paymentDate} onChange={(date) => { field.onChange(date); handlePaymentDateChange(date); }} placeholder="31/05/2023" fullWidth />
+                    <DatePicker label="" value={field.value || paymentDate} onChange={(date) => { field.onChange(date); handlePaymentDateChange(date); }} placeholder="31/05/2023" fullWidth minDate={dayjs()} />
                     {error && <FormHelperText error sx={{ mt: 0.5 }}>{error.message}</FormHelperText>}
                   </Box>
                 )}

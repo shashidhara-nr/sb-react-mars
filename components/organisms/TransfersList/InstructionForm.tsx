@@ -609,7 +609,7 @@ const InstructionForm: React.FC<InstructionFormProps> = ({
               rules={getRulesForField('paymentDate', () => instructionData)}
               render={({ field, fieldState: { error } }) => (
                 <Box>
-                  <DatePicker label="" value={field.value || paymentDate} onChange={(date) => { field.onChange(date); handlePaymentDateChange(date); }} placeholder="31/05/2023" fullWidth />
+                  <DatePicker label="" value={field.value || paymentDate} onChange={(date) => { field.onChange(date); handlePaymentDateChange(date); }} placeholder="31/05/2023" fullWidth minDate={dayjs()} />
                   {error && <FormHelperText error sx={{ mt: 0.5 }}>{error.message}</FormHelperText>}
                 </Box>
               )}
